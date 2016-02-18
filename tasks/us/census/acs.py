@@ -725,6 +725,9 @@ class ExtractACS(Task):
             column_id = column['_id'].split('/')[-1].split('.')[0]
             column_slug = slug_column(column['_source']['name'])
 
+            if column_slug not in ('white_pop', 'asian_pop', 'black_pop', 'hispanic_or_latino_pop'):
+                continue
+
             for table in column['_source'].get('tables', []):
                 try:
                     schema, tablename = table['title'].split('.')
