@@ -410,7 +410,7 @@ class ColumnsTask(Task):
     def output(self):
         output = OrderedDict({})
         for col_key, col in self.columns().iteritems():
-            output[col_key] = ColumnTarget(classpath(self), col.id, col)
+            output[col_key] = ColumnTarget(classpath(self), col.id or col_key, col)
         return output
 
 
