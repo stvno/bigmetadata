@@ -233,6 +233,7 @@ class ColumnTarget(Target):
         column.id = self._id
         #self._id = column.id
         self._column = column
+        self._exists = False
 
     def get(self, session):
         '''
@@ -247,12 +248,38 @@ class ColumnTarget(Target):
             for key, val in self._column.__dict__.iteritems():
                 if not key.startswith('_'):
                     setattr(existing, key, val)
+            for key, val in existing.__dict__.iteritems():
+                if key not in self._column.__dict__:
+                    if key == 'id':
+                        continue
+                    setattr(existing, key, None)
+            self._column = existing
         else:
             session.add(self._column)
+        self._exists = True
 
     def exists(self):
+        '''
+        Return true if the column exists as-is already in the database.
+        '''
         with session_scope() as session:
-            return self.get(session) is not None
+            if self.get(session) is None:
+                return False
+            old_dict = self.get(session).__dict__.copy()
+            new_dict = self._column.__dict__.copy()
+            old_dict.pop('_sa_instance_state')
+            new_dict.pop('_sa_instance_state')
+            for key, val in old_dict.iteritems():
+                if key == 'id':
+                    continue
+                if val is None:
+                    new_dict[key] = val
+                if key not in new_dict:
+                    new_dict[key] = None
+            for key, val in new_dict.items():
+                if isinstance(val, list):
+                    new_dict.pop(key)
+            return new_dict == old_dict
 
 
 class TagTarget(Target):
@@ -373,7 +400,7 @@ class ColumnsTask(Task):
     def columns(self):
         '''
         '''
-        raise NotImplementedError('Must return iterable of BMDColumns')
+        raise NotImplementedError('Must return dict of BMDColumns')
 
     def run(self):
         with session_scope() as session:
