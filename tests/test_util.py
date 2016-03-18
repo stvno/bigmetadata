@@ -3,7 +3,7 @@ from luigi import Parameter
 from nose.tools import (assert_equals, with_setup, assert_raises, assert_in,
                         assert_is_none)
 from tasks.util import (underscore_slugify, ColumnTarget, ColumnsTask, TableTask,
-                        TableTarget)
+                        TableTarget, TagsTask)
 from tasks.meta import (session_scope, BMDColumn, Base, BMDColumnTable, BMDTag,
                         BMDColumnTag, BMDColumnToColumn, BMDTable, metadata)
 
@@ -22,19 +22,12 @@ def test_underscore_slugify():
                   'path_to_schema_class_name_param1_100_param2_foobar'
                  )
 
-#def test_slug_column():
-#    assert_equals(slug_column('Population'), 'pop')
-#    assert_equals(slug_column('Population 5 Years and Over'), 'pop_5_years_and_over')
-#    assert_equals(slug_column('Workers 16 Years and Over'), 'workers_16_years_and_over')
-#    assert_equals(slug_column('Population for Whom Poverty Status Is Determined'),
-#                  'pop_poverty_status_determined')
-#    assert_equals(slug_column('Commuters by Car, truck, or van'), 'commuters_by_car_truck_or_van')
-#    assert_equals(slug_column('Aggregate travel time to work (in minutes)'),
-#                  'aggregate_travel_time_to_work_in_minutes')
-#    assert_equals(slug_column('Hispanic or Latino Population'),
-#                  'hispanic_or_latino_pop')
-#    assert_equals(slug_column('Median Household Income (In the past 12 Months)'),
-#                  'median_household_income')
+
+def runtask(task):
+    for dep in task.deps():
+        if not dep.complete():
+            runtask(dep)
+    task.run()
 
 
 @with_setup(setup, teardown)
@@ -225,7 +218,7 @@ def test_columns_task_fails_no_columns():
 
     task = TestColumnsTask()
     with assert_raises(NotImplementedError):
-        task.run()
+        runtask(task)
 
 
 @with_setup(setup, teardown)
@@ -234,7 +227,7 @@ def test_columns_task_creates_columns_only_when_run():
     task = TestColumnsTask()
     with session_scope() as session:
         assert_equals(session.query(BMDColumn).count(), 0)
-    task.run()
+    runtask(task)
     with session_scope() as session:
         assert_equals(session.query(BMDColumn).count(), 2)
         assert_equals(session.query(BMDColumnToColumn).count(), 1)
@@ -260,7 +253,30 @@ def test_columns_task_creates_columns_only_when_run():
         assert_equals(session.query(BMDColumnTable).count(), 1)
 
 
+@with_setup(setup, teardown)
+def test_columns_task_update_cols():
+    pass
+
+
+class TestTagsTask(TagsTask):
+
+    def tags(self):
+        return [
+            BMDTag(id='denominator',
+                   name='Denominator',
+                   description='Use these to provide a baseline for comparison between different areas.'),
+            BMDTag(id='population',
+                   name='Population',
+                   description=''),
+        ]
+
+
 class TestColumnsTask(ColumnsTask):
+
+    def requires(self):
+        return {
+            'tags': TestTagsTask()
+        }
 
     def columns(self):
         pop_column = BMDColumn(id='population',
@@ -268,7 +284,10 @@ class TestColumnsTask(ColumnsTask):
                                name="Total Population",
                                description='The total number of all',
                                aggregate='sum',
-                               weight=10)
+                               weight=10,
+                               tags=[BMDColumnTag(tag_id=self.input()['tags']['denominator']._id),
+                                     BMDColumnTag(tag_id=self.input()['tags']['population']._id)],
+                              )
         return OrderedDict({
             'pop': pop_column,
             'foobar': BMDColumn(id='foobar',
@@ -278,7 +297,8 @@ class TestColumnsTask(ColumnsTask):
                                 aggregate='median',
                                 weight=8,
                                 target_columns=[BMDColumnToColumn(reltype='denominator',
-                                                                  target=pop_column)]
+                                                                  target=pop_column)],
+                                tags=[BMDColumnTag(tag_id=self.input()['tags']['population']._id)],
                                ),
         })
 
@@ -314,9 +334,7 @@ def test_table_task_creates_columns_when_run():
 
     task = TestTableTask()
     assert_equals(False, task.complete())
-    for dep in task.deps():
-        dep.run()
-    task.run()
+    runtask(task)
     assert_equals(True, task.complete())
 
     with session_scope() as session:
@@ -330,10 +348,7 @@ def test_table_task_creates_columns_when_run():
 def test_table_task_table():
 
     task = TestTableTask()
-    for dep in task.deps():
-        dep.run()
-
-    task.run()
+    runtask(task)
 
     with session_scope() as session:
         assert_equals('"{schema}".{name}'.format(schema=task.table.schema,
@@ -345,9 +360,7 @@ def test_table_task_table():
 def test_table_task_replaces_data():
 
     task = TestTableTask()
-    for dep in task.deps():
-        dep.run()
-    task.run()
+    runtask(task)
 
     with session_scope() as session:
         assert_equals(session.query(task.table).count(), 0)
@@ -356,7 +369,7 @@ def test_table_task_replaces_data():
             tablename=task.table.name))
         assert_equals(session.query(task.table).count(), 1)
 
-    task.run()
+    runtask(task)
 
     with session_scope() as session:
         assert_equals(session.query(task.table).count(), 0)
@@ -365,9 +378,7 @@ def test_table_task_replaces_data():
 def test_table_task_qualifies_table_name_schema():
 
     task = TestTableTask()
-    for dep in task.deps():
-        dep.run()
-    task.run()
+    runtask(task)
 
     assert_equals(task.table.schema, 'test_util')
     assert_equals(task.table.name, 'test_table_task_alpha_1996_beta_5000')
