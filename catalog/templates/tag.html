@@ -27,13 +27,13 @@
 {#
 .. rst-class:: cartodb-static-map
    {{ table.tablename }}.{{ coltable.colname }}
-   #}
+ #}
 
+:On CartoDB:
 {% for coltable in col.tables %}
     {% set table = coltable.table %}
-    {#:{{ table.timespan }}:#}
 
-    `On Carto <http://observatory.cartodb.com/tables/{{ table.tablename }}>`_
+    `{{ table.resolution.name }} <http://observatory.cartodb.com/tables/{{ table.tablename }}>`_.{{ coltable.colname }}
 {% endfor %}
 
 {% endfor %}

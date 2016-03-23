@@ -159,6 +159,14 @@ class BMDColumn(Base):
     targets = association_proxy('tgts', 'reltype', creator=targets_creator)
     sources = association_proxy('srcs', 'reltype', creator=sources_creator)
 
+    def is_resolution(self):
+        if self.type in ('Raster', 'Geometry'):
+            return True
+        for target, reltype in self.targets:
+            if reltype == 'geom_ref':
+                return True
+        return False
+
 
 # We should have one of these for every table we load in through the ETL
 class BMDTable(Base):
@@ -173,6 +181,13 @@ class BMDTable(Base):
     timespan = Column(String)
     bounds = Column(String)
     description = Column(String)
+
+    @property
+    def resolution(self):
+        for coltable in self.columns:
+            col = coltable.column
+            if col.is_resolution:
+                return col
 
 
 class BMDTag(Base):
