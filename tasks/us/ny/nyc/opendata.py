@@ -99,14 +99,17 @@ class ACRISMasterColumns(ColumnsTask):
     # DOCUMENT ID,RECORD TYPE,CRFN,BOROUGH,DOC. TYPE,DOC. DATE,DOC. AMOUNT,RECORDED / FILED,MODIFIED DATE,REEL YEAR,REEL NBR,REEL PAGE,% TRANSFERRED,GOOD THROUGH DATE
     # 2016020500925001,A,2016000048837,1,MTGE,01/25/2016,400000,02/12/2016,02/12/2016,0,0,0,0,02/29/2016
 
+    def version(self):
+        return '3'
+
     def requires(self):
         return ACRISColumns()
 
     def columns(self):
         session = current_session()
         return OrderedDict([
-            ('document_id', self.input()['document_id']._column)
-            ('record_type', self.input()['record_type']._column)
+            ('document_id', self.input()['document_id']._column),
+            ('record_type', self.input()['record_type']._column),
             ('crfn', OBSColumn(
                 type='Text',
                 name='City Reel File Number'
@@ -120,15 +123,15 @@ class ACRISMasterColumns(ColumnsTask):
                 name='Document Type'
             )),
             ('doc_date', OBSColumn(
-                type='Date',
+                type='Text', # correct to DATE but 0200 year
                 name='Document Date'
             )),
             ('doc_amt', OBSColumn(
-                type='Money',
+                type='Text', # TODO "Money"
                 name='Document Amount'
             )),
             ('recorded_filed', OBSColumn(
-                type='Date',
+                type='Text', # correct to DATE but 0200 year
                 name='Recorded / Filed'
             )),
             ('modified_date', OBSColumn(
@@ -223,6 +226,12 @@ class ACRISParties(TableTask):
             'meta': ACRISPartiesColumns()
         }
 
+    def bounds(self):
+        return 'BOX(0 0,0 0)'
+
+    def timespan(self):
+        return '1966 - present'
+
     def columns(self):
         return self.input()['meta']
 
@@ -283,12 +292,6 @@ class ACRISLegals(TableTask):
 
 
 class ACRIS(WrapperTask):
-
-    def bounds(self):
-        return 'BOX(0 0,0 0)'
-
-    def timespan(self):
-        return '1966 - present'
 
     def requires(self):
         return {
