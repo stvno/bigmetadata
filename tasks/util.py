@@ -345,10 +345,17 @@ class ColumnTarget(Target):
 
     def exists(self):
         existing = self.get(current_session())
+        new_version = float(self._column.version) or 0.0
         if existing:
+            existing_version = float(existing.version)
             current_session().expunge(existing)
-        if existing and existing.version == (self._column.version or '0'):
+        else:
+            existing_version = 0.0
+        if existing and existing_version == new_version:
             return True
+        elif existing and existing_version > new_version:
+            raise Exception('Metadata version mismatch: running tasks with '
+                            'older version than what is in DB')
         return False
 
 
@@ -374,10 +381,17 @@ class TagTarget(Target):
     def exists(self):
         session = current_session()
         existing = self.get(session)
+        new_version = float(existing.version) or 0.0
         if existing:
-            session.expunge(existing)
-        if existing and existing.version == (self._tag.version or '0'):
+            existing_version = float(existing.version)
+            current_session().expunge(existing)
+        else:
+            existing_version = 0.0
+        if existing and existing_version == new_version:
             return True
+        elif existing and existing_version > new_version:
+            raise Exception('Metadata version mismatch: running tasks with '
+                            'older version than what is in DB')
         return False
 
 
@@ -399,9 +413,13 @@ class TableTarget(Target):
         self._columns = columns
         self._task = task
         if self._id_noquote in metadata.tables:
-            self.table = metadata.tables[self._id_noquote]
+            self._table = metadata.tables[self._id_noquote]
         else:
-            self.table = None
+            self._table = None
+
+    @property
+    def table(self):
+        return self.get(current_session()).id
 
     def sync(self):
         '''
@@ -446,13 +464,19 @@ class TableTarget(Target):
         # create new local data table
         columns = []
         for colname, coltarget in self._columns.items():
+            colname = colname.lower()
             col = coltarget.get(session)
 
             # Column info for sqlalchemy's internal metadata
             if col.type.lower() == 'geometry':
                 coltype = Geometry
+
+            # For enum type, pull keys from extra["categories"]
+            elif col.type.lower().startswith('enum'):
+                cats = col.extra['categories'].keys()
+                coltype = types.Enum(*cats, name=col.id + '_enum')
             else:
-                coltype = getattr(types, col.type)
+                coltype = getattr(types, col.type.capitalize())
             columns.append(Column(colname, coltype))
 
             # Column info for bmd metadata
@@ -461,17 +485,23 @@ class TableTarget(Target):
             if coltable:
                 coltable.colname = colname
             else:
-                coltable = OBSColumnTable(colname=colname, table=obs_table,
-                                          column=col)
+                # catch the case where a column id has changed
+                coltable = session.query(OBSColumnTable).filter_by(
+                    table_id=obs_table.id, colname=colname).first()
+                if coltable:
+                    coltable.column = col
+                else:
+                    coltable = OBSColumnTable(colname=colname, table=obs_table,
+                                              column=col)
             session.add(coltable)
 
         # replace local data table
         if obs_table.id in metadata.tables:
             metadata.tables[obs_table.id].drop()
-        self.table = Table(self._name, metadata, *columns,
-                           schema=self._schema, extend_existing=True)
-        self.table.drop(checkfirst=True)
-        self.table.create()
+        self._table = Table(self._name, metadata, *columns,
+                            schema=self._schema, extend_existing=True)
+        self._table.drop(checkfirst=True)
+        self._table.create()
 
 
 class ColumnsTask(Task):
@@ -496,7 +526,7 @@ class ColumnsTask(Task):
             coltarget.update_or_create()
 
     def version(self):
-        return '0'
+        return 0
 
     def output(self):
         output = OrderedDict({})
@@ -536,7 +566,7 @@ class TagsTask(Task):
             tagtarget.update_or_create()
 
     def version(self):
-        return '0'
+        return 0
 
     def output(self):
         output = {}
@@ -591,7 +621,7 @@ class TableTask(Task):
     '''
 
     def version(self):
-        return '0'
+        return 0
 
     def on_failure(self, ex):
         session_rollback(self, ex)
@@ -616,13 +646,6 @@ class TableTask(Task):
 
     def bounds(self):
         raise NotImplementedError('Must define bounds for table')
-
-    @property
-    def table(self):
-        '''
-        Obtain metadata table for insertion via sqlalchemy or direct postgres
-        '''
-        return self.output().table
 
     def run(self):
         self.output().update_or_create()
