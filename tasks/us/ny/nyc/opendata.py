@@ -52,6 +52,9 @@ class ACRISPartiesColumns(ColumnsTask):
     def requires(self):
         return ACRISColumns()
 
+    def version(self):
+        return 4
+
     def columns(self):
         session = current_session()
         return OrderedDict([
@@ -98,9 +101,6 @@ class ACRISMasterColumns(ColumnsTask):
 
     # DOCUMENT ID,RECORD TYPE,CRFN,BOROUGH,DOC. TYPE,DOC. DATE,DOC. AMOUNT,RECORDED / FILED,MODIFIED DATE,REEL YEAR,REEL NBR,REEL PAGE,% TRANSFERRED,GOOD THROUGH DATE
     # 2016020500925001,A,2016000048837,1,MTGE,01/25/2016,400000,02/12/2016,02/12/2016,0,0,0,0,02/29/2016
-
-    def version(self):
-        return '3'
 
     def requires(self):
         return ACRISColumns()
@@ -236,7 +236,7 @@ class ACRISParties(TableTask):
         return self.input()['meta']
 
     def populate(self):
-        shell(r"gunzip -c {input} | psql -c '\copy {output} FROM STDIN WITH CSV HEADER'".format(
+        shell(r"gunzip -c {input} | grep -v '{{' | psql -c '\copy {output} FROM STDIN WITH CSV HEADER'".format(
             input=self.input()['data'].path,
             output=self.output().get(current_session()).id
         ))
@@ -284,7 +284,8 @@ class ACRISLegals(TableTask):
         return self.input()['meta']
 
     def populate(self):
-        shell(r"gunzip -c {input} | psql -c '\copy {output} FROM STDIN WITH CSV HEADER'".format(
+        # grep -v '{' to ignore weird serve dump lines
+        shell(r"gunzip -c {input} | grep -v '{{' | psql -c '\copy {output} FROM STDIN WITH CSV HEADER'".format(
             input=self.input()['data'].path,
             output=self.output().get(current_session()).id
         ))
