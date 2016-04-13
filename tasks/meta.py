@@ -10,16 +10,18 @@ import re
 import luigi
 from luigi import Task, BooleanParameter, Target, Event
 
-from sqlalchemy import (Column, Integer, String, Boolean, MetaData,
+from sqlalchemy import (Column, Integer, String, Boolean, MetaData, Numeric,
                         create_engine, event, ForeignKey, PrimaryKeyConstraint,
-                        ForeignKeyConstraint, Table, exc, func)
+                        ForeignKeyConstraint, Table, exc, func, UniqueConstraint)
 from sqlalchemy.dialects.postgresql import JSON
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, sessionmaker, composite, backref
 from sqlalchemy.orm.exc import NoResultFound
-from sqlalchemy.orm.collections import attribute_mapped_collection, InstrumentedList
+from sqlalchemy.orm.collections import (attribute_mapped_collection,
+                                        InstrumentedList, MappedCollection,
+                                        _SerializableAttrGetter, collection)
 from sqlalchemy.types import UserDefinedType
 
 
@@ -80,10 +82,15 @@ class OBSColumnTable(Base):
 
     extra = Column(JSON)
 
+    colname_constraint = UniqueConstraint(table_id, colname)
+
 
 def tag_creator(tagtarget):
-    tag = tagtarget.get(current_session())
-    return OBSColumnTag(tag=tag)
+    tag = tagtarget.get(current_session()) or tagtarget._tag
+    coltag = OBSColumnTag(tag=tag, tag_id=tag.id)
+    if tag in current_session():
+        current_session().expunge(tag)
+    return coltag
 
 
 def targets_creator(coltarget_or_col, reltype):
@@ -106,6 +113,28 @@ def sources_creator(coltarget_or_col, reltype):
     return OBSColumnToColumn(source=col, reltype=reltype)
 
 
+class PatchedMappedCollection(MappedCollection):
+
+    @collection.remover
+    @collection.internally_instrumented
+    def remove(self, value, _sa_initiator=None):
+        key = self.keyfunc(value)
+        if key not in self and None in self:
+            key = None
+        if self[key] != value:
+            raise Exception(
+                "Can not remove '%s': collection holds '%s' for key '%s'. "
+                "Possible cause: is the MappedCollection key function "
+                "based on mutable properties or properties that only obtain "
+                "values after flush?" %
+                (value, self[key], key))
+        self.__delitem__(key, _sa_initiator)
+
+
+target_collection = lambda: PatchedMappedCollection(_SerializableAttrGetter("target"))
+source_collection = lambda: PatchedMappedCollection(_SerializableAttrGetter("source"))
+
+
 class OBSColumnToColumn(Base):
     __tablename__ = 'obs_column_to_column'
 
@@ -118,14 +147,14 @@ class OBSColumnToColumn(Base):
                           foreign_keys=[source_id],
                           backref=backref(
                               "tgts",
-                              collection_class=attribute_mapped_collection("target"),
+                              collection_class=target_collection,
                               cascade="all, delete-orphan",
                           ))
     target = relationship('OBSColumn',
                           foreign_keys=[target_id],
                           backref=backref(
                               "srcs",
-                              collection_class=attribute_mapped_collection("source"),
+                              collection_class=source_collection,
                               cascade="all, delete-orphan",
                           ))
 
@@ -152,7 +181,8 @@ class OBSColumn(Base):
     targets = association_proxy('tgts', 'reltype', creator=targets_creator)
     sources = association_proxy('srcs', 'reltype', creator=sources_creator)
 
-    version = Column(String, default='0', nullable=False)
+    version = Column(Numeric, default=0, nullable=False)
+    extra = Column(JSON)
 
 
 # We should have one of these for every table we load in through the ETL
@@ -169,7 +199,7 @@ class OBSTable(Base):
     bounds = Column(String)
     description = Column(String)
 
-    version = Column(String, default='0', nullable=False)
+    version = Column(Numeric, default=0, nullable=False)
 
 
 class OBSTag(Base):
@@ -183,7 +213,7 @@ class OBSTag(Base):
 
     columns = association_proxy('tag_column_tags', 'column')
 
-    version = Column(String, default='0', nullable=False)
+    version = Column(Numeric, default=0, nullable=False)
 
 
 class OBSColumnTag(Base):
@@ -208,28 +238,43 @@ class CurrentSession(object):
 
     def __init__(self):
         self._session = None
+        self._pid = None
 
     def begin(self):
         if not self._session:
             self._session = sessionmaker(bind=get_engine())()
+        self._pid = os.getpid()
 
     def get(self):
+        # If we forked, there would be a PID mismatch and we need a new
+        # connection
+        if self._pid != os.getpid():
+            self._session = None
+            print 'FORKED: {} not {}'.format(self._pid, os.getpid())
         if not self._session:
             self.begin()
         return self._session
 
     def commit(self):
+        if self._pid != os.getpid():
+            raise Exception('cannot commit forked connection')
+        if not self._session:
+            return
         try:
             self._session.commit()
         except:
             self._session.rollback()
+            self._session.expunge_all()
             raise
         finally:
-            self._session.expunge_all()
             self._session.close()
             self._session = None
 
     def rollback(self):
+        if self._pid != os.getpid():
+            raise Exception('cannot rollback forked connection')
+        if not self._session:
+            return
         try:
             self._session.rollback()
         except:
@@ -239,77 +284,15 @@ class CurrentSession(object):
             self._session.close()
             self._session = None
 
-    #def __init__(self):
-    #    self._sessiondict = {}
-
-    #def begin(self, task):
-    #    if task.task_id in self._sessiondict:
-    #        pass
-    #    else:
-    #        self._sessiondict[task.task_id] = sessionmaker(bind=get_engine())()
-
-    #def get(self, task):
-    #    if task.task_id not in self._sessiondict:
-    #        self.begin(task)
-    #    return self._sessiondict[task.task_id]
-
-    #def commit(self, task):
-    #    self._sessiondict[task.task_id].commit()
-    #    self._sessiondict[task.task_id].close()
-    #    del self._sessiondict[task.task_id]
-
-    #def rollback(self, task):
-    #    self._sessiondict[task.task_id].rollback()
-    #    self._sessiondict[task.task_id].close()
-    #    del self._sessiondict[task.task_id]
-
-
-#class ReadOnlySession(object):
-#
-#    def __init__(self):
-#        self.session = None
-#
-#    def begin(self):
-#        self.session = sessionmaker(bind=get_engine(), autoflush=False,
-#                                    autocommit=False)()
-#        self.session.flush = abort_ro
-#
-#    def close(self):
-#        self.session.rollback()
-#        self.session.close()
-
-
-def abort_ro(*args, **kwargs):
-    '''
-    the terrible consequences for trying
-    to flush to the db
-    '''
-    print 'Read-only session only available between tasks.  ' \
-            'Cannot write to DB outside a task\'s run()'
-
 
 _current_session = CurrentSession()
-#_readonly_session = ReadOnlySession()
-#_readonly_session.begin()
 
 
-#def current_session(task):
-#    session = _current_session.get(task)
 def current_session():
     return _current_session.get()
 
 
-# set up session lifecycle in tasks
-@luigi.Task.event_handler(Event.START)
-def session_begin(task):
-    '''
-    create new session and make available globally
-    '''
-    print 'begin'
-    _current_session.begin()
-
-
-@luigi.Task.event_handler(Event.SUCCESS)
+#@luigi.Task.event_handler(Event.SUCCESS)
 def session_commit(task):
     '''
     commit the global session
@@ -322,7 +305,7 @@ def session_commit(task):
         raise
 
 
-@luigi.Task.event_handler(Event.FAILURE)
+#@luigi.Task.event_handler(Event.FAILURE)
 def session_rollback(task, exception):
     '''
     rollback the global session

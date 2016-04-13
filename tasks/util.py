@@ -20,9 +20,11 @@ from luigi import Task, Parameter, LocalTarget, Target, BooleanParameter
 from luigi.postgres import PostgresTarget
 
 from sqlalchemy import Table, types, Column
+from sqlalchemy.dialects.postgresql import JSON
 
 from tasks.meta import (OBSColumn, OBSTable, metadata, Geometry,
-                        OBSColumnTable, OBSTag, current_session)
+                        OBSColumnTable, OBSTag, current_session,
+                        session_commit, session_rollback)
 
 
 def get_logger(name):
@@ -94,10 +96,15 @@ def query_cartodb(query):
     return resp
 
 
-def sql_to_cartodb_table(outname, localname):
+def sql_to_cartodb_table(outname, localname, json_column_names=None):
     '''
     Move the specified table to cartodb
+
+    If json_column_names are specified, then those columns will be altered to
+    JSON after the fact (they get smushed to TEXT at some point in the import
+    process)
     '''
+    json_column_names = json_column_names or []
     api_key = os.environ['CARTODB_API_KEY']
     private_outname = outname + '_private'
     schema = '.'.join(localname.split('.')[0:-1]).replace('"', '')
@@ -141,6 +148,15 @@ ogr2ogr --config CARTODB_API_KEY $CARTODB_API_KEY \
 
     resp = query_cartodb('DROP TABLE "{}"'.format(private_outname))
     assert resp.status_code == 200
+
+    for colname in json_column_names:
+        query = 'ALTER TABLE {outname} ALTER COLUMN {colname} ' \
+                'SET DATA TYPE json USING {colname}::json'.format(
+                    outname=outname, colname=colname
+                )
+        print query
+        resp = query_cartodb(query)
+        assert resp.status_code == 200
 
 
 class DefaultPostgresTarget(PostgresTarget):
@@ -309,26 +325,37 @@ class ColumnTarget(Target):
 
     def update_or_create(self):
         session = current_session()
-        if self._column in session:
-            pass
-        elif self.get(session):
-            self._column = session.merge(self._column)
-            if self._column.targets:
-                # fix missing sources in association_proxy... very weird
-                # bug
-                for target in self._column.tgts.keys():
-                    if None in target.srcs:
-                        col2col = target.srcs.pop(None)
-                        target.srcs[col2col.source] = col2col
+        in_session = session.identity_map.get((OBSColumn, (self._column.id, )))
+        if in_session:
+            if None in in_session.srcs:
+                col2col = in_session.srcs.pop(None)
+                in_session.srcs[col2col.source] = col2col
+            if None in in_session.tgts:
+                col2col = in_session.tgts.pop(None)
+                in_session.tgts[col2col.target] = col2col
 
-        else:
-            #self._column = session.merge(self._column)
-            session.add(self._column)
+        self._column = session.merge(self._column)
+        if self._column.targets:
+            # fix missing sources in association_proxy... very weird
+            # bug
+            for target in self._column.tgts.keys():
+                if None in target.srcs:
+                    col2col = target.srcs.pop(None)
+                    target.srcs[col2col.source] = col2col
 
     def exists(self):
         existing = self.get(current_session())
-        if existing and existing.version == (self._column.version or '0'):
+        new_version = float(self._column.version) or 0.0
+        if existing:
+            existing_version = float(existing.version)
+            current_session().expunge(existing)
+        else:
+            existing_version = 0.0
+        if existing and existing_version == new_version:
             return True
+        elif existing and existing_version > new_version:
+            raise Exception('Metadata version mismatch: running tasks with '
+                            'older version than what is in DB')
         return False
 
 
@@ -349,20 +376,22 @@ class TagTarget(Target):
             return session.query(OBSTag).get(self._id)
 
     def update_or_create(self):
-        session = current_session()
-        if self._tag in session:
-            pass
-        elif self.get(session):
-            self._tag = session.merge(self._tag)
-        else:
-            #self._tag = session.merge(self._tag)
-            session.add(self._tag)
+        self._tag = current_session().merge(self._tag)
 
     def exists(self):
         session = current_session()
         existing = self.get(session)
-        if existing and existing.version == (self._tag.version or '0'):
+        new_version = float(existing.version) or 0.0
+        if existing:
+            existing_version = float(existing.version)
+            current_session().expunge(existing)
+        else:
+            existing_version = 0.0
+        if existing and existing_version == new_version:
             return True
+        elif existing and existing_version > new_version:
+            raise Exception('Metadata version mismatch: running tasks with '
+                            'older version than what is in DB')
         return False
 
 
@@ -384,9 +413,13 @@ class TableTarget(Target):
         self._columns = columns
         self._task = task
         if self._id_noquote in metadata.tables:
-            self.table = metadata.tables[self._id_noquote]
+            self._table = metadata.tables[self._id_noquote]
         else:
-            self.table = None
+            self._table = None
+
+    @property
+    def table(self):
+        return self.get(current_session()).id
 
     def sync(self):
         '''
@@ -400,6 +433,8 @@ class TableTarget(Target):
         regenerate tabular data from scratch.
         '''
         existing = self.get(current_session())
+        if existing:
+            current_session().expunge(existing)
         if existing and existing.version == (self._obs_table.version or '0'):
             return True
         return False
@@ -416,28 +451,32 @@ class TableTarget(Target):
     def update_or_create(self):
 
         session = current_session()
-        session.execute('CREATE SCHEMA IF NOT EXISTS "{schema}"'.format(
+
+        # create schema out-of-band as we cannot create a table after a schema
+        # in a single session
+        shell("psql -c 'CREATE SCHEMA IF NOT EXISTS \"{schema}\"'".format(
             schema=self._schema))
 
         # replace metadata table
-        if self._obs_table in session:
-            pass
-        elif self.get(session):
-            self._obs_table = session.merge(self._obs_table)
-        else:
-            session.add(self._obs_table)
+        self._obs_table = session.merge(self._obs_table)
         obs_table = self._obs_table
 
         # create new local data table
         columns = []
         for colname, coltarget in self._columns.items():
+            colname = colname.lower()
             col = coltarget.get(session)
 
             # Column info for sqlalchemy's internal metadata
             if col.type.lower() == 'geometry':
                 coltype = Geometry
+
+            # For enum type, pull keys from extra["categories"]
+            elif col.type.lower().startswith('enum'):
+                cats = col.extra['categories'].keys()
+                coltype = types.Enum(*cats, name=col.id + '_enum')
             else:
-                coltype = getattr(types, col.type)
+                coltype = getattr(types, col.type.capitalize())
             columns.append(Column(colname, coltype))
 
             # Column info for bmd metadata
@@ -446,17 +485,23 @@ class TableTarget(Target):
             if coltable:
                 coltable.colname = colname
             else:
-                coltable = OBSColumnTable(colname=colname, table=obs_table,
-                                          column=col)
+                # catch the case where a column id has changed
+                coltable = session.query(OBSColumnTable).filter_by(
+                    table_id=obs_table.id, colname=colname).first()
+                if coltable:
+                    coltable.column = col
+                else:
+                    coltable = OBSColumnTable(colname=colname, table=obs_table,
+                                              column=col)
             session.add(coltable)
 
         # replace local data table
         if obs_table.id in metadata.tables:
             metadata.tables[obs_table.id].drop()
-        self.table = Table(self._name, metadata, *columns,
-                           schema=self._schema, extend_existing=True)
-        self.table.drop(checkfirst=True)
-        self.table.create()
+        self._table = Table(self._name, metadata, *columns,
+                            schema=self._schema, extend_existing=True)
+        self._table.drop(checkfirst=True)
+        self._table.create()
 
 
 class ColumnsTask(Task):
@@ -469,19 +514,33 @@ class ColumnsTask(Task):
         '''
         raise NotImplementedError('Must return iterable of OBSColumns')
 
+    def on_failure(self, ex):
+        session_rollback(self, ex)
+        super(ColumnsTask, self).on_failure(ex)
+
+    def on_success(self):
+        session_commit(self)
+
     def run(self):
         for _, coltarget in self.output().iteritems():
             coltarget.update_or_create()
 
     def version(self):
-        return '0'
+        return 0
 
     def output(self):
         output = OrderedDict({})
+        session = current_session()
+        already_in_session = [obj for obj in session]
         for col_key, col in self.columns().iteritems():
             if not col.version:
                 col.version = self.version()
-            output[col_key] = ColumnTarget(classpath(self), col_key, col, self)
+            output[col_key] = ColumnTarget(classpath(self), col.id or col_key, col, self)
+        now_in_session = [obj for obj in session]
+        for obj in now_in_session:
+            if obj not in already_in_session:
+                if obj in session:
+                    session.expunge(obj)
         return output
 
 
@@ -495,12 +554,19 @@ class TagsTask(Task):
         '''
         raise NotImplementedError('Must return iterable of OBSTags')
 
+    def on_failure(self, ex):
+        session_rollback(self, ex)
+        super(TagsTask, self).on_failure(ex)
+
+    def on_success(self):
+        session_commit(self)
+
     def run(self):
         for _, tagtarget in self.output().iteritems():
             tagtarget.update_or_create()
 
     def version(self):
-        return '0'
+        return 0
 
     def output(self):
         output = {}
@@ -520,7 +586,15 @@ class TableToCarto(Task):
     outname = Parameter(default=None)
 
     def run(self):
-        sql_to_cartodb_table(self.output().tablename, self.table)
+        json_colnames = []
+        if self.table in metadata.tables:
+            cols = metadata.tables[self.table].columns
+            for colname, coldef in cols.items():
+                coltype = coldef.type
+                if isinstance(coltype, JSON):
+                    json_colnames.append(colname)
+
+        sql_to_cartodb_table(self.output().tablename, self.table, json_colnames)
         self.force = False
 
     def output(self):
@@ -546,15 +620,15 @@ class TableTask(Task):
     defined columns.
     '''
 
-    #def __init__(self, *args, **kwargs):
-    #    super(TableTask, self).__init__(*args, **kwargs)
-    #    # Make sure everything is defined
-    #    self.columns()
-    #    self.timespan()
-    #    self.bounds()
-
     def version(self):
-        return '0'
+        return 0
+
+    def on_failure(self, ex):
+        session_rollback(self, ex)
+        super(TableTask, self).on_failure(ex)
+
+    def on_success(self):
+        session_commit(self)
 
     def columns(self):
         raise NotImplementedError('Must implement columns method that returns '
@@ -572,13 +646,6 @@ class TableTask(Task):
 
     def bounds(self):
         raise NotImplementedError('Must define bounds for table')
-
-    @property
-    def table(self):
-        '''
-        Obtain metadata table for insertion via sqlalchemy or direct postgres
-        '''
-        return self.output().table
 
     def run(self):
         self.output().update_or_create()
