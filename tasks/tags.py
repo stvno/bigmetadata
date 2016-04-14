@@ -42,3 +42,32 @@ class CategoryTags(TagsTask):
                    type='category',
                    description='Use these to provide regions for sound comparison and analysis.'),
         ]
+
+
+class TermsTags(TagsTask):
+
+    def version(self):
+        return 1
+
+    def tags(self):
+        return [
+            OBSTag(id='public_domain',
+                   type='terms',
+                   name='Public Domain',
+                   description='In the public domain')
+        ]
+
+class SourceTags(TagsTask):
+
+    def version(self):
+        return 1
+
+    def tags(self):
+        return [
+            OBSTag(
+                id='us_census',
+                name='United States Census Bureau',
+                description='The `United States Census Bureau`_census.gov',
+                type='source'
+            )
+        ]
