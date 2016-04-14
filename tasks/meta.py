@@ -189,6 +189,12 @@ class OBSColumn(Base):
     version = Column(Numeric, default=0, nullable=False)
     extra = Column(JSON)
 
+    def provenances(self):
+        return [tag for tag in self.tags if tag.type == 'provenance']
+
+    def terms(self):
+        return [tag for tag in self.tags if tag.type == 'terms']
+
     def children(self):
         children = [col for col, reltype in self.sources.iteritems() if reltype == 'denominator']
         children.sort(key=lambda x: natural_sort_key(x.name))

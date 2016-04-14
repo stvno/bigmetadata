@@ -36,6 +36,14 @@
     :ref:`{{ target.id }}`
 {% endfor %}
 
+:Terms:
+
+  {% for term in col.terms %}{{ term.name }}, {% endfor %}
+
+:Provenance:
+
+  {% for provenance in col.provenances %}{{ provenance.name }}, {% endfor %}
+
 {% if col.has_children() %}
 .. contents:: Subcolumns of {{ col.name }}
    :local:

@@ -57,7 +57,7 @@ class TermsTags(TagsTask):
                    description='In the public domain')
         ]
 
-class SourceTags(TagsTask):
+class ProvenanceTags(TagsTask):
 
     def version(self):
         return 1
@@ -68,6 +68,6 @@ class SourceTags(TagsTask):
                 id='us_census',
                 name='United States Census Bureau',
                 description='The `United States Census Bureau`_census.gov',
-                type='source'
+                type='provenance'
             )
         ]

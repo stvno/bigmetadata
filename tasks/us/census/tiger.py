@@ -15,7 +15,7 @@ from tasks.util import (LoadPostgresFromURL, classpath, DefaultPostgresTarget,
                        )
 from tasks.meta import (OBSColumnTable, OBSColumn, current_session,
                         OBSColumnTag, OBSColumnToColumn, current_session)
-from tasks.tags import CategoryTags, SourceTags, TermsTags
+from tasks.tags import CategoryTags, ProvenanceTags, TermsTags
 
 from luigi import (Task, WrapperTask, Parameter, LocalTarget, BooleanParameter,
                    IntParameter)
@@ -30,14 +30,14 @@ class GeomColumns(ColumnsTask):
     def requires(self):
         return {
             'tags': CategoryTags(),
-            'sources': SourceTags(),
+            'provenances': ProvenanceTags(),
             'terms': TermsTags(),
         }
 
     def columns(self):
         tags = self.input()['tags']
-        us_census = self.input()['sources']['us_census']
-        public_domain = self.input()['sources']['public_domain']
+        us_census = self.input()['provenances']['us_census']
+        public_domain = self.input()['terms']['public_domain']
         return {
             'block_group': OBSColumn(
                 type='Geometry',

@@ -26,7 +26,7 @@ from tasks.us.census.tiger import (SUMLEVELS, load_sumlevels, GeoidColumns,
 from tasks.us.census.segments import SegmentTags
 
 from tasks.meta import (OBSColumn, OBSTag, OBSColumnTable, current_session)
-from tasks.tags import CategoryTags, SourceTags, TermsTags
+from tasks.tags import CategoryTags, ProvenanceTags, TermsTags
 
 LOGGER = get_logger(__name__)
 
@@ -52,7 +52,7 @@ class Columns(ColumnsTask):
             'tags': CategoryTags(),
             'censustags': ACSTags(),
             'segmenttags': SegmentTags(),
-            'sources': SourceTags(),
+            'provenances': ProvenanceTags(),
             'terms': TermsTags()
         }
 
@@ -1731,8 +1731,8 @@ class Columns(ColumnsTask):
             ("income_150000_199999", income_150000_199999),
             ("income_200000_or_more", income_200000_or_more),
         ])
-        for k, col in columns.iteritems():
-            col.tags.append(self.input()['sources']['us_census'])
+        for _, col in columns.iteritems():
+            col.tags.append(self.input()['provenances']['us_census'])
             col.tags.append(self.input()['terms']['public_domain'])
         return columns
 
