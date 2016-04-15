@@ -67,7 +67,7 @@ class ProvenanceTags(TagsTask):
             OBSTag(
                 id='us_census',
                 name='United States Census Bureau',
-                description='The `United States Census Bureau`_census.gov',
+                description='The `United States Census Bureau <http://census.gov>`_',
                 type='provenance'
             )
         ]
