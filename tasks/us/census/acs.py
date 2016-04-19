@@ -55,8 +55,7 @@ class Columns(ColumnsTask):
         }
 
     def version(self):
-        return 1
-
+        return 5
 
     def columns(self):
         tags = self.input()['tags']
@@ -297,7 +296,7 @@ class Columns(ColumnsTask):
             'distance walking.',
             weight=4,
             aggregate='sum',
-            targets={commuters_by_public_transportation: 'denominator'},
+            targets={workers_16_and_over: 'denominator'},
             tags=[censustags['demographics'], tags['transportation']])
         worked_at_home = OBSColumn(
             id='B08006017',
@@ -312,7 +311,7 @@ class Columns(ColumnsTask):
         children = OBSColumn(
             id='B09001001',
             type='Numeric',
-            name='children under 18 Years of Age',
+            name='Children under 18 Years of Age',
             description='The number of people within each geography who are '
             'under 18 years of age.',
             weight=4,
@@ -482,7 +481,7 @@ class Columns(ColumnsTask):
             'of language spoken at home.',
             weight=2,
             aggregate='sum',
-            tags=[censustags['demographics'], tags['denominator'], tags['language']])
+            tags=[censustags['demographics'], tags['denominator']])
         speak_only_english_at_home = OBSColumn(
             id='B16001002',
             type='Numeric',
@@ -786,6 +785,134 @@ class Columns(ColumnsTask):
             aggregate='sum',
             targets={families_with_young_children: 'denominator'},
             tags=[tag_families_with_young_children])
+
+        # - B23025001: population age 16 and over
+        pop_16_over = OBSColumn(
+            id='B23025001',
+            type='Numeric',
+            name='Population age 16 and over',
+            description='The number of people in each geography who are age '
+            '16 or over.',
+            weight=1,
+            aggregate='sum',
+            targets={},
+            tags=[tags['income_education_employment'], censustags['demographics']]
+        )
+
+        # - B23025002: pop in labor force
+        pop_in_labor_force = OBSColumn(
+            id='B23025002',
+            type='Numeric',
+            name='Population in Labor Force',
+            description='The number of people in each geography who are either '
+            'in the civilian labor force or are '
+            'members of the U.S. Armed Forces (people on active duty with the '
+            'United States Army, Air Force, Navy, Marine Corps, or Coast Guard).',
+            weight=1,
+            aggregate='sum',
+            targets={pop_16_over: 'denominator'},
+            tags=[tags['income_education_employment'], censustags['demographics']]
+        )
+
+        # - B23025003: civilian labor force
+        civilian_labor_force = OBSColumn(
+            id='B23025003',
+            type='Numeric',
+            name='Population in Civilian Labor Force',
+            description='The number of civilians 16 years and over in each '
+            'geography who can be classified '
+            'as either "employed" or "unemployed" below.',
+            weight=1,
+            aggregate='sum',
+            targets={pop_in_labor_force: 'denominator'},
+            tags=[tags['income_education_employment'], censustags['demographics']]
+        )
+
+        # - B23025004: employed population
+        employed_pop = OBSColumn(
+            id='B23025004',
+            type='Numeric',
+            name='Employed Population',
+            description='The number of civilians 16 years old and '
+            'over in each geography who either (1) were "at work," that is, '
+            'those who did any work '
+            'at all during the reference week as paid employees, worked in their '
+            'own business or profession, worked on their own farm, or worked 15 '
+            'hours or more as unpaid workers on a family farm or in a family '
+            'business; or (2) were "with a job but not at work," that is, those '
+            'who did not work during the reference week but had jobs or '
+            'businesses from which they were temporarily absent due to illness, '
+            'bad weather, industrial dispute, vacation, or other personal '
+            'reasons. Excluded from the employed are people whose only activity '
+            'consisted of work around the house or unpaid volunteer work for '
+            'religious, charitable, and similar organizations; also excluded are '
+            'all institutionalized people and people on active duty in the '
+            'United States Armed Forces.',
+            weight=1,
+            aggregate='sum',
+            targets={civilian_labor_force: 'denominator'},
+            tags=[tags['income_education_employment'], censustags['demographics']]
+        )
+
+        # - B23025005: unemployed population
+        unemployed_pop = OBSColumn(
+            id='B23025005',
+            type='Numeric',
+            name='Unemployed Population',
+            description='The number of civilians in each geography who are 16 '
+            'years old and over are classified as '
+            'unemployed if they (1) were neither "at work" nor "with a job but '
+            'not at work" during the reference week, and (2) were actively '
+            'looking for work during the last 4 weeks, and (3) were available to '
+            'start a job. Also included as unemployed are civilians who did not '
+            'work at all during the reference week, were waiting to be called '
+            'back to a job from which they had been laid off, and were available '
+            'for work except for temporary illness. Examples of job seeking '
+            'activities are:' '''
+              * Registering at a public or private employment office
+              * Meeting with prospective employers
+              * Investigating possibilities for starting a professional
+                practice or opening a business
+              * Placing or answering advertisements
+              * Writing letters of application
+              * Being on a union or professional register''',
+            weight=1,
+            aggregate='sum',
+            targets={civilian_labor_force: 'denominator'},
+            tags=[tags['income_education_employment'], censustags['demographics']]
+        )
+
+        # - B23025006: in armed forces
+        armed_forces = OBSColumn(
+            id='B23025006',
+            type='Numeric',
+            name='Population in Armed Forces',
+            description='The number of people in each geography who are members '
+            'of the U.S. Armed Forces (people on active duty with the United '
+            'States Army, Air Force, Navy, Marine Corps, or Coast Guard).',
+            weight=1,
+            aggregate='sum',
+            targets={pop_in_labor_force: 'denominator'},
+            tags=[tags['income_education_employment'], censustags['demographics']]
+        )
+
+        # - B23025007: not in labor force
+        not_in_labor_force = OBSColumn(
+            id='B23025007',
+            type='Numeric',
+            name='Population Not in Labor Force',
+            description='The number of people in each geography who are 16 '
+            'years old and over who are not '
+            'classified as members of the labor force. This category consists '
+            'mainly of students, homemakers, retired workers, seasonal workers '
+            'interviewed in an off season who were not looking for work, '
+            'institutionalized people, and people doing only incidental unpaid '
+            'family work (less than 15 hours during the reference week).',
+            weight=1,
+            aggregate='sum',
+            targets={pop_16_over: 'denominator'},
+            tags=[tags['income_education_employment'], censustags['demographics']]
+        )
 
         # TODO
         #  - B23008011: living with father who is not in labor force
@@ -1525,6 +1652,13 @@ class Columns(ColumnsTask):
              one_parent_families_with_young_children),
             ("father_one_parent_families_with_young_children",
              father_one_parent_families_with_young_children),
+            ('pop_16_over', pop_16_over),
+            ('pop_in_labor_force', pop_in_labor_force),
+            ('civilian_labor_force', civilian_labor_force),
+            ('employed_pop', employed_pop),
+            ('unemployed_pop', unemployed_pop),
+            ('armed_forces', armed_forces),
+            ('not_in_labor_force', not_in_labor_force),
             ('men_45_to_64', men_45_to_64),
             ('men_45_to_49', men_45_to_49),
             ('men_50_to_54', men_50_to_54),
@@ -1722,7 +1856,7 @@ class Extract(TableTask):
     geography = Parameter()
 
     def version(self):
-        return 1
+        return 2
 
     def requires(self):
         return {
@@ -1794,5 +1928,7 @@ class ExtractAll(WrapperTask):
     sample = Parameter()
 
     def requires(self):
-        for geo in ('state', 'county', 'census_tract', 'block_group', 'puma', 'zcta5',):
+        for geo in ('state', 'county', 'census_tract', 'block_group', 'puma',
+                    'zcta5', 'school_district_elementary',
+                    'school_district_secondary', 'school_district_unified'):
             yield Quantiles(geography=geo, year=self.year, sample=self.sample)

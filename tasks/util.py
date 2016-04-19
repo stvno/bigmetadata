@@ -381,7 +381,7 @@ class TagTarget(Target):
     def exists(self):
         session = current_session()
         existing = self.get(session)
-        new_version = float(existing.version) or 0.0
+        new_version = float(self._tag.version) or 0.0
         if existing:
             existing_version = float(existing.version)
             current_session().expunge(existing)
@@ -432,14 +432,21 @@ class TableTarget(Target):
         We always want to run this at least once, because we can always
         regenerate tabular data from scratch.
         '''
-        existing = self.get(current_session())
-        if existing:
-            current_session().expunge(existing)
-        if existing and existing.version == (self._obs_table.version or '0'):
-            return True
-        return False
 
-        #return self._id_noquote in metadata.tables
+
+        existing = self.get(current_session())
+        new_version = float(self._obs_table.version) or 0.0
+        if existing:
+            existing_version = float(existing.version)
+            current_session().expunge(existing)
+        else:
+            existing_version = 0.0
+        if existing and existing_version == new_version:
+            return True
+        elif existing and existing_version > new_version:
+            raise Exception('Metadata version mismatch: running tasks with '
+                            'older version than what is in DB')
+        return False
 
     def get(self, session):
         '''
@@ -650,6 +657,25 @@ class TableTask(Task):
     def run(self):
         self.output().update_or_create()
         self.populate()
+
+    def complete(self):
+        inputs = self.input()
+        if isinstance(inputs, dict):
+            for _, input_ in self.input().iteritems():
+                if not input_.exists():
+                    return False
+        elif isinstance(inputs, list):
+            for input_ in self.input():
+                if not input_.exists():
+                    return False
+        elif isinstance(inputs, Target):
+            if not inputs.exists():
+                return False
+        else:
+            raise Exception('Can only work with inputs that are a dict, '
+                            'list or Target')
+
+        return super(TableTask, self).complete()
 
     def output(self):
         return TableTarget(classpath(self),
