@@ -2,11 +2,14 @@
 Sphinx functions for luigi bigmetadata tasks.
 '''
 
+import os
 import re
+
 from jinja2 import Environment, PackageLoader
 from luigi import WrapperTask, Task, LocalTarget, BooleanParameter, Parameter
 from tasks.util import shell
 from tasks.meta import current_session, OBSTag
+from tasks.carto import GenerateStaticImage
 
 
 env = Environment(loader=PackageLoader('catalog', 'templates'))
@@ -29,10 +32,21 @@ class GenerateRST(Task):
         if self.force:
             shell('rm -rf catalog/source/*/*')
 
+
+    def requires(self):
+        session = current_session()
+        requirements = {}
+        for tag_id, target in self.output().iteritems():
+            tag = session.query(OBSTag).get(tag_id)
+            if '.. cartofigure:: ' in tag.description:
+                viz_id = re.search(r'\.\. cartofigure:: (\S+)', tag.description).groups()[0]
+                requirements[viz_id] = GenerateStaticImage(viz_id)
+        return requirements
+
     def output(self):
         targets = {}
         session = current_session()
-        for tag in session.query(OBSTag):
+        for tag in session.query(OBSTag).filter(OBSTag.type == 'catalog'):
             targets[tag.id] = LocalTarget('catalog/source/{type}/{tag}.rst'.format(
                 type=tag.type,
                 tag=tag.id))
@@ -44,8 +58,22 @@ class GenerateRST(Task):
             fhandle = target.open('w')
 
             tag = session.query(OBSTag).get(tag_id)
-            columns = [c for c in tag.columns if not c.has_denominator()]
-            #columns.sort(lambda x, y: -x.weight.__cmp__(y.weight))
+            if '.. cartofigure:: ' in tag.description:
+                viz_id = re.search(r'\.\. cartofigure:: (\S+)', tag.description).groups()[0]
+                viz_path = os.path.join('../', *self.input()[viz_id].path.split(os.path.sep)[2:])
+                tag.description = re.sub(r'\.\. cartofigure:: (\S+)',
+                                         '.. figure:: {}'.format(viz_path),
+                                         tag.description)
+            columns = []
+            for col in tag.columns:
+                # tags with denominators will appear beneath that denominator
+                if not col.has_denominator():
+                    columns.append(col)
+
+                # unless the denominator is not in this tag
+                elif tag not in col.denominator().tags:
+                    columns.append(col)
+
             columns.sort(lambda x, y: cmp(x.name, y.name))
 
             fhandle.write(TAG_TEMPLATE.render(tag=tag, columns=columns,
@@ -53,7 +81,7 @@ class GenerateRST(Task):
             fhandle.close()
 
 
-class Sphinx(Task):
+class Catalog(Task):
 
     force = BooleanParameter(default=False)
     format = Parameter(default='html')

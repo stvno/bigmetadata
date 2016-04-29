@@ -16,31 +16,31 @@ psql:
 acs:
 	docker-compose run --rm bigmetadata luigi \
 	  --module tasks.us.census.acs ExtractAll \
-	  --year 2013 --sample 5yr
+	  --year 2014 --sample 5yr
 #	  --parallel-scheduling --workers=8
 
 tiger:
 	docker-compose run --rm bigmetadata luigi \
-	  --module tasks.us.census.tiger AllSumLevels
+	  --module tasks.us.census.tiger AllSumLevels --year 2014
 #	  --parallel-scheduling --workers=8
 
-sphinx:
+catalog:
 	docker-compose run --rm bigmetadata luigi \
-	  --module tasks.sphinx Sphinx --force
+	  --module tasks.sphinx Catalog --force
 
-sphinx-deploy:
+pdf-catalog:
+	docker-compose run --rm bigmetadata luigi \
+	  --module tasks.sphinx Catalog --format latexpdf --force
+
+deploy-catalog: catalog pdf-catalog
 	cd catalog/build/html && \
 	  git add . && \
 	  git commit -m 'updating catalog' && \
 	  git checkout -B gh-pages && \
 	  git push origin gh-pages
 
-sphinx-pdf:
-	docker-compose run --rm bigmetadata luigi \
-	  --module tasks.sphinx Sphinx --format latexpdf --force
-
 # do not exceed three slots available for import api
-sync-meta:
+sync: sync-data
 	docker-compose run --rm bigmetadata luigi \
 	  --module tasks.carto SyncMetadata
 #	  --parallel-scheduling --workers=3
@@ -49,8 +49,6 @@ sync-data:
 	docker-compose run --rm bigmetadata luigi \
 	  --module tasks.carto SyncAllData
 #	  --parallel-scheduling --workers=3
-
-sync: sync-meta sync-data
 
 kill:
 	docker-compose ps | grep _run_ | cut -c 1-34 | xargs docker stop
@@ -63,7 +61,7 @@ ifeq (run,$(firstword $(MAKECMDGOALS)))
   $(eval $(RUN_ARGS):;@:)
 endif
 
-.PHONY: run
+.PHONY: run catalog
 #run : prog
 #	@echo prog $(RUN_ARGS)
 run:
