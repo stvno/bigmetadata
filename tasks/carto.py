@@ -366,3 +366,17 @@ class Dump(Task):
 
     def output(self):
         return LocalTarget(os.path.join('tmp', classpath(self), self.task_id + '.dump'))
+
+
+#class S3Dump(Task):
+#    '''
+#    Dump the file to S3
+#    '''
+#
+#    timestamp = DateParameter(default=date.today())
+#
+#    def requires(self):
+#        return Dump(timestamp=self.timestamp)
+#
+#    def output(self):
+#        return S3Target()
