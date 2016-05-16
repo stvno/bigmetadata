@@ -26,22 +26,28 @@ from psycopg2 import ProgrammingError
 class ClippedGeomColumns(ColumnsTask):
 
     def version(self):
-        return 1
+        return 7
 
     def requires(self):
-        return GeomColumns()
+        return {
+            'geom_columns': GeomColumns(),
+            'tags': CategoryTags(),
+        }
 
     def columns(self):
         cols = OrderedDict()
-        for colname, coltarget in self.input().iteritems():
-            col = coltarget.get(current_session())
+        session = current_session()
+        tags = self.input()['tags']
+        for colname, coltarget in self.input()['geom_columns'].iteritems():
+            col = coltarget.get(session)
             cols[colname + '_clipped'] = OBSColumn(
                 type='Geometry',
-                name=col.name,
+                name='Shoreline clipped ' + col.name,
                 weight=col.weight,
                 description='A cartography-ready version of {name}'.format(
                     name=col.name),
-                targets={col: 'cartography'}
+                targets={col: 'cartography'},
+                tags=[tags['boundary']]
             )
 
         return cols
@@ -50,7 +56,7 @@ class ClippedGeomColumns(ColumnsTask):
 class GeomColumns(ColumnsTask):
 
     def version(self):
-        return 4
+        return 7
 
     def requires(self):
         return {
@@ -72,7 +78,7 @@ class GeomColumns(ColumnsTask):
                 type='Geometry',
                 name='US Census Blocks',
                 description=desc("block"),
-                weight=3,
+                weight=0,
                 tags=[tags['boundary']]
             ),
             'census_tract': OBSColumn(
@@ -145,6 +151,13 @@ class GeomColumns(ColumnsTask):
                 weight=0,
                 tags=[]
             ),
+            'place': OBSColumn(
+                type='Geometry',
+                name='Incorporated Places',
+                description=desc("place"),
+                weight=0,
+                tags=[]
+            ),
         }
 
 
@@ -173,121 +186,30 @@ class Attributes(ColumnsTask):
 class GeoidColumns(ColumnsTask):
 
     def version(self):
-        return 4
+        return 6
 
     def requires(self):
-        return GeomColumns()
+        return {
+            'raw': GeomColumns(),
+            'clipped': ClippedGeomColumns()
+        }
 
     def columns(self):
-        geoms = self.input()
-        return {
-            'block_group_geoid': OBSColumn(
+        cols = OrderedDict()
+        clipped = self.input()['clipped']
+        for colname, coltarget in self.input()['raw'].iteritems():
+            col = coltarget._column
+            cols[colname + '_geoid'] = OBSColumn(
                 type='Text',
-                name='US Census Block Group Geoids',
+                name=col.name + ' Geoids',
                 weight=0,
                 targets={
-                    geoms['block_group']: 'geom_ref'
+                    col: 'geom_ref',
+                    clipped[colname + '_clipped']._column: 'geom_ref'
                 }
-            ),
-            'block_geoid': OBSColumn(
-                type='Text',
-                name='US Census Block Geoids',
-                weight=0,
-                targets={
-                    geoms['block']: 'geom_ref'
-                }
-            ),
-            'census_tract_geoid': OBSColumn(
-                type='Text',
-                name='US Census Tract Geoids',
-                description="",
-                weight=0,
-                targets={
-                    geoms['census_tract']: 'geom_ref'
-                }
-            ),
-            'congressional_district_geoid': OBSColumn(
-                type='Text',
-                name='US Congressional District Geoids',
-                description="",
-                weight=0,
-                targets={
-                    geoms['congressional_district']: 'geom_ref'
-                }
-            ),
-            'county_geoid': OBSColumn(
-                type='Text',
-                name='US County Geoids',
-                description="",
-                weight=0,
-                targets={
-                    geoms['county']: 'geom_ref'
-                }
-            ),
-            'puma_geoid': OBSColumn(
-                type='Text',
-                name='US Census Public Use Microdata Area Geoids',
-                description="",
-                weight=0,
-                targets={
-                    geoms['puma']: 'geom_ref'
-                }
-            ),
-            'state_geoid': OBSColumn(
-                type='Text',
-                name='US State Geoids',
-                description="",
-                weight=0,
-                targets={
-                    geoms['state']: 'geom_ref'
-                }
-            ),
-            'zcta5_geoid': OBSColumn(
-                type='Text',
-                name='US Census Zip Code Tabulation Area Geoids',
-                description="",
-                weight=0,
-                targets={
-                    geoms['zcta5']: 'geom_ref'
-                }
-            ),
-            'school_district_elementary_geoid': OBSColumn(
-                type='Text',
-                name='Elementary School District Geoids',
-                description="",
-                weight=0,
-                targets={
-                    geoms['school_district_elementary']: 'geom_ref'
-                }
-            ),
-            'school_district_secondary_geoid': OBSColumn(
-                type='Text',
-                name='Secondary School District Geoids',
-                description="",
-                weight=0,
-                targets={
-                    geoms['school_district_secondary']: 'geom_ref'
-                }
-            ),
-            'school_district_unified_geoid': OBSColumn(
-                type='Text',
-                name='Unified School District Geoids',
-                description="",
-                weight=0,
-                targets={
-                    geoms['school_district_unified']: 'geom_ref',
-                }
-            ),
-            'cbsa_geoid': OBSColumn(
-                type='Text',
-                name='Core Based Statistical Area Geoids',
-                description="",
-                weight=0,
-                targets={
-                    geoms['cbsa']: 'geom_ref'
-                }
-            ),
-        }
+            )
+
+        return cols
 
 
 class DownloadTigerGeography(Task):
@@ -597,7 +519,7 @@ class UnionTigerWaterGeoms(TempTableTask):
     def run(self):
         session = current_session()
         session.execute('CREATE TABLE {output} AS '
-                        'SELECT geoid, ST_UNION(the_geom) AS the_geom, '
+                        'SELECT geoid, ST_Union(ST_MakeValid(the_geom)) AS the_geom, '
                         '       MAX(aland) aland, MAX(awater) awater '
                         'FROM {input} '
                         'GROUP BY geoid'.format(
@@ -617,7 +539,7 @@ class ShorelineClip(TableTask):
     geography = Parameter()
 
     def version(self):
-        return 5
+        return 6
 
     def requires(self):
         return {
@@ -638,20 +560,21 @@ class ShorelineClip(TableTask):
         return self.year
 
     def bounds(self):
-        return 'BOX(0 0,0 0)'
+        return 'BOX(-179.231086 -14.601813,179.859681 71.441059)'
 
     def populate(self):
         session = current_session()
         stmt = ('INSERT INTO {output} '
-                'SELECT geoid, ST_Union(ST_MakePolygon(the_geom)) AS the_geom, '
+                'SELECT geoid, ST_Union(ST_MakePolygon(ST_ExteriorRing(the_geom))) AS the_geom, '
                 '       MAX(aland) aland '
                 'FROM ( '
-                '    SELECT geoid, ST_ExteriorRing((ST_Dump(the_geom)).geom) AS the_geom, '
+                '    SELECT geoid, (ST_Dump(the_geom)).geom AS the_geom, '
                 '           aland '
                 '    FROM {input} '
-                ') holes '
-                'WHERE ST_NPoints(the_geom) > 10 AND '
-                '      ST_Area(ST_Transform(ST_MakePolygon(the_geom), 3857)) > 5000 '
+                ') holes WHERE '
+                "      GeometryType(the_geom) = 'POLYGON' AND "
+                '      ST_NPoints(the_geom) > 10 AND '
+                '      ST_Area(ST_Transform(the_geom, 3857)) > 5000 '
                 'GROUP BY geoid'.format(
                     output=self.output().table,
                     input=self.input()['data'].table), )[0]
@@ -664,7 +587,7 @@ class SumLevel(TableTask):
     year = Parameter()
 
     def has_10_suffix(self):
-        return self.geography.lower() in ('puma', 'zcta5', )
+        return self.geography.lower() in ('puma', 'zcta5', 'block', )
 
     @property
     def geoid(self):
@@ -683,7 +606,7 @@ class SumLevel(TableTask):
         return SUMLEVELS_BY_SLUG[self.geography]['table']
 
     def version(self):
-        return 6
+        return 7
 
     def requires(self):
         tiger = DownloadTiger(year=self.year)
@@ -741,9 +664,10 @@ class AllSumLevels(WrapperTask):
     year = Parameter()
 
     def requires(self):
-        for geo in ('state', 'county', 'census_tract', 'block_group',
-                    'puma', 'zcta5', 'school_district_elementary',
-                    'school_district_secondary', 'school_district_unified'):
+        for geo in ('state', 'county', 'census_tract', 'block_group', 'place',
+                    'puma', 'zcta5', 'school_district_elementary', 'cbsa',
+                    'school_district_secondary', 'school_district_unified',
+                    'block', 'congressional_district'):
             yield SumLevel(year=self.year, geography=geo)
             yield ShorelineClip(year=self.year, geography=geo)
 

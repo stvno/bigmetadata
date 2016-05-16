@@ -14,33 +14,101 @@
 %}
 
 {{ col.description }}
+
+{% if col.extra.categories %}
+  {% for catname, category in col.extra.categories.items() %}
+  * **{{ catname }}**: {{ category.description }}
+  {% endfor %}
+{% endif %}
 {#
 Code example
 #}
 
-Measure "{{ col.name }}" {% if col.summable() %}density per sq. kilometer
-{% endif %}for one point:
+{% if col.type|lower == 'text' %}
+Obtain category of "{{ col.name }}" at one point:
+{% elif col.type|lower == 'numeric' %}
+Measure "{{ col.name }}" {% if col.summable() %}density per sq. kilometer{% endif %}for one point:
+{% elif col.type|lower == 'geometry' %}
+Obtain "{{ col.name }}" geometry at one point:
+{% endif %}
 
 .. code:: postgresql
 
-  SELECT cdb_observatory.OBS_GetMeasure(
-    CDB_LatLng(40.7, -73.9),
-    '{{ col.id }}'
-  );
+{% if 'whosonfirst.wof_disputed_geom' == col.id %}
+  {% set point = 'CDB_LatLng(33.78, 76.57)' %}
+{% elif 'whosonfirst.wof_marinearea_geom' == col.id %}
+  {% set point = 'CDB_LatLng(43.33, -68.47)' %}
+{% elif col.id in ('us.census.tiger.school_district_elementary',
+                   'us.census.tiger.school_district_secondary') %}
+  {% set point = 'CDB_LatLng(40.7025, -73.7067)' %}
+{% elif 'es.ine' in col.id %}
+  {% set point = 'CDB_LatLng(40.39, -3.7)' %}
+{% elif 'us.zillow' in col.id %}
+  {% set point = 'CDB_LatLng(28.3305906291771, -81.3544048197256)' %}
+{% else %}
+  {% set point = 'CDB_LatLng(40.7, -73.9)' %}
+{% endif %}
 
+{% if col.type|lower == 'text' %}
+
+  UPDATE {table_name}
+    SET {new_text_column} =
+      OBS_GetCategory(
+        {{ point }},
+        '{{ col.id }}'
+      );
+
+{% elif col.type|lower == 'numeric' %}
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        {{ point }},
+        '{{ col.id }}'
+      );
+
+{% elif col.type|lower == 'geometry' %}
+
+  INSERT INTO {new_table_name} (the_geom, {geo_id_column})
+    SELECT *
+    FROM OBS_GetBoundary(
+      {{ point }},
+      '{{ col.id }}'
+    )
+
+{% endif %}
+
+{% if col.type|lower == 'text' %}
+{% elif col.type|lower == 'numeric' %}
 {% if col.summable() %}
 Measure "{{ col.name }}" within an area:
 
 .. code:: postgresql
 
-  SELECT cdb_observatory.OBS_GetMeasure(
-    ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
-    '{{ col.id }}'
-  );
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer({{ point }}, 0.01),
+          '{{ col.id }}'
+        );
 
 {% else %}
 
 {{ col.name }} is only available for point lookups.
+{% endif %}
+{% elif col.type|lower == 'geometry' %}
+
+Obtain all "{{ col.name }}" geometries within an area:
+
+.. code:: postgresql
+
+  INSERT INTO {new_table_name} (the_geom, {geo_id_column})
+    SELECT *
+    FROM OBS_GetBoundariesByGeometry(
+      ST_Buffer({{ point }}, 0.01),
+      '{{ col.id }}'
+    )
+
 {% endif %}
 
 {% if col.has_denominator() %}
@@ -48,20 +116,27 @@ Measure "{{ col.name }}" percent of "{{ col.denominator().name }}" at one point:
 
 .. code:: postgresql
 
-  SELECT cdb_observatory.OBS_GetMeasure(
-    CDB_LatLng(40.7, -73.9),
-    '{{ col.id }}', 'denominator'
-  );
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        {{ point }},
+        '{{ col.id }}',
+        'denominator'
+      );
 
 {% if col.summable() %}
 Measure "{{ col.name }}" percent of "{{ col.denominator().name }}" within an area:
 
 .. code:: postgresql
 
-  SELECT cdb_observatory.OBS_GetMeasure(
-    ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
-    '{{ col.id }}', 'denominator'
-  );
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer({{ point }}, 0.01),
+        '{{ col.id }}',
+        'denominator'
+      );
+
 {% endif %}
 
 {% endif %}
@@ -91,8 +166,10 @@ Measure "{{ col.name }}" percent of "{{ col.denominator().name }}" within an are
    :local:
    :depth: 1
 
-  {% for denom in col.children() %}
-  {{ build_column(denom, depth + 1) }}
+  {% for child in col.children() %}
+  {% if child.weight > 0 %}
+  {{ build_column(child, depth + 1) }}
+  {% endif %}
   {% endfor %}
 {% endif %}
 {%- endmacro %}

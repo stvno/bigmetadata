@@ -10,7 +10,7 @@ from tasks.meta import OBSColumn, OBSColumnToColumn, OBSTag, current_session
 from tasks.util import (LoadPostgresFromURL, classpath, shell,
                         CartoDBTarget, get_logger, underscore_slugify, TableTask,
                         ColumnTarget, ColumnsTask, TagsTask, TempTableTask,
-                        classpath, PostgresTarget, tablize)
+                        classpath, PostgresTarget )
 
 
 class Tags(TagsTask):
@@ -43,19 +43,7 @@ class RawGeometry(TempTableTask):
     def requires(self):
         return DownloadGeometry()
 
-    @property
-    def schema(self):
-        return classpath(self)
-
-    @property
-    def tablename(self):
-        return 'raw_geometry'
-
     def run(self):
-        session = current_session()
-        session.execute('CREATE SCHEMA IF NOT EXISTS "{schema}"'.format(
-            schema=classpath(self)))
-
         cmd = 'unzip -o "{input}" -d "$(dirname {input})/$(basename {input} .zip)"'.format(
             input=self.input().path)
         shell(cmd)
@@ -65,8 +53,8 @@ class RawGeometry(TempTableTask):
                 '-lco OVERWRITE=yes ' \
                 '-lco SCHEMA={schema} -lco PRECISION=no ' \
                 '$(dirname {input})/$(basename {input} .zip)/*.shp '.format(
-                    schema=self.schema,
-                    table=self.tablename,
+                    schema=self.output().schema,
+                    table=self.output().tablename,
                     input=self.input().path)
         shell(cmd)
 
@@ -74,31 +62,38 @@ class RawGeometry(TempTableTask):
 class GeometryColumns(ColumnsTask):
 
     def version(self):
-        return 2
+        return 4
+
+    def requires(self):
+        return {
+            'tags': Tags()
+        }
 
     def columns(self):
+        tags = self.input()['tags']
         cusec_geom = OBSColumn(
-            #id='cusec_geom',
             name=u'Secci\xf3n Censal',
             type="Geometry",
             weight=10,
-            description='The finest division of the Spanish Census.'
+            description='The smallest division of the Spanish Census.',
+            tags=[tags['demographics']],
         )
         cusec_id = OBSColumn(
-            #id='cusec_id',
             name=u"Secci\xf3n Censal",
             type="Text",
-            targets={
-                #cusec_geom: 'geom_ref'
-            }
+            tags=[],
+            targets={cusec_geom: 'geom_ref'}
         )
         return OrderedDict([
             ("cusec_id", cusec_id),
-            ("geom", cusec_geom),
+            ("the_geom", cusec_geom),
         ])
 
 
 class Geometry(TableTask):
+
+    def version(self):
+        return 1
 
     def requires(self):
         return {
@@ -127,7 +122,7 @@ class Geometry(TableTask):
                         'SELECT cusec as cusec_id, '
                         '       wkb_geometry as cusec_geom '
                         'FROM {input} '.format(
-                            output=self.output().get(session).id,
+                            output=self.output().table,
                             input=self.input()['data'].table))
 
 
@@ -207,7 +202,7 @@ class FiveYearPopulationParse(Task):
 class FiveYearPopulationColumns(ColumnsTask):
 
     def version(self):
-        return 0
+        return 1
 
     def requires(self):
         return {
@@ -267,6 +262,9 @@ class RawFiveYearPopulation(TableTask):
             'geotable': Geometry()
         }
 
+    def version(self):
+        return 1
+
     def timespan(self):
         return '2011'
 
@@ -293,7 +291,7 @@ class RawFiveYearPopulation(TableTask):
         session = current_session()
         shell("cat '{input}' | psql -c '\\copy {output} FROM STDIN WITH CSV "
               "HEADER ENCODING '\"'\"'latin1'\"'\"".format(
-                  output=self.output().get(session).id,
+                  output=self.output().table,
                   input=self.input()['data'].path
               ))
 
@@ -307,6 +305,9 @@ class FiveYearPopulation(TableTask):
         return {
             'data': RawFiveYearPopulation(),
         }
+
+    def version(self):
+        return 1
 
     def columns(self):
         '''
@@ -328,6 +329,6 @@ class FiveYearPopulation(TableTask):
                         'SELECT {cols} FROM {input} '
                         "WHERE gender = 'Ambos Sexos'".format(
                             cols=', '.join(self.columns().keys()),
-                            output=self.output().get(session).id,
-                            input=self.input()['data'].get(session).id
+                            output=self.output().table,
+                            input=self.input()['data'].table
                         ))

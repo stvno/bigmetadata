@@ -2,13 +2,15 @@
 Tasks to sync data locally to CartoDB
 '''
 
-from tasks.meta import current_session, OBSTable, Base
+from tasks.meta import current_session, OBSTable, Base, OBSColumn
 from tasks.util import (TableToCarto, underscore_slugify, query_cartodb,
                         classpath, shell, PostgresTarget, TempTableTask)
 
-from luigi import WrapperTask, BooleanParameter, Parameter, Task, LocalTarget
+from luigi import (WrapperTask, BooleanParameter, Parameter, Task, LocalTarget,
+                   DateParameter)
 from nose.tools import assert_equal
 from urllib import quote_plus
+from datetime import date
 
 import requests
 
@@ -23,7 +25,7 @@ def extract_dict_a_from_b(a, b):
 
 def metatables():
     for tablename, table in Base.metadata.tables.iteritems():
-        if tablename.startswith('obs_'):
+        if tablename.startswith('observatory.obs_'):
             yield tablename, table
 
 
@@ -96,35 +98,71 @@ class SyncMetadata(WrapperTask):
 
     def requires(self):
         for tablename, _ in metatables():
-            yield TableToCarto(table=tablename, outname=tablename, force=self.force)
+            schema, tablename = tablename.split('.')
+            yield TableToCarto(table=tablename, outname=tablename, force=self.force,
+                               schema=schema)
 
 
 def should_upload(table):
     '''
-    Determine whether a table has any tagged columns.  If so, it should be
+    Determine whether a table has any important columns.  If so, it should be
     uploaded, otherwise it should be ignored.
     '''
+    # TODO this table doesn't want to upload
+    if table.tablename == 'obs_ffebc3eb689edab4faa757f75ca02c65d7db7327':
+        return False
     for coltable in table.columns:
-        if coltable.column.tags:
+        if coltable.column.weight > 0:
             return True
     return False
 
 
-class SyncData(WrapperTask):
+class SyncColumn(WrapperTask):
     '''
-    Upload a single OBS table to cartodb by ID
+    Upload tables relevant to updating a particular column by keyword.
     '''
-    force = BooleanParameter(default=True)
-    schema = Parameter()
-    table = Parameter()
+    keywords = Parameter()
 
     def requires(self):
-        table_id = '"{schema}".{table}'.format(schema=self.schema,
-                                               table=underscore_slugify(self.table))
         session = current_session()
-        table = session.query(OBSTable).get(table_id)
-        tablename = table.tablename
-        return TableToCarto(table=table_id, outname=tablename, force=self.force)
+        cols = session.query(OBSColumn).filter(OBSColumn.id.ilike(
+            '%' + self.keywords + '%'
+        ))
+        if cols.count():
+            for col in cols:
+                for coltable in col.tables:
+                    yield SyncData(exact_id=coltable.table.id)
+        else:
+            tables = session.query(OBSTable).filter(OBSTable.id.ilike(
+                '%' + self.keywords + '%'
+            ))
+            if tables.count():
+                for table in tables:
+                    yield SyncData(exact_id=table.id)
+            else:
+                raise Exception('Unable to find any tables or columns with ID '
+                                'that matched "{keywords}" via ILIKE'.format(
+                                    keywords=self.keywords
+                                ))
+
+
+class SyncData(WrapperTask):
+    '''
+    Upload a single OBS table to cartodb by fuzzy ID
+    '''
+    force = BooleanParameter(default=True)
+    id = Parameter(default=None)
+    exact_id = Parameter(default=None)
+
+    def requires(self):
+        session = current_session()
+        if self.exact_id:
+            table = session.query(OBSTable).get(self.exact_id)
+        elif self.id:
+            table = session.query(OBSTable).filter(OBSTable.id.ilike('%' + self.id + '%')).one()
+        else:
+            raise Exception('Need id or exact_id for SyncData')
+        return TableToCarto(table=table.tablename, force=self.force)
 
 
 class SyncAllData(WrapperTask):
@@ -139,7 +177,7 @@ class SyncAllData(WrapperTask):
                 tables[table.id] = table.tablename
 
         for table_id, tablename in tables.iteritems():
-            yield TableToCarto(table=table_id, outname=tablename, force=self.force)
+            yield TableToCarto(table=tablename, outname=tablename, force=self.force)
 
 
 class GenerateStaticImage(Task):
@@ -312,3 +350,33 @@ class TestMetadata(Task):
 
     def complete(self):
         return hasattr(self, '_complete') and self._complete is True
+
+
+class Dump(Task):
+    '''
+    Dump of the entire observatory schema
+    '''
+
+    timestamp = DateParameter(default=date.today())
+
+    def run(self):
+        self.output().makedirs()
+        shell('pg_dump -Fc -Z0 -x -n observatory -f {output}'.format(
+            output=self.output().path))
+
+    def output(self):
+        return LocalTarget(os.path.join('tmp', classpath(self), self.task_id + '.dump'))
+
+
+#class S3Dump(Task):
+#    '''
+#    Dump the file to S3
+#    '''
+#
+#    timestamp = DateParameter(default=date.today())
+#
+#    def requires(self):
+#        return Dump(timestamp=self.timestamp)
+#
+#    def output(self):
+#        return S3Target()
