@@ -1,0 +1,1102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Income &mdash; bigmetadata 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bigmetadata.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/bigmetadata.js"></script>
+    <script type="text/javascript" src="//libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+    <link rel="top" title="bigmetadata 0.0.1 documentation" href="../index.html" />
+    <link rel="up" title="United States" href="../tags.united_states.html" />
+    <link rel="next" title="Language" href="tags.language.html" />
+    <link rel="prev" title="Housing" href="tags.housing.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="income">
+<h1>Income<a class="headerlink" href="#income" title="Permalink to this headline">¶</a></h1>
+<p>How much people earn.</p>
+<div class="figure align-center" id="id1">
+<a class="reference external image-reference" href="https://observatory.cartodb.com/viz/5a2f4cc8-e189-11e5-8327-0e5db1731f59/embed_map"><img alt="Median Household Income" src="../_images/GenerateStaticImage_5a2f4cc8_e189_11_125dd21a55.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-text">Median household income in the United States according to the American
+Community Survey, 5-year estimate from 2014.</span></p>
+</div>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#gini-index" id="id2">Gini Index</a></li>
+<li><a class="reference internal" href="#households-with-income-less-than-10-000" id="id3">Households with income less than $10,000</a></li>
+<li><a class="reference internal" href="#households-with-income-of-10-000-to-14-999" id="id4">Households with income of $10,000 to $14,999</a></li>
+<li><a class="reference internal" href="#households-with-income-of-100-000-to-124-999" id="id5">Households with income of $100,000 To $124,999</a></li>
+<li><a class="reference internal" href="#households-with-income-of-125-000-to-149-999" id="id6">Households with income of $125,000 To $149,999</a></li>
+<li><a class="reference internal" href="#households-with-income-of-15-000-to-19-999" id="id7">Households with income of $15,000 to $19,999</a></li>
+<li><a class="reference internal" href="#households-with-income-of-150-000-to-199-999" id="id8">Households with income of $150,000 To $199,999</a></li>
+<li><a class="reference internal" href="#households-with-income-of-20-000-to-24-999" id="id9">Households with income of $20,000 To $24,999</a></li>
+<li><a class="reference internal" href="#households-with-income-of-200-000-or-more" id="id10">Households with income of $200,000 Or More</a></li>
+<li><a class="reference internal" href="#households-with-income-of-25-000-to-29-999" id="id11">Households with income of $25,000 To $29,999</a></li>
+<li><a class="reference internal" href="#households-with-income-of-30-000-to-34-999" id="id12">Households with income of $30,000 To $34,999</a></li>
+<li><a class="reference internal" href="#households-with-income-of-35-000-to-39-999" id="id13">Households with income of $35,000 To $39,999</a></li>
+<li><a class="reference internal" href="#households-with-income-of-40-000-to-44-999" id="id14">Households with income of $40,000 To $44,999</a></li>
+<li><a class="reference internal" href="#households-with-income-of-45-000-to-49-999" id="id15">Households with income of $45,000 To $49,999</a></li>
+<li><a class="reference internal" href="#households-with-income-of-50-000-to-59-999" id="id16">Households with income of $50,000 To $59,999</a></li>
+<li><a class="reference internal" href="#households-with-income-of-60-000-to-74-999" id="id17">Households with income of $60,000 To $74,999</a></li>
+<li><a class="reference internal" href="#households-with-income-of-75-000-to-99-999" id="id18">Households with income of $75,000 To $99,999</a></li>
+<li><a class="reference internal" href="#median-household-income-in-the-past-12-months" id="id19">Median Household Income in the past 12 Months</a></li>
+<li><a class="reference internal" href="#per-capita-income-in-the-past-12-months" id="id20">Per Capita Income in the past 12 Months</a></li>
+<li><a class="reference internal" href="#percent-of-household-income-spent-on-rent" id="id21">Percent of Household Income Spent on Rent</a></li>
+<li><a class="reference internal" href="#population-for-whom-poverty-status-determined" id="id22">Population for Whom Poverty Status Determined</a><ul>
+<li><a class="reference internal" href="#income-in-the-past-12-months-below-poverty-level" id="id23">Income In The Past 12 Months Below Poverty Level</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="gini-index">
+<span id="us-census-acs-b19083001"></span><h2><a class="toc-backref" href="#id2">Gini Index</a><a class="headerlink" href="#gini-index" title="Permalink to this headline">¶</a></h2>
+<p>The Gini index, or index of income concentration, is a statistical measure of income inequality ranging from 0 to 1. A measure of 1 indicates perfect inequality, i.e., one household having all the income and rest having none. A measure of 0 indicates perfect equality, i.e., all households having an equal share of income.</p>
+<p>Measure &#8220;Gini Index&#8221;  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19083001&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Gini Index is only available for point lookups.</p>
+</div>
+<div class="section" id="households-with-income-less-than-10-000">
+<span id="us-census-acs-b19001002"></span><h2><a class="toc-backref" href="#id3">Households with income less than $10,000</a><a class="headerlink" href="#households-with-income-less-than-10-000" title="Permalink to this headline">¶</a></h2>
+<p>The number of households in a geographic area whose annual income was less than $10,000.</p>
+<p>Measure &#8220;Households with income less than $10,000&#8221;  density per sq. kilometer  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001002&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income less than $10,000&#8221; within an area:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001002&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income less than $10,000&#8221; percent of &#8220;Households&#8221; at one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001002&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income less than $10,000&#8221; percent of &#8220;Households&#8221; within an area:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001002&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="tags.housing.html#us-census-acs-b11001001"><span class="std std-ref">Households</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="households-with-income-of-10-000-to-14-999">
+<span id="us-census-acs-b19001003"></span><h2><a class="toc-backref" href="#id4">Households with income of $10,000 to $14,999</a><a class="headerlink" href="#households-with-income-of-10-000-to-14-999" title="Permalink to this headline">¶</a></h2>
+<p>The number of households in a geographic area whose annual income was between $10,000 and $14,999.</p>
+<p>Measure &#8220;Households with income of $10,000 to $14,999&#8221;  density per sq. kilometer  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001003&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $10,000 to $14,999&#8221; within an area:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001003&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $10,000 to $14,999&#8221; percent of &#8220;Households&#8221; at one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001003&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $10,000 to $14,999&#8221; percent of &#8220;Households&#8221; within an area:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001003&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="tags.housing.html#us-census-acs-b11001001"><span class="std std-ref">Households</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="households-with-income-of-100-000-to-124-999">
+<span id="us-census-acs-b19001014"></span><h2><a class="toc-backref" href="#id5">Households with income of $100,000 To $124,999</a><a class="headerlink" href="#households-with-income-of-100-000-to-124-999" title="Permalink to this headline">¶</a></h2>
+<p>The number of households in a geographic area whose annual income was between $100,000 and $124,999.</p>
+<p>Measure &#8220;Households with income of $100,000 To $124,999&#8221;  density per sq. kilometer  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001014&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $100,000 To $124,999&#8221; within an area:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001014&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $100,000 To $124,999&#8221; percent of &#8220;Households&#8221; at one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001014&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $100,000 To $124,999&#8221; percent of &#8220;Households&#8221; within an area:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001014&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="tags.housing.html#us-census-acs-b11001001"><span class="std std-ref">Households</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="households-with-income-of-125-000-to-149-999">
+<span id="us-census-acs-b19001015"></span><h2><a class="toc-backref" href="#id6">Households with income of $125,000 To $149,999</a><a class="headerlink" href="#households-with-income-of-125-000-to-149-999" title="Permalink to this headline">¶</a></h2>
+<p>The number of households in a geographic area whose annual income was between $125,000 and $149,999.</p>
+<p>Measure &#8220;Households with income of $125,000 To $149,999&#8221;  density per sq. kilometer  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001015&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $125,000 To $149,999&#8221; within an area:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001015&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $125,000 To $149,999&#8221; percent of &#8220;Households&#8221; at one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001015&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $125,000 To $149,999&#8221; percent of &#8220;Households&#8221; within an area:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001015&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="tags.housing.html#us-census-acs-b11001001"><span class="std std-ref">Households</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="households-with-income-of-15-000-to-19-999">
+<span id="us-census-acs-b19001004"></span><h2><a class="toc-backref" href="#id7">Households with income of $15,000 to $19,999</a><a class="headerlink" href="#households-with-income-of-15-000-to-19-999" title="Permalink to this headline">¶</a></h2>
+<p>The number of households in a geographic area whose annual income was between $15,000 and $19,999.</p>
+<p>Measure &#8220;Households with income of $15,000 to $19,999&#8221;  density per sq. kilometer  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001004&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $15,000 to $19,999&#8221; within an area:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001004&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $15,000 to $19,999&#8221; percent of &#8220;Households&#8221; at one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001004&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $15,000 to $19,999&#8221; percent of &#8220;Households&#8221; within an area:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001004&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="tags.housing.html#us-census-acs-b11001001"><span class="std std-ref">Households</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="households-with-income-of-150-000-to-199-999">
+<span id="us-census-acs-b19001016"></span><h2><a class="toc-backref" href="#id8">Households with income of $150,000 To $199,999</a><a class="headerlink" href="#households-with-income-of-150-000-to-199-999" title="Permalink to this headline">¶</a></h2>
+<p>The number of households in a geographic area whose annual income was between $150,000 and $1999,999.</p>
+<p>Measure &#8220;Households with income of $150,000 To $199,999&#8221;  density per sq. kilometer  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001016&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $150,000 To $199,999&#8221; within an area:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001016&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $150,000 To $199,999&#8221; percent of &#8220;Households&#8221; at one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001016&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $150,000 To $199,999&#8221; percent of &#8220;Households&#8221; within an area:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001016&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="tags.housing.html#us-census-acs-b11001001"><span class="std std-ref">Households</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="households-with-income-of-20-000-to-24-999">
+<span id="us-census-acs-b19001005"></span><h2><a class="toc-backref" href="#id9">Households with income of $20,000 To $24,999</a><a class="headerlink" href="#households-with-income-of-20-000-to-24-999" title="Permalink to this headline">¶</a></h2>
+<p>The number of households in a geographic area whose annual income was between $20,000 and $24,999.</p>
+<p>Measure &#8220;Households with income of $20,000 To $24,999&#8221;  density per sq. kilometer  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001005&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $20,000 To $24,999&#8221; within an area:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001005&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $20,000 To $24,999&#8221; percent of &#8220;Households&#8221; at one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001005&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $20,000 To $24,999&#8221; percent of &#8220;Households&#8221; within an area:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001005&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="tags.housing.html#us-census-acs-b11001001"><span class="std std-ref">Households</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="households-with-income-of-200-000-or-more">
+<span id="us-census-acs-b19001017"></span><h2><a class="toc-backref" href="#id10">Households with income of $200,000 Or More</a><a class="headerlink" href="#households-with-income-of-200-000-or-more" title="Permalink to this headline">¶</a></h2>
+<p>The number of households in a geographic area whose annual income was more than $200,000.</p>
+<p>Measure &#8220;Households with income of $200,000 Or More&#8221;  density per sq. kilometer  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001017&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $200,000 Or More&#8221; within an area:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001017&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $200,000 Or More&#8221; percent of &#8220;Households&#8221; at one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001017&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $200,000 Or More&#8221; percent of &#8220;Households&#8221; within an area:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001017&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="tags.housing.html#us-census-acs-b11001001"><span class="std std-ref">Households</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="households-with-income-of-25-000-to-29-999">
+<span id="us-census-acs-b19001006"></span><h2><a class="toc-backref" href="#id11">Households with income of $25,000 To $29,999</a><a class="headerlink" href="#households-with-income-of-25-000-to-29-999" title="Permalink to this headline">¶</a></h2>
+<p>The number of households in a geographic area whose annual income was between $20,000 and $24,999.</p>
+<p>Measure &#8220;Households with income of $25,000 To $29,999&#8221;  density per sq. kilometer  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001006&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $25,000 To $29,999&#8221; within an area:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001006&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $25,000 To $29,999&#8221; percent of &#8220;Households&#8221; at one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001006&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $25,000 To $29,999&#8221; percent of &#8220;Households&#8221; within an area:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001006&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="tags.housing.html#us-census-acs-b11001001"><span class="std std-ref">Households</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="households-with-income-of-30-000-to-34-999">
+<span id="us-census-acs-b19001007"></span><h2><a class="toc-backref" href="#id12">Households with income of $30,000 To $34,999</a><a class="headerlink" href="#households-with-income-of-30-000-to-34-999" title="Permalink to this headline">¶</a></h2>
+<p>The number of households in a geographic area whose annual income was between $30,000 and $34,999.</p>
+<p>Measure &#8220;Households with income of $30,000 To $34,999&#8221;  density per sq. kilometer  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001007&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $30,000 To $34,999&#8221; within an area:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001007&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $30,000 To $34,999&#8221; percent of &#8220;Households&#8221; at one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001007&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $30,000 To $34,999&#8221; percent of &#8220;Households&#8221; within an area:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001007&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="tags.housing.html#us-census-acs-b11001001"><span class="std std-ref">Households</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="households-with-income-of-35-000-to-39-999">
+<span id="us-census-acs-b19001008"></span><h2><a class="toc-backref" href="#id13">Households with income of $35,000 To $39,999</a><a class="headerlink" href="#households-with-income-of-35-000-to-39-999" title="Permalink to this headline">¶</a></h2>
+<p>The number of households in a geographic area whose annual income was between $35,000 and $39,999.</p>
+<p>Measure &#8220;Households with income of $35,000 To $39,999&#8221;  density per sq. kilometer  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001008&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $35,000 To $39,999&#8221; within an area:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001008&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $35,000 To $39,999&#8221; percent of &#8220;Households&#8221; at one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001008&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $35,000 To $39,999&#8221; percent of &#8220;Households&#8221; within an area:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001008&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="tags.housing.html#us-census-acs-b11001001"><span class="std std-ref">Households</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="households-with-income-of-40-000-to-44-999">
+<span id="us-census-acs-b19001009"></span><h2><a class="toc-backref" href="#id14">Households with income of $40,000 To $44,999</a><a class="headerlink" href="#households-with-income-of-40-000-to-44-999" title="Permalink to this headline">¶</a></h2>
+<p>The number of households in a geographic area whose annual income was between $40,000 and $44,999.</p>
+<p>Measure &#8220;Households with income of $40,000 To $44,999&#8221;  density per sq. kilometer  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001009&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $40,000 To $44,999&#8221; within an area:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001009&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $40,000 To $44,999&#8221; percent of &#8220;Households&#8221; at one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001009&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $40,000 To $44,999&#8221; percent of &#8220;Households&#8221; within an area:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001009&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="tags.housing.html#us-census-acs-b11001001"><span class="std std-ref">Households</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="households-with-income-of-45-000-to-49-999">
+<span id="us-census-acs-b19001010"></span><h2><a class="toc-backref" href="#id15">Households with income of $45,000 To $49,999</a><a class="headerlink" href="#households-with-income-of-45-000-to-49-999" title="Permalink to this headline">¶</a></h2>
+<p>The number of households in a geographic area whose annual income was between $45,000 and $49,999.</p>
+<p>Measure &#8220;Households with income of $45,000 To $49,999&#8221;  density per sq. kilometer  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001010&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $45,000 To $49,999&#8221; within an area:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001010&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $45,000 To $49,999&#8221; percent of &#8220;Households&#8221; at one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001010&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $45,000 To $49,999&#8221; percent of &#8220;Households&#8221; within an area:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001010&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="tags.housing.html#us-census-acs-b11001001"><span class="std std-ref">Households</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="households-with-income-of-50-000-to-59-999">
+<span id="us-census-acs-b19001011"></span><h2><a class="toc-backref" href="#id16">Households with income of $50,000 To $59,999</a><a class="headerlink" href="#households-with-income-of-50-000-to-59-999" title="Permalink to this headline">¶</a></h2>
+<p>The number of households in a geographic area whose annual income was between $50,000 and $59,999.</p>
+<p>Measure &#8220;Households with income of $50,000 To $59,999&#8221;  density per sq. kilometer  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001011&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $50,000 To $59,999&#8221; within an area:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001011&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $50,000 To $59,999&#8221; percent of &#8220;Households&#8221; at one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001011&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $50,000 To $59,999&#8221; percent of &#8220;Households&#8221; within an area:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001011&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="tags.housing.html#us-census-acs-b11001001"><span class="std std-ref">Households</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="households-with-income-of-60-000-to-74-999">
+<span id="us-census-acs-b19001012"></span><h2><a class="toc-backref" href="#id17">Households with income of $60,000 To $74,999</a><a class="headerlink" href="#households-with-income-of-60-000-to-74-999" title="Permalink to this headline">¶</a></h2>
+<p>The number of households in a geographic area whose annual income was between $60,000 and $74,999.</p>
+<p>Measure &#8220;Households with income of $60,000 To $74,999&#8221;  density per sq. kilometer  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001012&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $60,000 To $74,999&#8221; within an area:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001012&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $60,000 To $74,999&#8221; percent of &#8220;Households&#8221; at one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001012&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $60,000 To $74,999&#8221; percent of &#8220;Households&#8221; within an area:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001012&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="tags.housing.html#us-census-acs-b11001001"><span class="std std-ref">Households</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="households-with-income-of-75-000-to-99-999">
+<span id="us-census-acs-b19001013"></span><h2><a class="toc-backref" href="#id18">Households with income of $75,000 To $99,999</a><a class="headerlink" href="#households-with-income-of-75-000-to-99-999" title="Permalink to this headline">¶</a></h2>
+<p>The number of households in a geographic area whose annual income was between $75,000 and $99,999.</p>
+<p>Measure &#8220;Households with income of $75,000 To $99,999&#8221;  density per sq. kilometer  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001013&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $75,000 To $99,999&#8221; within an area:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001013&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $75,000 To $99,999&#8221; percent of &#8220;Households&#8221; at one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001013&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Households with income of $75,000 To $99,999&#8221; percent of &#8220;Households&#8221; within an area:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19001013&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="tags.housing.html#us-census-acs-b11001001"><span class="std std-ref">Households</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="median-household-income-in-the-past-12-months">
+<span id="us-census-acs-b19013001"></span><h2><a class="toc-backref" href="#id19">Median Household Income in the past 12 Months</a><a class="headerlink" href="#median-household-income-in-the-past-12-months" title="Permalink to this headline">¶</a></h2>
+<p>Within a geographic area, the median income received by every household on a regular basis before payments for personal income taxes, social security, union dues, medicare deductions, etc.  It includes income received from wages, salary, commissions, bonuses, and tips; self-employment income from own nonfarm or farm businesses, including proprietorships and partnerships; interest, dividends, net rental income, royalty income, or income from estates and trusts; Social Security or Railroad Retirement income; Supplemental Security Income (SSI); any cash public assistance or welfare payments from the state or local welfare office; retirement, survivor, or disability benefits; and any other sources of income received regularly such as Veterans&#8217; (VA) payments, unemployment and/or worker&#8217;s compensation, child support, and alimony.</p>
+<p>Measure &#8220;Median Household Income in the past 12 Months&#8221;  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19013001&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Median Household Income in the past 12 Months is only available for point lookups.</p>
+</div>
+<div class="section" id="per-capita-income-in-the-past-12-months">
+<span id="us-census-acs-b19301001"></span><h2><a class="toc-backref" href="#id20">Per Capita Income in the past 12 Months</a><a class="headerlink" href="#per-capita-income-in-the-past-12-months" title="Permalink to this headline">¶</a></h2>
+<p>Per capita income is the mean income computed for every man, woman, and child in a particular group. It is derived by dividing the total income of a particular group by the total population.</p>
+<p>Measure &#8220;Per Capita Income in the past 12 Months&#8221;  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B19301001&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Per Capita Income in the past 12 Months is only available for point lookups.</p>
+</div>
+<div class="section" id="percent-of-household-income-spent-on-rent">
+<span id="us-census-acs-b25071001"></span><h2><a class="toc-backref" href="#id21">Percent of Household Income Spent on Rent</a><a class="headerlink" href="#percent-of-household-income-spent-on-rent" title="Permalink to this headline">¶</a></h2>
+<p>Within a geographic area, the median percentage of household income which was spent on gross rent.  Gross rent is the amount of the contract rent plus the estimated average monthly cost of utilities (electricity, gas, water, sewer etc.) and fuels (oil, coal, wood, etc.) if these are paid by the renter.  Household income is the sum of the income of all people 15 years and older living in the household.</p>
+<p>Measure &#8220;Percent of Household Income Spent on Rent&#8221;  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B25071001&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Percent of Household Income Spent on Rent is only available for point lookups.</p>
+</div>
+<div class="section" id="population-for-whom-poverty-status-determined">
+<span id="us-census-acs-b17001001"></span><h2><a class="toc-backref" href="#id22">Population for Whom Poverty Status Determined</a><a class="headerlink" href="#population-for-whom-poverty-status-determined" title="Permalink to this headline">¶</a></h2>
+<p>The number of people in each geography who could be identified as either living in poverty or not.  This should be used as the denominator when calculating poverty rates, as it excludes people for whom it was not possible to determine poverty.</p>
+<p>Measure &#8220;Population for Whom Poverty Status Determined&#8221;  density per sq. kilometer  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B17001001&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Population for Whom Poverty Status Determined&#8221; within an area:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B17001001&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<div class="contents local topic" id="subcolumns-of-population-for-whom-poverty-status-determined">
+<p class="topic-title first">Subcolumns of Population for Whom Poverty Status Determined</p>
+<ul class="simple">
+<li><a class="reference internal" href="#income-in-the-past-12-months-below-poverty-level" id="id24">Income In The Past 12 Months Below Poverty Level</a></li>
+</ul>
+</div>
+<div class="section" id="income-in-the-past-12-months-below-poverty-level">
+<span id="us-census-acs-b17001002"></span><h3><a class="toc-backref" href="#id24">Income In The Past 12 Months Below Poverty Level</a><a class="headerlink" href="#income-in-the-past-12-months-below-poverty-level" title="Permalink to this headline">¶</a></h3>
+<p>The number of people in a geographic area who are part of a family (which could be just them as an individual) determined to be &#8220;in poverty&#8221; following the Office of Management and Budget&#8217;s Directive 14. (<a class="reference external" href="https://www.census.gov/hhes/povmeas/methodology/ombdir14.html">https://www.census.gov/hhes/povmeas/methodology/ombdir14.html</a>)</p>
+<p>Measure &#8220;Income In The Past 12 Months Below Poverty Level&#8221;  density per sq. kilometer  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B17001002&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Income In The Past 12 Months Below Poverty Level&#8221; within an area:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B17001002&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Income In The Past 12 Months Below Poverty Level&#8221; percent of &#8220;Population for Whom Poverty Status Determined&#8221; at one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B17001002&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Income In The Past 12 Months Below Poverty Level&#8221; percent of &#8220;Population for Whom Poverty Status Determined&#8221; within an area:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;us.census.acs.B17001002&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#us-census-acs-b17001001"><span class="std std-ref">Population for Whom Poverty Status Determined</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Income</a><ul>
+<li><a class="reference internal" href="#gini-index">Gini Index</a></li>
+<li><a class="reference internal" href="#households-with-income-less-than-10-000">Households with income less than $10,000</a></li>
+<li><a class="reference internal" href="#households-with-income-of-10-000-to-14-999">Households with income of $10,000 to $14,999</a></li>
+<li><a class="reference internal" href="#households-with-income-of-100-000-to-124-999">Households with income of $100,000 To $124,999</a></li>
+<li><a class="reference internal" href="#households-with-income-of-125-000-to-149-999">Households with income of $125,000 To $149,999</a></li>
+<li><a class="reference internal" href="#households-with-income-of-15-000-to-19-999">Households with income of $15,000 to $19,999</a></li>
+<li><a class="reference internal" href="#households-with-income-of-150-000-to-199-999">Households with income of $150,000 To $199,999</a></li>
+<li><a class="reference internal" href="#households-with-income-of-20-000-to-24-999">Households with income of $20,000 To $24,999</a></li>
+<li><a class="reference internal" href="#households-with-income-of-200-000-or-more">Households with income of $200,000 Or More</a></li>
+<li><a class="reference internal" href="#households-with-income-of-25-000-to-29-999">Households with income of $25,000 To $29,999</a></li>
+<li><a class="reference internal" href="#households-with-income-of-30-000-to-34-999">Households with income of $30,000 To $34,999</a></li>
+<li><a class="reference internal" href="#households-with-income-of-35-000-to-39-999">Households with income of $35,000 To $39,999</a></li>
+<li><a class="reference internal" href="#households-with-income-of-40-000-to-44-999">Households with income of $40,000 To $44,999</a></li>
+<li><a class="reference internal" href="#households-with-income-of-45-000-to-49-999">Households with income of $45,000 To $49,999</a></li>
+<li><a class="reference internal" href="#households-with-income-of-50-000-to-59-999">Households with income of $50,000 To $59,999</a></li>
+<li><a class="reference internal" href="#households-with-income-of-60-000-to-74-999">Households with income of $60,000 To $74,999</a></li>
+<li><a class="reference internal" href="#households-with-income-of-75-000-to-99-999">Households with income of $75,000 To $99,999</a></li>
+<li><a class="reference internal" href="#median-household-income-in-the-past-12-months">Median Household Income in the past 12 Months</a></li>
+<li><a class="reference internal" href="#per-capita-income-in-the-past-12-months">Per Capita Income in the past 12 Months</a></li>
+<li><a class="reference internal" href="#percent-of-household-income-spent-on-rent">Percent of Household Income Spent on Rent</a></li>
+<li><a class="reference internal" href="#population-for-whom-poverty-status-determined">Population for Whom Poverty Status Determined</a><ul>
+<li><a class="reference internal" href="#income-in-the-past-12-months-below-poverty-level">Income In The Past 12 Months Below Poverty Level</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../tags.united_states.html">United States</a><ul>
+      <li>Previous: <a href="tags.housing.html" title="previous chapter">Housing</a></li>
+      <li>Next: <a href="tags.language.html" title="next chapter">Language</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/tags.united_states/tags.income.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, CartoDB.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="../_sources/tags.united_states/tags.income.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,3489 @@
+
+
+.. Employment:
+
+Employment
+===========================================================================
+
+How people are employed.
+
+.. contents::
+   :local:
+   :depth: 10
+
+
+
+
+
+.. _us.census.acs.B23025001:
+
+Population age 16 and over
+---------------------------------------------------------------------------
+
+
+
+The number of people in each geography who are age 16 or over.
+
+
+
+
+
+Measure "Population age 16 and over"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B23025001'
+      );
+
+
+
+
+
+Measure "Population age 16 and over" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B23025001'
+        );
+
+
+
+
+
+
+
+
+
+
+
+
+
+.. contents:: Subcolumns of Population age 16 and over
+   :local:
+   :depth: 1
+
+  
+  
+  
+
+.. _us.census.acs.B23025002:
+
+Population in Labor Force
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+The number of people in each geography who are either in the civilian labor force or are members of the U.S. Armed Forces (people on active duty with the United States Army, Air Force, Navy, Marine Corps, or Coast Guard).
+
+
+
+
+
+Measure "Population in Labor Force"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B23025002'
+      );
+
+
+
+
+
+Measure "Population in Labor Force" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B23025002'
+        );
+
+
+
+
+
+Measure "Population in Labor Force" percent of "Population age 16 and over" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B23025002',
+        'denominator'
+      );
+
+
+Measure "Population in Labor Force" percent of "Population age 16 and over" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B23025002',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B23025001`
+
+
+
+.. contents:: Subcolumns of Population in Labor Force
+   :local:
+   :depth: 1
+
+  
+  
+  
+
+.. _us.census.acs.B23025006:
+
+Population in Armed Forces
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+
+The number of people in each geography who are members of the U.S. Armed Forces (people on active duty with the United States Army, Air Force, Navy, Marine Corps, or Coast Guard).
+
+
+
+
+
+Measure "Population in Armed Forces"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B23025006'
+      );
+
+
+
+
+
+Measure "Population in Armed Forces" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B23025006'
+        );
+
+
+
+
+
+Measure "Population in Armed Forces" percent of "Population in Labor Force" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B23025006',
+        'denominator'
+      );
+
+
+Measure "Population in Armed Forces" percent of "Population in Labor Force" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B23025006',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B23025002`
+
+
+
+  
+  
+  
+  
+
+.. _us.census.acs.B23025003:
+
+Population in Civilian Labor Force
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+
+The number of civilians 16 years and over in each geography who can be classified as either "employed" or "unemployed" below.
+
+
+
+
+
+Measure "Population in Civilian Labor Force"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B23025003'
+      );
+
+
+
+
+
+Measure "Population in Civilian Labor Force" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B23025003'
+        );
+
+
+
+
+
+Measure "Population in Civilian Labor Force" percent of "Population in Labor Force" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B23025003',
+        'denominator'
+      );
+
+
+Measure "Population in Civilian Labor Force" percent of "Population in Labor Force" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B23025003',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B23025002`
+
+
+
+.. contents:: Subcolumns of Population in Civilian Labor Force
+   :local:
+   :depth: 1
+
+  
+  
+  
+
+.. _us.census.acs.B23025004:
+
+Employed Population
+
+
+
+
+The number of civilians 16 years old and over in each geography who either (1) were "at work," that is, those who did any work at all during the reference week as paid employees, worked in their own business or profession, worked on their own farm, or worked 15 hours or more as unpaid workers on a family farm or in a family business; or (2) were "with a job but not at work," that is, those who did not work during the reference week but had jobs or businesses from which they were temporarily absent due to illness, bad weather, industrial dispute, vacation, or other personal reasons. Excluded from the employed are people whose only activity consisted of work around the house or unpaid volunteer work for religious, charitable, and similar organizations; also excluded are all institutionalized people and people on active duty in the United States Armed Forces.
+
+
+
+
+
+Measure "Employed Population"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B23025004'
+      );
+
+
+
+
+
+Measure "Employed Population" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B23025004'
+        );
+
+
+
+
+
+Measure "Employed Population" percent of "Population in Civilian Labor Force" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B23025004',
+        'denominator'
+      );
+
+
+Measure "Employed Population" percent of "Population in Civilian Labor Force" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B23025004',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B23025003`
+
+
+
+.. contents:: Subcolumns of Employed Population
+   :local:
+   :depth: 1
+
+  
+  
+  
+
+.. _us.census.acs.C24050002:
+
+Workers employed in firms in agriculture, forestry, fishing, hunting, or mining
+
+
+
+
+The Agriculture, Forestry, Fishing and Hunting sector comprises establishments primarily engaged in growing crops, raising animals, harvesting timber, and harvesting fish and other animals from a farm, ranch, or their natural habitats.
+
+
+
+
+
+Measure "Workers employed in firms in agriculture, forestry, fishing, hunting, or mining"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.C24050002'
+      );
+
+
+
+
+
+Measure "Workers employed in firms in agriculture, forestry, fishing, hunting, or mining" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.C24050002'
+        );
+
+
+
+
+
+Measure "Workers employed in firms in agriculture, forestry, fishing, hunting, or mining" percent of "Employed Population" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.C24050002',
+        'denominator'
+      );
+
+
+Measure "Workers employed in firms in agriculture, forestry, fishing, hunting, or mining" percent of "Employed Population" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.C24050002',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B23025004`
+
+
+
+  
+  
+  
+  
+
+.. _us.census.acs.C24050012:
+
+Workers employed in firms in arts, entertainment, recreation, accommodation and food services
+
+
+
+
+The Arts, Entertainment, and Recreation sector includes a wide range of establishments that operate facilities or provide services to meet varied cultural, entertainment, and recreational interests of their patrons. This sector comprises (1) establishments that are involved in producing, promoting, or participating in live performances, events, or exhibits intended for public viewing; (2) establishments that preserve and exhibit objects and sites of historical, cultural, or educational interest; and (3) establishments that operate facilities or provide services that enable patrons to participate in recreational activities or pursue amusement, hobby, and leisure-time interests.
+
+
+
+
+
+Measure "Workers employed in firms in arts, entertainment, recreation, accommodation and food services"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.C24050012'
+      );
+
+
+
+
+
+Measure "Workers employed in firms in arts, entertainment, recreation, accommodation and food services" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.C24050012'
+        );
+
+
+
+
+
+Measure "Workers employed in firms in arts, entertainment, recreation, accommodation and food services" percent of "Employed Population" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.C24050012',
+        'denominator'
+      );
+
+
+Measure "Workers employed in firms in arts, entertainment, recreation, accommodation and food services" percent of "Employed Population" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.C24050012',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B23025004`
+
+
+
+  
+  
+  
+  
+
+.. _us.census.acs.C24050003:
+
+Workers employed in firms in construction
+
+
+
+
+The Construction sector comprises establishments primarily engaged in the construction of buildings or engineering projects (e.g., highways and utility systems). Construction work done may include new work, additions, alterations, or maintenance and repairs.
+
+
+
+
+
+Measure "Workers employed in firms in construction"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.C24050003'
+      );
+
+
+
+
+
+Measure "Workers employed in firms in construction" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.C24050003'
+        );
+
+
+
+
+
+Measure "Workers employed in firms in construction" percent of "Employed Population" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.C24050003',
+        'denominator'
+      );
+
+
+Measure "Workers employed in firms in construction" percent of "Employed Population" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.C24050003',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B23025004`
+
+
+
+  
+  
+  
+  
+
+.. _us.census.acs.C24050011:
+
+Workers employed in firms in educational services, health care, and social assistance
+
+
+
+
+Outpatient health services, other than hospital care, including: public health administration; research and education; categorical health programs; treatment and immunization clinics; nursing; environmental health activities such as air and water pollution control; ambulance service if provided separately from fire protection services, and other general public health activities such as mosquito abatement. School health services provided by health agencies (rather than school agencies) are included here. Sewage treatment operations are classified under Sewerage.
+
+
+
+
+
+Measure "Workers employed in firms in educational services, health care, and social assistance"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.C24050011'
+      );
+
+
+
+
+
+Measure "Workers employed in firms in educational services, health care, and social assistance" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.C24050011'
+        );
+
+
+
+
+
+Measure "Workers employed in firms in educational services, health care, and social assistance" percent of "Employed Population" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.C24050011',
+        'denominator'
+      );
+
+
+Measure "Workers employed in firms in educational services, health care, and social assistance" percent of "Employed Population" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.C24050011',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B23025004`
+
+
+
+  
+  
+  
+  
+
+.. _us.census.acs.C24050009:
+
+Workers employed in firms in finance, insurance, real estate and rental and leasing
+
+
+
+
+The Real Estate and Rental and Leasing sector comprises establishments primarily engaged in renting, leasing, or otherwise allowing the use of tangible or intangible assets, and establishments providing related services. The major portion of this sector comprises establishments that rent, lease, or otherwise allow the use of their own assets by others. The assets may be tangible, as is the case of real estate and equipment, or intangible, as is the case with patents and trademarks.
+
+
+
+
+
+Measure "Workers employed in firms in finance, insurance, real estate and rental and leasing"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.C24050009'
+      );
+
+
+
+
+
+Measure "Workers employed in firms in finance, insurance, real estate and rental and leasing" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.C24050009'
+        );
+
+
+
+
+
+Measure "Workers employed in firms in finance, insurance, real estate and rental and leasing" percent of "Employed Population" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.C24050009',
+        'denominator'
+      );
+
+
+Measure "Workers employed in firms in finance, insurance, real estate and rental and leasing" percent of "Employed Population" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.C24050009',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B23025004`
+
+
+
+  
+  
+  
+  
+
+.. _us.census.acs.C24050008:
+
+Workers employed in firms in information
+
+
+
+
+The Information sector comprises establishments engaged in the following processes: (a) producing and distributing information and cultural products, (b) providing the means to transmit or distribute these products as well as data or communications, and (c) processing data. Included are the publishing industries, the motion picture and sound recording industries; the broadcasting industries, the telecommunications industries; Web search portals, data processing industries, and the information services industries.
+
+
+
+
+
+Measure "Workers employed in firms in information"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.C24050008'
+      );
+
+
+
+
+
+Measure "Workers employed in firms in information" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.C24050008'
+        );
+
+
+
+
+
+Measure "Workers employed in firms in information" percent of "Employed Population" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.C24050008',
+        'denominator'
+      );
+
+
+Measure "Workers employed in firms in information" percent of "Employed Population" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.C24050008',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B23025004`
+
+
+
+  
+  
+  
+  
+
+.. _us.census.acs.C24050004:
+
+Workers employed in firms in manufacturing
+
+
+
+
+The Manufacturing sector comprises establishments engaged in the mechanical, physical, or chemical transformation of materials, substances, or components into new products.
+
+
+
+
+
+Measure "Workers employed in firms in manufacturing"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.C24050004'
+      );
+
+
+
+
+
+Measure "Workers employed in firms in manufacturing" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.C24050004'
+        );
+
+
+
+
+
+Measure "Workers employed in firms in manufacturing" percent of "Employed Population" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.C24050004',
+        'denominator'
+      );
+
+
+Measure "Workers employed in firms in manufacturing" percent of "Employed Population" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.C24050004',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B23025004`
+
+
+
+  
+  
+  
+  
+
+.. _us.census.acs.C24050013:
+
+Workers employed in firms in other services except public administration
+
+
+
+
+The Other Services (Except Public Administration) sector comprises establishments engaged in providing services not specifically provided for elsewhere in the classification system. Establishments in this sector are primarily engaged in activities such as equipment and machinery repairing, promoting or administering religious activities, grantmaking, advocacy, and providing drycleaning and laundry services, personal care services, death care services, pet care services, photofinishing services, temporary parking services, and dating services. Private households that engage in employing workers on or about the premises in activities primarily concerned with the operation of the household are included in this sector.
+
+
+
+
+
+Measure "Workers employed in firms in other services except public administration"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.C24050013'
+      );
+
+
+
+
+
+Measure "Workers employed in firms in other services except public administration" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.C24050013'
+        );
+
+
+
+
+
+Measure "Workers employed in firms in other services except public administration" percent of "Employed Population" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.C24050013',
+        'denominator'
+      );
+
+
+Measure "Workers employed in firms in other services except public administration" percent of "Employed Population" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.C24050013',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B23025004`
+
+
+
+  
+  
+  
+  
+
+.. _us.census.acs.C24050010:
+
+Workers employed in firms in professional scientific, management, administrative and waste management services
+
+
+
+
+The Administrative and Support and Waste Management and Remediation Services sector comprises establishments performing routine support activities for the day-to-day operations of other organizations. The establishments in this sector specialize in one or more of these support activities and provide these services to clients in a variety of industries and, in some cases, to households. Activities performed include office administration, hiring and placing of personnel, document preparation and similar clerical services, solicitation, collection, security and surveillance services, cleaning, and waste disposal services.
+
+
+
+
+
+Measure "Workers employed in firms in professional scientific, management, administrative and waste management services"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.C24050010'
+      );
+
+
+
+
+
+Measure "Workers employed in firms in professional scientific, management, administrative and waste management services" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.C24050010'
+        );
+
+
+
+
+
+Measure "Workers employed in firms in professional scientific, management, administrative and waste management services" percent of "Employed Population" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.C24050010',
+        'denominator'
+      );
+
+
+Measure "Workers employed in firms in professional scientific, management, administrative and waste management services" percent of "Employed Population" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.C24050010',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B23025004`
+
+
+
+  
+  
+  
+  
+
+.. _us.census.acs.C24050014:
+
+Workers employed in firms in public administration
+
+
+
+
+The Public Administration sector consists of establishments of federal, state, and local government agencies that administer, oversee, and manage public programs and have executive, legislative, or judicial authority over other institutions within a given area. These agencies also set policy, create laws, adjudicate civil and criminal legal cases, provide for public safety and for national defense. In general, government establishments in the public administration sector oversee governmental programs and activities that are not performed by private establishments.
+
+
+
+
+
+Measure "Workers employed in firms in public administration"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.C24050014'
+      );
+
+
+
+
+
+Measure "Workers employed in firms in public administration" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.C24050014'
+        );
+
+
+
+
+
+Measure "Workers employed in firms in public administration" percent of "Employed Population" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.C24050014',
+        'denominator'
+      );
+
+
+Measure "Workers employed in firms in public administration" percent of "Employed Population" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.C24050014',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B23025004`
+
+
+
+  
+  
+  
+  
+
+.. _us.census.acs.C24050006:
+
+Workers employed in firms in retail trade
+
+
+
+
+The Retail Trade sector comprises establishments engaged in retailing merchandise, generally without transformation, and rendering services incidental to the sale of merchandise. The retailing process is the final step in the distribution of merchandise; retailers are, therefore, organized to sell merchandise in small quantities to the general public.
+
+
+
+
+
+Measure "Workers employed in firms in retail trade"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.C24050006'
+      );
+
+
+
+
+
+Measure "Workers employed in firms in retail trade" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.C24050006'
+        );
+
+
+
+
+
+Measure "Workers employed in firms in retail trade" percent of "Employed Population" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.C24050006',
+        'denominator'
+      );
+
+
+Measure "Workers employed in firms in retail trade" percent of "Employed Population" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.C24050006',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B23025004`
+
+
+
+  
+  
+  
+  
+
+.. _us.census.acs.C24050007:
+
+Workers employed in firms in transportation, warehousing, and utilities
+
+
+
+
+The Transportation and Warehousing sector includes industries providing transportation of passengers and cargo, warehousing and storage for goods, scenic and sightseeing transportation, and support activities related to modes of transportation. The modes of transportation are air, rail, water, road, and pipeline.
+
+
+
+
+
+Measure "Workers employed in firms in transportation, warehousing, and utilities"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.C24050007'
+      );
+
+
+
+
+
+Measure "Workers employed in firms in transportation, warehousing, and utilities" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.C24050007'
+        );
+
+
+
+
+
+Measure "Workers employed in firms in transportation, warehousing, and utilities" percent of "Employed Population" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.C24050007',
+        'denominator'
+      );
+
+
+Measure "Workers employed in firms in transportation, warehousing, and utilities" percent of "Employed Population" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.C24050007',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B23025004`
+
+
+
+  
+  
+  
+  
+
+.. _us.census.acs.C24050005:
+
+Workers employed in firms in wholesale trade
+
+
+
+
+The Wholesale Trade sector comprises establishments engaged in wholesaling merchandise, generally without transformation, and rendering services incidental to the sale of merchandise. The wholesaling process is an intermediate step in the distribution of merchandise. Wholesalers are organized to sell or arrange the purchase or sale of (a) goods for resale (i.e., goods sold to other wholesalers or retailers), (b) capital or durable nonconsumer goods, and (c) raw and intermediate materials and supplies used in production.
+
+
+
+
+
+Measure "Workers employed in firms in wholesale trade"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.C24050005'
+      );
+
+
+
+
+
+Measure "Workers employed in firms in wholesale trade" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.C24050005'
+        );
+
+
+
+
+
+Measure "Workers employed in firms in wholesale trade" percent of "Employed Population" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.C24050005',
+        'denominator'
+      );
+
+
+Measure "Workers employed in firms in wholesale trade" percent of "Employed Population" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.C24050005',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B23025004`
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+
+.. _us.census.acs.B23025005:
+
+Unemployed Population
+
+
+
+
+The number of civilians in each geography who are 16 years old and over are classified as unemployed if they (1) were neither "at work" nor "with a job but not at work" during the reference week, and (2) were actively looking for work during the last 4 weeks, and (3) were available to start a job. Also included as unemployed are civilians who did not work at all during the reference week, were waiting to be called back to a job from which they had been laid off, and were available for work except for temporary illness. Examples of job seeking activities are:
+              * Registering at a public or private employment office
+              * Meeting with prospective employers
+              * Investigating possibilities for starting a professional
+                practice or opening a business
+              * Placing or answering advertisements
+              * Writing letters of application
+              * Being on a union or professional register
+
+
+
+
+
+Measure "Unemployed Population"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B23025005'
+      );
+
+
+
+
+
+Measure "Unemployed Population" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B23025005'
+        );
+
+
+
+
+
+Measure "Unemployed Population" percent of "Population in Civilian Labor Force" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B23025005',
+        'denominator'
+      );
+
+
+Measure "Unemployed Population" percent of "Population in Civilian Labor Force" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B23025005',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B23025003`
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+  
+  
+
+.. _us.census.acs.B23025007:
+
+Population Not in Labor Force
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+The number of people in each geography who are 16 years old and over who are not classified as members of the labor force. This category consists mainly of students, homemakers, retired workers, seasonal workers interviewed in an off season who were not looking for work, institutionalized people, and people doing only incidental unpaid family work (less than 15 hours during the reference week).
+
+
+
+
+
+Measure "Population Not in Labor Force"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B23025007'
+      );
+
+
+
+
+
+Measure "Population Not in Labor Force" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B23025007'
+        );
+
+
+
+
+
+Measure "Population Not in Labor Force" percent of "Population age 16 and over" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B23025007',
+        'denominator'
+      );
+
+
+Measure "Population Not in Labor Force" percent of "Population age 16 and over" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B23025007',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B23025001`
+
+
+
+  
+  
+
+
+
+
+
+
+.. _us.census.acs.B08134001:
+
+Workers age 16 and over who do not work from home
+---------------------------------------------------------------------------
+
+
+
+The number of workers in a geographic area over the age of 16 who do not work from home
+
+
+
+
+
+Measure "Workers age 16 and over who do not work from home"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B08134001'
+      );
+
+
+
+
+
+Measure "Workers age 16 and over who do not work from home" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B08134001'
+        );
+
+
+
+
+
+
+
+
+
+
+
+
+
+.. contents:: Subcolumns of Workers age 16 and over who do not work from home
+   :local:
+   :depth: 1
+
+  
+  
+  
+
+.. _us.census.acs.B08303003:
+
+Number of workers with a commute between 5 and 9 minutes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+The number of workers in a geographic area over the age of 16 who do not work from home and commute in between 5 and 9 minutes.
+
+
+
+
+
+Measure "Number of workers with a commute between 5 and 9 minutes"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B08303003'
+      );
+
+
+
+
+
+Measure "Number of workers with a commute between 5 and 9 minutes" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B08303003'
+        );
+
+
+
+
+
+Measure "Number of workers with a commute between 5 and 9 minutes" percent of "Workers age 16 and over who do not work from home" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B08303003',
+        'denominator'
+      );
+
+
+Measure "Number of workers with a commute between 5 and 9 minutes" percent of "Workers age 16 and over who do not work from home" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B08303003',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B08134001`
+
+
+
+  
+  
+  
+  
+
+.. _us.census.acs.B08303004:
+
+Number of workers with a commute between 10 and 14 minutes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+The number of workers in a geographic area over the age of 16 who do not work from home and commute in between 10 and 14 minutes. 
+
+
+
+
+
+Measure "Number of workers with a commute between 10 and 14 minutes"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B08303004'
+      );
+
+
+
+
+
+Measure "Number of workers with a commute between 10 and 14 minutes" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B08303004'
+        );
+
+
+
+
+
+Measure "Number of workers with a commute between 10 and 14 minutes" percent of "Workers age 16 and over who do not work from home" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B08303004',
+        'denominator'
+      );
+
+
+Measure "Number of workers with a commute between 10 and 14 minutes" percent of "Workers age 16 and over who do not work from home" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B08303004',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B08134001`
+
+
+
+  
+  
+  
+  
+
+.. _us.census.acs.B08303005:
+
+Number of workers with a commute between 15 and 19 minutes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+The number of workers in a geographic area over the age of 16 who do not work from home and commute in between 15 and 19 minutes. 
+
+
+
+
+
+Measure "Number of workers with a commute between 15 and 19 minutes"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B08303005'
+      );
+
+
+
+
+
+Measure "Number of workers with a commute between 15 and 19 minutes" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B08303005'
+        );
+
+
+
+
+
+Measure "Number of workers with a commute between 15 and 19 minutes" percent of "Workers age 16 and over who do not work from home" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B08303005',
+        'denominator'
+      );
+
+
+Measure "Number of workers with a commute between 15 and 19 minutes" percent of "Workers age 16 and over who do not work from home" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B08303005',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B08134001`
+
+
+
+  
+  
+  
+  
+
+.. _us.census.acs.B08303006:
+
+Number of workers with a commute between 20 and 24 minutes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+The number of workers in a geographic area over the age of 16 who do not work from home and commute in between 20 and 24 minutes.
+
+
+
+
+
+Measure "Number of workers with a commute between 20 and 24 minutes"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B08303006'
+      );
+
+
+
+
+
+Measure "Number of workers with a commute between 20 and 24 minutes" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B08303006'
+        );
+
+
+
+
+
+Measure "Number of workers with a commute between 20 and 24 minutes" percent of "Workers age 16 and over who do not work from home" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B08303006',
+        'denominator'
+      );
+
+
+Measure "Number of workers with a commute between 20 and 24 minutes" percent of "Workers age 16 and over who do not work from home" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B08303006',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B08134001`
+
+
+
+  
+  
+  
+  
+
+.. _us.census.acs.B08303007:
+
+Number of workers with a commute between 25 and 29 minutes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+The number of workers in a geographic area over the age of 16 who do not work from home and commute in between 25 and 29 minutes. 
+
+
+
+
+
+Measure "Number of workers with a commute between 25 and 29 minutes"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B08303007'
+      );
+
+
+
+
+
+Measure "Number of workers with a commute between 25 and 29 minutes" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B08303007'
+        );
+
+
+
+
+
+Measure "Number of workers with a commute between 25 and 29 minutes" percent of "Workers age 16 and over who do not work from home" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B08303007',
+        'denominator'
+      );
+
+
+Measure "Number of workers with a commute between 25 and 29 minutes" percent of "Workers age 16 and over who do not work from home" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B08303007',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B08134001`
+
+
+
+  
+  
+  
+  
+
+.. _us.census.acs.B08303008:
+
+Number of workers with a commute between 30 and 34 minutes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+The number of workers in a geographic area over the age of 16 who do not work from home and commute in between 30 and 34 minutes. 
+
+
+
+
+
+Measure "Number of workers with a commute between 30 and 34 minutes"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B08303008'
+      );
+
+
+
+
+
+Measure "Number of workers with a commute between 30 and 34 minutes" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B08303008'
+        );
+
+
+
+
+
+Measure "Number of workers with a commute between 30 and 34 minutes" percent of "Workers age 16 and over who do not work from home" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B08303008',
+        'denominator'
+      );
+
+
+Measure "Number of workers with a commute between 30 and 34 minutes" percent of "Workers age 16 and over who do not work from home" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B08303008',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B08134001`
+
+
+
+  
+  
+  
+  
+
+.. _us.census.acs.B08303009:
+
+Number of workers with a commute between 35 and 39 minutes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+The number of workers in a geographic area over the age of 16 who do not work from home and commute in between 35 and 39 minutes. 
+
+
+
+
+
+Measure "Number of workers with a commute between 35 and 39 minutes"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B08303009'
+      );
+
+
+
+
+
+Measure "Number of workers with a commute between 35 and 39 minutes" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B08303009'
+        );
+
+
+
+
+
+Measure "Number of workers with a commute between 35 and 39 minutes" percent of "Workers age 16 and over who do not work from home" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B08303009',
+        'denominator'
+      );
+
+
+Measure "Number of workers with a commute between 35 and 39 minutes" percent of "Workers age 16 and over who do not work from home" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B08303009',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B08134001`
+
+
+
+  
+  
+  
+  
+
+.. _us.census.acs.B08134008:
+
+Number of workers with a commute between 35 and 44 minutes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+The number of workers in a geographic area over the age of 16 who do not work from home and commute in between 35 and 44 minutes. 
+
+
+
+
+
+Measure "Number of workers with a commute between 35 and 44 minutes"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B08134008'
+      );
+
+
+
+
+
+Measure "Number of workers with a commute between 35 and 44 minutes" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B08134008'
+        );
+
+
+
+
+
+Measure "Number of workers with a commute between 35 and 44 minutes" percent of "Workers age 16 and over who do not work from home" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B08134008',
+        'denominator'
+      );
+
+
+Measure "Number of workers with a commute between 35 and 44 minutes" percent of "Workers age 16 and over who do not work from home" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B08134008',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B08134001`
+
+
+
+  
+  
+  
+  
+
+.. _us.census.acs.B08303010:
+
+Number of workers with a commute between 40 and 44 minutes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+The number of workers in a geographic area over the age of 16 who do not work from home and commute in between 40 and 44 minutes. 
+
+
+
+
+
+Measure "Number of workers with a commute between 40 and 44 minutes"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B08303010'
+      );
+
+
+
+
+
+Measure "Number of workers with a commute between 40 and 44 minutes" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B08303010'
+        );
+
+
+
+
+
+Measure "Number of workers with a commute between 40 and 44 minutes" percent of "Workers age 16 and over who do not work from home" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B08303010',
+        'denominator'
+      );
+
+
+Measure "Number of workers with a commute between 40 and 44 minutes" percent of "Workers age 16 and over who do not work from home" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B08303010',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B08134001`
+
+
+
+  
+  
+  
+  
+
+.. _us.census.acs.B08303011:
+
+Number of workers with a commute between 45 and 59 minutes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+The number of workers in a geographic area over the age of 16 who do not work from home and commute in between 45 and 59 minutes. 
+
+
+
+
+
+Measure "Number of workers with a commute between 45 and 59 minutes"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B08303011'
+      );
+
+
+
+
+
+Measure "Number of workers with a commute between 45 and 59 minutes" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B08303011'
+        );
+
+
+
+
+
+Measure "Number of workers with a commute between 45 and 59 minutes" percent of "Workers age 16 and over who do not work from home" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B08303011',
+        'denominator'
+      );
+
+
+Measure "Number of workers with a commute between 45 and 59 minutes" percent of "Workers age 16 and over who do not work from home" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B08303011',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B08134001`
+
+
+
+  
+  
+  
+  
+
+.. _us.census.acs.B08303012:
+
+Number of workers with a commute between 60 and 89 minutes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+The number of workers in a geographic area over the age of 16 who do not work from home and commute in between 60 and 89 minutes .
+
+
+
+
+
+Measure "Number of workers with a commute between 60 and 89 minutes"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B08303012'
+      );
+
+
+
+
+
+Measure "Number of workers with a commute between 60 and 89 minutes" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B08303012'
+        );
+
+
+
+
+
+Measure "Number of workers with a commute between 60 and 89 minutes" percent of "Workers age 16 and over who do not work from home" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B08303012',
+        'denominator'
+      );
+
+
+Measure "Number of workers with a commute between 60 and 89 minutes" percent of "Workers age 16 and over who do not work from home" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B08303012',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B08134001`
+
+
+
+  
+  
+  
+  
+
+.. _us.census.acs.B08303013:
+
+Number of workers with a commute of more than 90 minutes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+The number of workers in a geographic area over the age of 16 who do not work from home and commute more than 90 minutes.
+
+
+
+
+
+Measure "Number of workers with a commute of more than 90 minutes"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B08303013'
+      );
+
+
+
+
+
+Measure "Number of workers with a commute of more than 90 minutes" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B08303013'
+        );
+
+
+
+
+
+Measure "Number of workers with a commute of more than 90 minutes" percent of "Workers age 16 and over who do not work from home" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B08303013',
+        'denominator'
+      );
+
+
+Measure "Number of workers with a commute of more than 90 minutes" percent of "Workers age 16 and over who do not work from home" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B08303013',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B08134001`
+
+
+
+  
+  
+  
+  
+
+.. _us.census.acs.B08134010:
+
+Number of workers with a commute of over 60 minutes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+The number of workers in a geographic area over the age of 16 who do not work from home and commute in over 60 minutes.
+
+
+
+
+
+Measure "Number of workers with a commute of over 60 minutes"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B08134010'
+      );
+
+
+
+
+
+Measure "Number of workers with a commute of over 60 minutes" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B08134010'
+        );
+
+
+
+
+
+Measure "Number of workers with a commute of over 60 minutes" percent of "Workers age 16 and over who do not work from home" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B08134010',
+        'denominator'
+      );
+
+
+Measure "Number of workers with a commute of over 60 minutes" percent of "Workers age 16 and over who do not work from home" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B08134010',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B08134001`
+
+
+
+  
+  
+  
+  
+
+.. _us.census.acs.B08134002:
+
+Number of workers with less than 10 minute commute
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+The number of workers in a geographic area over the age of 16 who do not work from home and commute in less than 10 minutes.
+
+
+
+
+
+Measure "Number of workers with less than 10 minute commute"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B08134002'
+      );
+
+
+
+
+
+Measure "Number of workers with less than 10 minute commute" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B08134002'
+        );
+
+
+
+
+
+Measure "Number of workers with less than 10 minute commute" percent of "Workers age 16 and over who do not work from home" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B08134002',
+        'denominator'
+      );
+
+
+Measure "Number of workers with less than 10 minute commute" percent of "Workers age 16 and over who do not work from home" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B08134002',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B08134001`
+
+
+
+  
+  
+
+
+
+
+
+
+.. _us.census.acs.B08006001:
+
+Workers over the Age of 16
+---------------------------------------------------------------------------
+
+
+
+The number of people in each geography who work. Workers include those employed at private for-profit companies, the self-employed, government workers and non-profit employees.
+
+
+
+
+
+Measure "Workers over the Age of 16"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B08006001'
+      );
+
+
+
+
+
+Measure "Workers over the Age of 16" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B08006001'
+        );
+
+
+
+
+
+
+
+
+
+
+
+
+
+.. contents:: Subcolumns of Workers over the Age of 16
+   :local:
+   :depth: 1
+
+  
+  
+  
+  
+  
+
+.. _us.census.acs.B08006017:
+
+Worked at Home
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+The count within a geographical area of workers over the age of 16 who worked at home.
+
+
+
+
+
+Measure "Worked at Home"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B08006017'
+      );
+
+
+
+
+
+Measure "Worked at Home" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B08006017'
+        );
+
+
+
+
+
+Measure "Worked at Home" percent of "Workers over the Age of 16" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B08006017',
+        'denominator'
+      );
+
+
+Measure "Worked at Home" percent of "Workers over the Age of 16" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B08006017',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B08006001`
+
+
+
+  
+  
+  
+  
+
+

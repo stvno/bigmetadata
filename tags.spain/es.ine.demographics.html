@@ -1,0 +1,862 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Demographics &mdash; bigmetadata 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bigmetadata.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/bigmetadata.js"></script>
+    <script type="text/javascript" src="//libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+    <link rel="top" title="bigmetadata 0.0.1 documentation" href="../index.html" />
+    <link rel="up" title="Spain" href="../tags.spain.html" />
+    <link rel="next" title="&lt;no title&gt;" href="tags.age_gender.html" />
+    <link rel="prev" title="Spain" href="../tags.spain.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="demographics">
+<h1>Demographics<a class="headerlink" href="#demographics" title="Permalink to this headline">¶</a></h1>
+<p>Demographics of Spain from the INE Census</p>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#total-population" id="id1">Total Population</a><ul>
+<li><a class="reference internal" href="#population-age-0-to-4" id="id2">Population age 0 to 4</a></li>
+<li><a class="reference internal" href="#population-age-5-to-9" id="id3">Population age 5 to 9</a></li>
+<li><a class="reference internal" href="#population-age-10-to-14" id="id4">Population age 10 to 14</a></li>
+<li><a class="reference internal" href="#population-age-15-to-19" id="id5">Population age 15 to 19</a></li>
+<li><a class="reference internal" href="#population-age-20-to-24" id="id6">Population age 20 to 24</a></li>
+<li><a class="reference internal" href="#population-age-25-to-29" id="id7">Population age 25 to 29</a></li>
+<li><a class="reference internal" href="#population-age-30-to-34" id="id8">Population age 30 to 34</a></li>
+<li><a class="reference internal" href="#population-age-35-to-39" id="id9">Population age 35 to 39</a></li>
+<li><a class="reference internal" href="#population-age-40-to-44" id="id10">Population age 40 to 44</a></li>
+<li><a class="reference internal" href="#population-age-45-to-49" id="id11">Population age 45 to 49</a></li>
+<li><a class="reference internal" href="#population-age-50-to-54" id="id12">Population age 50 to 54</a></li>
+<li><a class="reference internal" href="#population-age-55-to-59" id="id13">Population age 55 to 59</a></li>
+<li><a class="reference internal" href="#population-age-60-to-64" id="id14">Population age 60 to 64</a></li>
+<li><a class="reference internal" href="#population-age-65-to-69" id="id15">Population age 65 to 69</a></li>
+<li><a class="reference internal" href="#population-age-70-to-74" id="id16">Population age 70 to 74</a></li>
+<li><a class="reference internal" href="#population-age-75-to-79" id="id17">Population age 75 to 79</a></li>
+<li><a class="reference internal" href="#population-age-80-to-84" id="id18">Population age 80 to 84</a></li>
+<li><a class="reference internal" href="#population-age-85-to-89" id="id19">Population age 85 to 89</a></li>
+<li><a class="reference internal" href="#population-age-90-to-94" id="id20">Population age 90 to 94</a></li>
+<li><a class="reference internal" href="#population-age-95-to-99" id="id21">Population age 95 to 99</a></li>
+<li><a class="reference internal" href="#population-age-100-or-more" id="id22">Population age 100 or more</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="total-population">
+<span id="es-ine-total-pop"></span><h2><a class="toc-backref" href="#id1">Total Population</a><a class="headerlink" href="#total-population" title="Permalink to this headline">¶</a></h2>
+<p>The total number of all people living in a geographic area.</p>
+<p>Measure &#8220;Total Population&#8221;  density per sq. kilometer  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.total_pop&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Total Population&#8221; within an area:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.total_pop&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<div class="contents local topic" id="subcolumns-of-total-population">
+<p class="topic-title first">Subcolumns of Total Population</p>
+<ul class="simple">
+<li><a class="reference internal" href="#population-age-0-to-4" id="id23">Population age 0 to 4</a></li>
+<li><a class="reference internal" href="#population-age-5-to-9" id="id24">Population age 5 to 9</a></li>
+<li><a class="reference internal" href="#population-age-10-to-14" id="id25">Population age 10 to 14</a></li>
+<li><a class="reference internal" href="#population-age-15-to-19" id="id26">Population age 15 to 19</a></li>
+<li><a class="reference internal" href="#population-age-20-to-24" id="id27">Population age 20 to 24</a></li>
+<li><a class="reference internal" href="#population-age-25-to-29" id="id28">Population age 25 to 29</a></li>
+<li><a class="reference internal" href="#population-age-30-to-34" id="id29">Population age 30 to 34</a></li>
+<li><a class="reference internal" href="#population-age-35-to-39" id="id30">Population age 35 to 39</a></li>
+<li><a class="reference internal" href="#population-age-40-to-44" id="id31">Population age 40 to 44</a></li>
+<li><a class="reference internal" href="#population-age-45-to-49" id="id32">Population age 45 to 49</a></li>
+<li><a class="reference internal" href="#population-age-50-to-54" id="id33">Population age 50 to 54</a></li>
+<li><a class="reference internal" href="#population-age-55-to-59" id="id34">Population age 55 to 59</a></li>
+<li><a class="reference internal" href="#population-age-60-to-64" id="id35">Population age 60 to 64</a></li>
+<li><a class="reference internal" href="#population-age-65-to-69" id="id36">Population age 65 to 69</a></li>
+<li><a class="reference internal" href="#population-age-70-to-74" id="id37">Population age 70 to 74</a></li>
+<li><a class="reference internal" href="#population-age-75-to-79" id="id38">Population age 75 to 79</a></li>
+<li><a class="reference internal" href="#population-age-80-to-84" id="id39">Population age 80 to 84</a></li>
+<li><a class="reference internal" href="#population-age-85-to-89" id="id40">Population age 85 to 89</a></li>
+<li><a class="reference internal" href="#population-age-90-to-94" id="id41">Population age 90 to 94</a></li>
+<li><a class="reference internal" href="#population-age-95-to-99" id="id42">Population age 95 to 99</a></li>
+<li><a class="reference internal" href="#population-age-100-or-more" id="id43">Population age 100 or more</a></li>
+</ul>
+</div>
+<div class="section" id="population-age-0-to-4">
+<span id="es-ine-pop-0-4"></span><h3><a class="toc-backref" href="#id23">Population age 0 to 4</a><a class="headerlink" href="#population-age-0-to-4" title="Permalink to this headline">¶</a></h3>
+<p>Measure &#8220;Population age 0 to 4&#8221;  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.pop_0_4&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Population age 0 to 4 is only available for point lookups.</p>
+<p>Measure &#8220;Population age 0 to 4&#8221; percent of &#8220;Total Population&#8221; at one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.pop_0_4&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#es-ine-total-pop"><span class="std std-ref">Total Population</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="population-age-5-to-9">
+<span id="es-ine-pop-5-9"></span><h3><a class="toc-backref" href="#id24">Population age 5 to 9</a><a class="headerlink" href="#population-age-5-to-9" title="Permalink to this headline">¶</a></h3>
+<p>Measure &#8220;Population age 5 to 9&#8221;  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.pop_5_9&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Population age 5 to 9 is only available for point lookups.</p>
+<p>Measure &#8220;Population age 5 to 9&#8221; percent of &#8220;Total Population&#8221; at one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.pop_5_9&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#es-ine-total-pop"><span class="std std-ref">Total Population</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="population-age-10-to-14">
+<span id="es-ine-pop-10-14"></span><h3><a class="toc-backref" href="#id25">Population age 10 to 14</a><a class="headerlink" href="#population-age-10-to-14" title="Permalink to this headline">¶</a></h3>
+<p>Measure &#8220;Population age 10 to 14&#8221;  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.pop_10_14&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Population age 10 to 14 is only available for point lookups.</p>
+<p>Measure &#8220;Population age 10 to 14&#8221; percent of &#8220;Total Population&#8221; at one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.pop_10_14&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#es-ine-total-pop"><span class="std std-ref">Total Population</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="population-age-15-to-19">
+<span id="es-ine-pop-15-19"></span><h3><a class="toc-backref" href="#id26">Population age 15 to 19</a><a class="headerlink" href="#population-age-15-to-19" title="Permalink to this headline">¶</a></h3>
+<p>Measure &#8220;Population age 15 to 19&#8221;  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.pop_15_19&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Population age 15 to 19 is only available for point lookups.</p>
+<p>Measure &#8220;Population age 15 to 19&#8221; percent of &#8220;Total Population&#8221; at one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.pop_15_19&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#es-ine-total-pop"><span class="std std-ref">Total Population</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="population-age-20-to-24">
+<span id="es-ine-pop-20-24"></span><h3><a class="toc-backref" href="#id27">Population age 20 to 24</a><a class="headerlink" href="#population-age-20-to-24" title="Permalink to this headline">¶</a></h3>
+<p>Measure &#8220;Population age 20 to 24&#8221;  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.pop_20_24&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Population age 20 to 24 is only available for point lookups.</p>
+<p>Measure &#8220;Population age 20 to 24&#8221; percent of &#8220;Total Population&#8221; at one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.pop_20_24&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#es-ine-total-pop"><span class="std std-ref">Total Population</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="population-age-25-to-29">
+<span id="es-ine-pop-25-29"></span><h3><a class="toc-backref" href="#id28">Population age 25 to 29</a><a class="headerlink" href="#population-age-25-to-29" title="Permalink to this headline">¶</a></h3>
+<p>Measure &#8220;Population age 25 to 29&#8221;  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.pop_25_29&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Population age 25 to 29 is only available for point lookups.</p>
+<p>Measure &#8220;Population age 25 to 29&#8221; percent of &#8220;Total Population&#8221; at one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.pop_25_29&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#es-ine-total-pop"><span class="std std-ref">Total Population</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="population-age-30-to-34">
+<span id="es-ine-pop-30-34"></span><h3><a class="toc-backref" href="#id29">Population age 30 to 34</a><a class="headerlink" href="#population-age-30-to-34" title="Permalink to this headline">¶</a></h3>
+<p>Measure &#8220;Population age 30 to 34&#8221;  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.pop_30_34&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Population age 30 to 34 is only available for point lookups.</p>
+<p>Measure &#8220;Population age 30 to 34&#8221; percent of &#8220;Total Population&#8221; at one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.pop_30_34&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#es-ine-total-pop"><span class="std std-ref">Total Population</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="population-age-35-to-39">
+<span id="es-ine-pop-35-39"></span><h3><a class="toc-backref" href="#id30">Population age 35 to 39</a><a class="headerlink" href="#population-age-35-to-39" title="Permalink to this headline">¶</a></h3>
+<p>Measure &#8220;Population age 35 to 39&#8221;  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.pop_35_39&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Population age 35 to 39 is only available for point lookups.</p>
+<p>Measure &#8220;Population age 35 to 39&#8221; percent of &#8220;Total Population&#8221; at one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.pop_35_39&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#es-ine-total-pop"><span class="std std-ref">Total Population</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="population-age-40-to-44">
+<span id="es-ine-pop-40-44"></span><h3><a class="toc-backref" href="#id31">Population age 40 to 44</a><a class="headerlink" href="#population-age-40-to-44" title="Permalink to this headline">¶</a></h3>
+<p>Measure &#8220;Population age 40 to 44&#8221;  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.pop_40_44&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Population age 40 to 44 is only available for point lookups.</p>
+<p>Measure &#8220;Population age 40 to 44&#8221; percent of &#8220;Total Population&#8221; at one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.pop_40_44&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#es-ine-total-pop"><span class="std std-ref">Total Population</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="population-age-45-to-49">
+<span id="es-ine-pop-45-49"></span><h3><a class="toc-backref" href="#id32">Population age 45 to 49</a><a class="headerlink" href="#population-age-45-to-49" title="Permalink to this headline">¶</a></h3>
+<p>Measure &#8220;Population age 45 to 49&#8221;  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.pop_45_49&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Population age 45 to 49 is only available for point lookups.</p>
+<p>Measure &#8220;Population age 45 to 49&#8221; percent of &#8220;Total Population&#8221; at one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.pop_45_49&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#es-ine-total-pop"><span class="std std-ref">Total Population</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="population-age-50-to-54">
+<span id="es-ine-pop-50-54"></span><h3><a class="toc-backref" href="#id33">Population age 50 to 54</a><a class="headerlink" href="#population-age-50-to-54" title="Permalink to this headline">¶</a></h3>
+<p>Measure &#8220;Population age 50 to 54&#8221;  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.pop_50_54&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Population age 50 to 54 is only available for point lookups.</p>
+<p>Measure &#8220;Population age 50 to 54&#8221; percent of &#8220;Total Population&#8221; at one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.pop_50_54&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#es-ine-total-pop"><span class="std std-ref">Total Population</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="population-age-55-to-59">
+<span id="es-ine-pop-55-59"></span><h3><a class="toc-backref" href="#id34">Population age 55 to 59</a><a class="headerlink" href="#population-age-55-to-59" title="Permalink to this headline">¶</a></h3>
+<p>Measure &#8220;Population age 55 to 59&#8221;  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.pop_55_59&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Population age 55 to 59 is only available for point lookups.</p>
+<p>Measure &#8220;Population age 55 to 59&#8221; percent of &#8220;Total Population&#8221; at one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.pop_55_59&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#es-ine-total-pop"><span class="std std-ref">Total Population</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="population-age-60-to-64">
+<span id="es-ine-pop-60-64"></span><h3><a class="toc-backref" href="#id35">Population age 60 to 64</a><a class="headerlink" href="#population-age-60-to-64" title="Permalink to this headline">¶</a></h3>
+<p>Measure &#8220;Population age 60 to 64&#8221;  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.pop_60_64&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Population age 60 to 64 is only available for point lookups.</p>
+<p>Measure &#8220;Population age 60 to 64&#8221; percent of &#8220;Total Population&#8221; at one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.pop_60_64&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#es-ine-total-pop"><span class="std std-ref">Total Population</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="population-age-65-to-69">
+<span id="es-ine-pop-65-69"></span><h3><a class="toc-backref" href="#id36">Population age 65 to 69</a><a class="headerlink" href="#population-age-65-to-69" title="Permalink to this headline">¶</a></h3>
+<p>Measure &#8220;Population age 65 to 69&#8221;  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.pop_65_69&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Population age 65 to 69 is only available for point lookups.</p>
+<p>Measure &#8220;Population age 65 to 69&#8221; percent of &#8220;Total Population&#8221; at one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.pop_65_69&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#es-ine-total-pop"><span class="std std-ref">Total Population</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="population-age-70-to-74">
+<span id="es-ine-pop-70-74"></span><h3><a class="toc-backref" href="#id37">Population age 70 to 74</a><a class="headerlink" href="#population-age-70-to-74" title="Permalink to this headline">¶</a></h3>
+<p>Measure &#8220;Population age 70 to 74&#8221;  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.pop_70_74&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Population age 70 to 74 is only available for point lookups.</p>
+<p>Measure &#8220;Population age 70 to 74&#8221; percent of &#8220;Total Population&#8221; at one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.pop_70_74&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#es-ine-total-pop"><span class="std std-ref">Total Population</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="population-age-75-to-79">
+<span id="es-ine-pop-75-79"></span><h3><a class="toc-backref" href="#id38">Population age 75 to 79</a><a class="headerlink" href="#population-age-75-to-79" title="Permalink to this headline">¶</a></h3>
+<p>Measure &#8220;Population age 75 to 79&#8221;  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.pop_75_79&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Population age 75 to 79 is only available for point lookups.</p>
+<p>Measure &#8220;Population age 75 to 79&#8221; percent of &#8220;Total Population&#8221; at one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.pop_75_79&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#es-ine-total-pop"><span class="std std-ref">Total Population</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="population-age-80-to-84">
+<span id="es-ine-pop-80-84"></span><h3><a class="toc-backref" href="#id39">Population age 80 to 84</a><a class="headerlink" href="#population-age-80-to-84" title="Permalink to this headline">¶</a></h3>
+<p>Measure &#8220;Population age 80 to 84&#8221;  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.pop_80_84&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Population age 80 to 84 is only available for point lookups.</p>
+<p>Measure &#8220;Population age 80 to 84&#8221; percent of &#8220;Total Population&#8221; at one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.pop_80_84&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#es-ine-total-pop"><span class="std std-ref">Total Population</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="population-age-85-to-89">
+<span id="es-ine-pop-85-89"></span><h3><a class="toc-backref" href="#id40">Population age 85 to 89</a><a class="headerlink" href="#population-age-85-to-89" title="Permalink to this headline">¶</a></h3>
+<p>Measure &#8220;Population age 85 to 89&#8221;  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.pop_85_89&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Population age 85 to 89 is only available for point lookups.</p>
+<p>Measure &#8220;Population age 85 to 89&#8221; percent of &#8220;Total Population&#8221; at one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.pop_85_89&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#es-ine-total-pop"><span class="std std-ref">Total Population</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="population-age-90-to-94">
+<span id="es-ine-pop-90-94"></span><h3><a class="toc-backref" href="#id41">Population age 90 to 94</a><a class="headerlink" href="#population-age-90-to-94" title="Permalink to this headline">¶</a></h3>
+<p>Measure &#8220;Population age 90 to 94&#8221;  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.pop_90_94&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Population age 90 to 94 is only available for point lookups.</p>
+<p>Measure &#8220;Population age 90 to 94&#8221; percent of &#8220;Total Population&#8221; at one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.pop_90_94&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#es-ine-total-pop"><span class="std std-ref">Total Population</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="population-age-95-to-99">
+<span id="es-ine-pop-95-99"></span><h3><a class="toc-backref" href="#id42">Population age 95 to 99</a><a class="headerlink" href="#population-age-95-to-99" title="Permalink to this headline">¶</a></h3>
+<p>Measure &#8220;Population age 95 to 99&#8221;  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.pop_95_99&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Population age 95 to 99 is only available for point lookups.</p>
+<p>Measure &#8220;Population age 95 to 99&#8221; percent of &#8220;Total Population&#8221; at one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.pop_95_99&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#es-ine-total-pop"><span class="std std-ref">Total Population</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="population-age-100-or-more">
+<span id="es-ine-pop-100-more"></span><h3><a class="toc-backref" href="#id43">Population age 100 or more</a><a class="headerlink" href="#population-age-100-or-more" title="Permalink to this headline">¶</a></h3>
+<p>Measure &#8220;Population age 100 or more&#8221;  for one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.pop_100_more&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Population age 100 or more is only available for point lookups.</p>
+<p>Measure &#8220;Population age 100 or more&#8221; percent of &#8220;Total Population&#8221; at one point:</p>
+<div class="code postgresql highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="n">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">),</span>
+      <span class="s1">&#39;es.ine.pop_100_more&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#es-ine-total-pop"><span class="std std-ref">Total Population</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Demographics</a><ul>
+<li><a class="reference internal" href="#total-population">Total Population</a><ul>
+<li><a class="reference internal" href="#population-age-0-to-4">Population age 0 to 4</a></li>
+<li><a class="reference internal" href="#population-age-5-to-9">Population age 5 to 9</a></li>
+<li><a class="reference internal" href="#population-age-10-to-14">Population age 10 to 14</a></li>
+<li><a class="reference internal" href="#population-age-15-to-19">Population age 15 to 19</a></li>
+<li><a class="reference internal" href="#population-age-20-to-24">Population age 20 to 24</a></li>
+<li><a class="reference internal" href="#population-age-25-to-29">Population age 25 to 29</a></li>
+<li><a class="reference internal" href="#population-age-30-to-34">Population age 30 to 34</a></li>
+<li><a class="reference internal" href="#population-age-35-to-39">Population age 35 to 39</a></li>
+<li><a class="reference internal" href="#population-age-40-to-44">Population age 40 to 44</a></li>
+<li><a class="reference internal" href="#population-age-45-to-49">Population age 45 to 49</a></li>
+<li><a class="reference internal" href="#population-age-50-to-54">Population age 50 to 54</a></li>
+<li><a class="reference internal" href="#population-age-55-to-59">Population age 55 to 59</a></li>
+<li><a class="reference internal" href="#population-age-60-to-64">Population age 60 to 64</a></li>
+<li><a class="reference internal" href="#population-age-65-to-69">Population age 65 to 69</a></li>
+<li><a class="reference internal" href="#population-age-70-to-74">Population age 70 to 74</a></li>
+<li><a class="reference internal" href="#population-age-75-to-79">Population age 75 to 79</a></li>
+<li><a class="reference internal" href="#population-age-80-to-84">Population age 80 to 84</a></li>
+<li><a class="reference internal" href="#population-age-85-to-89">Population age 85 to 89</a></li>
+<li><a class="reference internal" href="#population-age-90-to-94">Population age 90 to 94</a></li>
+<li><a class="reference internal" href="#population-age-95-to-99">Population age 95 to 99</a></li>
+<li><a class="reference internal" href="#population-age-100-or-more">Population age 100 or more</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../tags.spain.html">Spain</a><ul>
+      <li>Previous: <a href="../tags.spain.html" title="previous chapter">Spain</a></li>
+      <li>Next: <a href="tags.age_gender.html" title="next chapter">&lt;no title&gt;</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/tags.spain/es.ine.demographics.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, CartoDB.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="../_sources/tags.spain/es.ine.demographics.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

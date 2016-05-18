@@ -1,0 +1,74 @@
+
+
+.. Boundaries:
+
+Boundaries
+===========================================================================
+
+Political, administrative, and census-based boundaries.
+
+.. contents::
+   :local:
+   :depth: 10
+
+
+
+
+
+.. _es.ine.the_geom:
+
+Sección Censal
+---------------------------------------------------------------------------
+
+
+
+The smallest division of the Spanish Census.
+
+
+
+
+
+Obtain "Sección Censal" geometry at one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  INSERT INTO {tablename}(the_geom)
+    SELECT OBS_GetBoundary(
+      CDB_LatLng(40.39, -3.7),
+      'es.ine.the_geom'
+    )
+
+
+
+
+
+Obtain all "Sección Censal" geometries within an area:
+
+.. code:: postgresql
+
+  INSERT INTO {new_table_name} (the_geom, {geo_id_column})
+    SELECT *
+    FROM OBS_GetBoundariesByGeometry(
+      ST_Buffer(CDB_LatLng(40.39, -3.7), 0.01),
+      'es.ine.the_geom'
+    )
+
+
+
+
+
+
+
+
+
+
+
+
+

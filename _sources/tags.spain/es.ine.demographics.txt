@@ -1,0 +1,1615 @@
+
+
+.. Demographics:
+
+Demographics
+===========================================================================
+
+Demographics of Spain from the INE Census
+
+.. contents::
+   :local:
+   :depth: 10
+
+
+
+
+
+.. _es.ine.total_pop:
+
+Total Population
+---------------------------------------------------------------------------
+
+
+
+The total number of all people living in a geographic area.
+
+
+
+
+
+Measure "Total Population"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.total_pop'
+      );
+
+
+
+
+
+Measure "Total Population" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.39, -3.7), 0.01),
+          'es.ine.total_pop'
+        );
+
+
+
+
+
+
+
+
+
+
+
+
+
+.. contents:: Subcolumns of Total Population
+   :local:
+   :depth: 1
+
+  
+  
+  
+
+.. _es.ine.pop_0_4:
+
+Population age 0 to 4
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+
+
+
+
+
+Measure "Population age 0 to 4"  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.pop_0_4'
+      );
+
+
+
+
+
+
+Population age 0 to 4 is only available for point lookups.
+
+
+
+
+Measure "Population age 0 to 4" percent of "Total Population" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.pop_0_4',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`es.ine.total_pop`
+
+
+
+  
+  
+  
+  
+
+.. _es.ine.pop_5_9:
+
+Population age 5 to 9
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+
+
+
+
+
+Measure "Population age 5 to 9"  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.pop_5_9'
+      );
+
+
+
+
+
+
+Population age 5 to 9 is only available for point lookups.
+
+
+
+
+Measure "Population age 5 to 9" percent of "Total Population" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.pop_5_9',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`es.ine.total_pop`
+
+
+
+  
+  
+  
+  
+
+.. _es.ine.pop_10_14:
+
+Population age 10 to 14
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+
+
+
+
+
+Measure "Population age 10 to 14"  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.pop_10_14'
+      );
+
+
+
+
+
+
+Population age 10 to 14 is only available for point lookups.
+
+
+
+
+Measure "Population age 10 to 14" percent of "Total Population" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.pop_10_14',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`es.ine.total_pop`
+
+
+
+  
+  
+  
+  
+
+.. _es.ine.pop_15_19:
+
+Population age 15 to 19
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+
+
+
+
+
+Measure "Population age 15 to 19"  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.pop_15_19'
+      );
+
+
+
+
+
+
+Population age 15 to 19 is only available for point lookups.
+
+
+
+
+Measure "Population age 15 to 19" percent of "Total Population" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.pop_15_19',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`es.ine.total_pop`
+
+
+
+  
+  
+  
+  
+
+.. _es.ine.pop_20_24:
+
+Population age 20 to 24
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+
+
+
+
+
+Measure "Population age 20 to 24"  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.pop_20_24'
+      );
+
+
+
+
+
+
+Population age 20 to 24 is only available for point lookups.
+
+
+
+
+Measure "Population age 20 to 24" percent of "Total Population" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.pop_20_24',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`es.ine.total_pop`
+
+
+
+  
+  
+  
+  
+
+.. _es.ine.pop_25_29:
+
+Population age 25 to 29
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+
+
+
+
+
+Measure "Population age 25 to 29"  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.pop_25_29'
+      );
+
+
+
+
+
+
+Population age 25 to 29 is only available for point lookups.
+
+
+
+
+Measure "Population age 25 to 29" percent of "Total Population" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.pop_25_29',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`es.ine.total_pop`
+
+
+
+  
+  
+  
+  
+
+.. _es.ine.pop_30_34:
+
+Population age 30 to 34
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+
+
+
+
+
+Measure "Population age 30 to 34"  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.pop_30_34'
+      );
+
+
+
+
+
+
+Population age 30 to 34 is only available for point lookups.
+
+
+
+
+Measure "Population age 30 to 34" percent of "Total Population" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.pop_30_34',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`es.ine.total_pop`
+
+
+
+  
+  
+  
+  
+
+.. _es.ine.pop_35_39:
+
+Population age 35 to 39
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+
+
+
+
+
+Measure "Population age 35 to 39"  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.pop_35_39'
+      );
+
+
+
+
+
+
+Population age 35 to 39 is only available for point lookups.
+
+
+
+
+Measure "Population age 35 to 39" percent of "Total Population" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.pop_35_39',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`es.ine.total_pop`
+
+
+
+  
+  
+  
+  
+
+.. _es.ine.pop_40_44:
+
+Population age 40 to 44
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+
+
+
+
+
+Measure "Population age 40 to 44"  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.pop_40_44'
+      );
+
+
+
+
+
+
+Population age 40 to 44 is only available for point lookups.
+
+
+
+
+Measure "Population age 40 to 44" percent of "Total Population" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.pop_40_44',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`es.ine.total_pop`
+
+
+
+  
+  
+  
+  
+
+.. _es.ine.pop_45_49:
+
+Population age 45 to 49
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+
+
+
+
+
+Measure "Population age 45 to 49"  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.pop_45_49'
+      );
+
+
+
+
+
+
+Population age 45 to 49 is only available for point lookups.
+
+
+
+
+Measure "Population age 45 to 49" percent of "Total Population" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.pop_45_49',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`es.ine.total_pop`
+
+
+
+  
+  
+  
+  
+
+.. _es.ine.pop_50_54:
+
+Population age 50 to 54
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+
+
+
+
+
+Measure "Population age 50 to 54"  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.pop_50_54'
+      );
+
+
+
+
+
+
+Population age 50 to 54 is only available for point lookups.
+
+
+
+
+Measure "Population age 50 to 54" percent of "Total Population" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.pop_50_54',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`es.ine.total_pop`
+
+
+
+  
+  
+  
+  
+
+.. _es.ine.pop_55_59:
+
+Population age 55 to 59
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+
+
+
+
+
+Measure "Population age 55 to 59"  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.pop_55_59'
+      );
+
+
+
+
+
+
+Population age 55 to 59 is only available for point lookups.
+
+
+
+
+Measure "Population age 55 to 59" percent of "Total Population" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.pop_55_59',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`es.ine.total_pop`
+
+
+
+  
+  
+  
+  
+
+.. _es.ine.pop_60_64:
+
+Population age 60 to 64
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+
+
+
+
+
+Measure "Population age 60 to 64"  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.pop_60_64'
+      );
+
+
+
+
+
+
+Population age 60 to 64 is only available for point lookups.
+
+
+
+
+Measure "Population age 60 to 64" percent of "Total Population" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.pop_60_64',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`es.ine.total_pop`
+
+
+
+  
+  
+  
+  
+
+.. _es.ine.pop_65_69:
+
+Population age 65 to 69
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+
+
+
+
+
+Measure "Population age 65 to 69"  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.pop_65_69'
+      );
+
+
+
+
+
+
+Population age 65 to 69 is only available for point lookups.
+
+
+
+
+Measure "Population age 65 to 69" percent of "Total Population" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.pop_65_69',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`es.ine.total_pop`
+
+
+
+  
+  
+  
+  
+
+.. _es.ine.pop_70_74:
+
+Population age 70 to 74
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+
+
+
+
+
+Measure "Population age 70 to 74"  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.pop_70_74'
+      );
+
+
+
+
+
+
+Population age 70 to 74 is only available for point lookups.
+
+
+
+
+Measure "Population age 70 to 74" percent of "Total Population" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.pop_70_74',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`es.ine.total_pop`
+
+
+
+  
+  
+  
+  
+
+.. _es.ine.pop_75_79:
+
+Population age 75 to 79
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+
+
+
+
+
+Measure "Population age 75 to 79"  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.pop_75_79'
+      );
+
+
+
+
+
+
+Population age 75 to 79 is only available for point lookups.
+
+
+
+
+Measure "Population age 75 to 79" percent of "Total Population" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.pop_75_79',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`es.ine.total_pop`
+
+
+
+  
+  
+  
+  
+
+.. _es.ine.pop_80_84:
+
+Population age 80 to 84
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+
+
+
+
+
+Measure "Population age 80 to 84"  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.pop_80_84'
+      );
+
+
+
+
+
+
+Population age 80 to 84 is only available for point lookups.
+
+
+
+
+Measure "Population age 80 to 84" percent of "Total Population" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.pop_80_84',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`es.ine.total_pop`
+
+
+
+  
+  
+  
+  
+
+.. _es.ine.pop_85_89:
+
+Population age 85 to 89
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+
+
+
+
+
+Measure "Population age 85 to 89"  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.pop_85_89'
+      );
+
+
+
+
+
+
+Population age 85 to 89 is only available for point lookups.
+
+
+
+
+Measure "Population age 85 to 89" percent of "Total Population" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.pop_85_89',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`es.ine.total_pop`
+
+
+
+  
+  
+  
+  
+
+.. _es.ine.pop_90_94:
+
+Population age 90 to 94
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+
+
+
+
+
+Measure "Population age 90 to 94"  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.pop_90_94'
+      );
+
+
+
+
+
+
+Population age 90 to 94 is only available for point lookups.
+
+
+
+
+Measure "Population age 90 to 94" percent of "Total Population" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.pop_90_94',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`es.ine.total_pop`
+
+
+
+  
+  
+  
+  
+
+.. _es.ine.pop_95_99:
+
+Population age 95 to 99
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+
+
+
+
+
+Measure "Population age 95 to 99"  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.pop_95_99'
+      );
+
+
+
+
+
+
+Population age 95 to 99 is only available for point lookups.
+
+
+
+
+Measure "Population age 95 to 99" percent of "Total Population" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.pop_95_99',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`es.ine.total_pop`
+
+
+
+  
+  
+  
+  
+
+.. _es.ine.pop_100_more:
+
+Population age 100 or more
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+
+
+
+
+
+Measure "Population age 100 or more"  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.pop_100_more'
+      );
+
+
+
+
+
+
+Population age 100 or more is only available for point lookups.
+
+
+
+
+Measure "Population age 100 or more" percent of "Total Population" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.39, -3.7),
+        'es.ine.pop_100_more',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`es.ine.total_pop`
+
+
+
+  
+  
+
+

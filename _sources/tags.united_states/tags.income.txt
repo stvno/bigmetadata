@@ -1,0 +1,1925 @@
+
+
+.. Income:
+
+Income
+===========================================================================
+
+
+How much people earn.
+
+.. figure:: ../img/GenerateStaticImage_5a2f4cc8_e189_11_125dd21a55.png
+  :width: 100 %
+  :alt: Median Household Income
+  :align: center
+  :target: https://observatory.cartodb.com/viz/5a2f4cc8-e189-11e5-8327-0e5db1731f59/embed_map
+
+  Median household income in the United States according to the American
+  Community Survey, 5-year estimate from 2014.
+
+
+
+.. contents::
+   :local:
+   :depth: 10
+
+
+
+
+
+.. _us.census.acs.B19083001:
+
+Gini Index
+---------------------------------------------------------------------------
+
+
+
+The Gini index, or index of income concentration, is a statistical measure of income inequality ranging from 0 to 1. A measure of 1 indicates perfect inequality, i.e., one household having all the income and rest having none. A measure of 0 indicates perfect equality, i.e., all households having an equal share of income.
+
+
+
+
+
+Measure "Gini Index"  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B19083001'
+      );
+
+
+
+
+
+
+Gini Index is only available for point lookups.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.. _us.census.acs.B19001002:
+
+Households with income less than $10,000
+---------------------------------------------------------------------------
+
+
+
+The number of households in a geographic area whose annual income was less than $10,000.
+
+
+
+
+
+Measure "Households with income less than $10,000"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B19001002'
+      );
+
+
+
+
+
+Measure "Households with income less than $10,000" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B19001002'
+        );
+
+
+
+
+
+Measure "Households with income less than $10,000" percent of "Households" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B19001002',
+        'denominator'
+      );
+
+
+Measure "Households with income less than $10,000" percent of "Households" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B19001002',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B11001001`
+
+
+
+
+
+
+
+
+.. _us.census.acs.B19001003:
+
+Households with income of $10,000 to $14,999
+---------------------------------------------------------------------------
+
+
+
+The number of households in a geographic area whose annual income was between $10,000 and $14,999.
+
+
+
+
+
+Measure "Households with income of $10,000 to $14,999"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B19001003'
+      );
+
+
+
+
+
+Measure "Households with income of $10,000 to $14,999" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B19001003'
+        );
+
+
+
+
+
+Measure "Households with income of $10,000 to $14,999" percent of "Households" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B19001003',
+        'denominator'
+      );
+
+
+Measure "Households with income of $10,000 to $14,999" percent of "Households" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B19001003',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B11001001`
+
+
+
+
+
+
+
+
+.. _us.census.acs.B19001014:
+
+Households with income of $100,000 To $124,999
+---------------------------------------------------------------------------
+
+
+
+The number of households in a geographic area whose annual income was between $100,000 and $124,999.
+
+
+
+
+
+Measure "Households with income of $100,000 To $124,999"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B19001014'
+      );
+
+
+
+
+
+Measure "Households with income of $100,000 To $124,999" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B19001014'
+        );
+
+
+
+
+
+Measure "Households with income of $100,000 To $124,999" percent of "Households" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B19001014',
+        'denominator'
+      );
+
+
+Measure "Households with income of $100,000 To $124,999" percent of "Households" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B19001014',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B11001001`
+
+
+
+
+
+
+
+
+.. _us.census.acs.B19001015:
+
+Households with income of $125,000 To $149,999
+---------------------------------------------------------------------------
+
+
+
+The number of households in a geographic area whose annual income was between $125,000 and $149,999.
+
+
+
+
+
+Measure "Households with income of $125,000 To $149,999"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B19001015'
+      );
+
+
+
+
+
+Measure "Households with income of $125,000 To $149,999" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B19001015'
+        );
+
+
+
+
+
+Measure "Households with income of $125,000 To $149,999" percent of "Households" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B19001015',
+        'denominator'
+      );
+
+
+Measure "Households with income of $125,000 To $149,999" percent of "Households" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B19001015',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B11001001`
+
+
+
+
+
+
+
+
+.. _us.census.acs.B19001004:
+
+Households with income of $15,000 to $19,999
+---------------------------------------------------------------------------
+
+
+
+The number of households in a geographic area whose annual income was between $15,000 and $19,999.
+
+
+
+
+
+Measure "Households with income of $15,000 to $19,999"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B19001004'
+      );
+
+
+
+
+
+Measure "Households with income of $15,000 to $19,999" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B19001004'
+        );
+
+
+
+
+
+Measure "Households with income of $15,000 to $19,999" percent of "Households" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B19001004',
+        'denominator'
+      );
+
+
+Measure "Households with income of $15,000 to $19,999" percent of "Households" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B19001004',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B11001001`
+
+
+
+
+
+
+
+
+.. _us.census.acs.B19001016:
+
+Households with income of $150,000 To $199,999
+---------------------------------------------------------------------------
+
+
+
+The number of households in a geographic area whose annual income was between $150,000 and $1999,999.
+
+
+
+
+
+Measure "Households with income of $150,000 To $199,999"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B19001016'
+      );
+
+
+
+
+
+Measure "Households with income of $150,000 To $199,999" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B19001016'
+        );
+
+
+
+
+
+Measure "Households with income of $150,000 To $199,999" percent of "Households" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B19001016',
+        'denominator'
+      );
+
+
+Measure "Households with income of $150,000 To $199,999" percent of "Households" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B19001016',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B11001001`
+
+
+
+
+
+
+
+
+.. _us.census.acs.B19001005:
+
+Households with income of $20,000 To $24,999
+---------------------------------------------------------------------------
+
+
+
+The number of households in a geographic area whose annual income was between $20,000 and $24,999.
+
+
+
+
+
+Measure "Households with income of $20,000 To $24,999"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B19001005'
+      );
+
+
+
+
+
+Measure "Households with income of $20,000 To $24,999" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B19001005'
+        );
+
+
+
+
+
+Measure "Households with income of $20,000 To $24,999" percent of "Households" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B19001005',
+        'denominator'
+      );
+
+
+Measure "Households with income of $20,000 To $24,999" percent of "Households" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B19001005',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B11001001`
+
+
+
+
+
+
+
+
+.. _us.census.acs.B19001017:
+
+Households with income of $200,000 Or More
+---------------------------------------------------------------------------
+
+
+
+The number of households in a geographic area whose annual income was more than $200,000.
+
+
+
+
+
+Measure "Households with income of $200,000 Or More"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B19001017'
+      );
+
+
+
+
+
+Measure "Households with income of $200,000 Or More" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B19001017'
+        );
+
+
+
+
+
+Measure "Households with income of $200,000 Or More" percent of "Households" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B19001017',
+        'denominator'
+      );
+
+
+Measure "Households with income of $200,000 Or More" percent of "Households" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B19001017',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B11001001`
+
+
+
+
+
+
+
+
+.. _us.census.acs.B19001006:
+
+Households with income of $25,000 To $29,999
+---------------------------------------------------------------------------
+
+
+
+The number of households in a geographic area whose annual income was between $20,000 and $24,999.
+
+
+
+
+
+Measure "Households with income of $25,000 To $29,999"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B19001006'
+      );
+
+
+
+
+
+Measure "Households with income of $25,000 To $29,999" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B19001006'
+        );
+
+
+
+
+
+Measure "Households with income of $25,000 To $29,999" percent of "Households" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B19001006',
+        'denominator'
+      );
+
+
+Measure "Households with income of $25,000 To $29,999" percent of "Households" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B19001006',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B11001001`
+
+
+
+
+
+
+
+
+.. _us.census.acs.B19001007:
+
+Households with income of $30,000 To $34,999
+---------------------------------------------------------------------------
+
+
+
+The number of households in a geographic area whose annual income was between $30,000 and $34,999.
+
+
+
+
+
+Measure "Households with income of $30,000 To $34,999"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B19001007'
+      );
+
+
+
+
+
+Measure "Households with income of $30,000 To $34,999" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B19001007'
+        );
+
+
+
+
+
+Measure "Households with income of $30,000 To $34,999" percent of "Households" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B19001007',
+        'denominator'
+      );
+
+
+Measure "Households with income of $30,000 To $34,999" percent of "Households" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B19001007',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B11001001`
+
+
+
+
+
+
+
+
+.. _us.census.acs.B19001008:
+
+Households with income of $35,000 To $39,999
+---------------------------------------------------------------------------
+
+
+
+The number of households in a geographic area whose annual income was between $35,000 and $39,999.
+
+
+
+
+
+Measure "Households with income of $35,000 To $39,999"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B19001008'
+      );
+
+
+
+
+
+Measure "Households with income of $35,000 To $39,999" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B19001008'
+        );
+
+
+
+
+
+Measure "Households with income of $35,000 To $39,999" percent of "Households" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B19001008',
+        'denominator'
+      );
+
+
+Measure "Households with income of $35,000 To $39,999" percent of "Households" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B19001008',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B11001001`
+
+
+
+
+
+
+
+
+.. _us.census.acs.B19001009:
+
+Households with income of $40,000 To $44,999
+---------------------------------------------------------------------------
+
+
+
+The number of households in a geographic area whose annual income was between $40,000 and $44,999.
+
+
+
+
+
+Measure "Households with income of $40,000 To $44,999"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B19001009'
+      );
+
+
+
+
+
+Measure "Households with income of $40,000 To $44,999" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B19001009'
+        );
+
+
+
+
+
+Measure "Households with income of $40,000 To $44,999" percent of "Households" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B19001009',
+        'denominator'
+      );
+
+
+Measure "Households with income of $40,000 To $44,999" percent of "Households" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B19001009',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B11001001`
+
+
+
+
+
+
+
+
+.. _us.census.acs.B19001010:
+
+Households with income of $45,000 To $49,999
+---------------------------------------------------------------------------
+
+
+
+The number of households in a geographic area whose annual income was between $45,000 and $49,999.
+
+
+
+
+
+Measure "Households with income of $45,000 To $49,999"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B19001010'
+      );
+
+
+
+
+
+Measure "Households with income of $45,000 To $49,999" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B19001010'
+        );
+
+
+
+
+
+Measure "Households with income of $45,000 To $49,999" percent of "Households" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B19001010',
+        'denominator'
+      );
+
+
+Measure "Households with income of $45,000 To $49,999" percent of "Households" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B19001010',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B11001001`
+
+
+
+
+
+
+
+
+.. _us.census.acs.B19001011:
+
+Households with income of $50,000 To $59,999
+---------------------------------------------------------------------------
+
+
+
+The number of households in a geographic area whose annual income was between $50,000 and $59,999.
+
+
+
+
+
+Measure "Households with income of $50,000 To $59,999"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B19001011'
+      );
+
+
+
+
+
+Measure "Households with income of $50,000 To $59,999" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B19001011'
+        );
+
+
+
+
+
+Measure "Households with income of $50,000 To $59,999" percent of "Households" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B19001011',
+        'denominator'
+      );
+
+
+Measure "Households with income of $50,000 To $59,999" percent of "Households" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B19001011',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B11001001`
+
+
+
+
+
+
+
+
+.. _us.census.acs.B19001012:
+
+Households with income of $60,000 To $74,999
+---------------------------------------------------------------------------
+
+
+
+The number of households in a geographic area whose annual income was between $60,000 and $74,999.
+
+
+
+
+
+Measure "Households with income of $60,000 To $74,999"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B19001012'
+      );
+
+
+
+
+
+Measure "Households with income of $60,000 To $74,999" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B19001012'
+        );
+
+
+
+
+
+Measure "Households with income of $60,000 To $74,999" percent of "Households" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B19001012',
+        'denominator'
+      );
+
+
+Measure "Households with income of $60,000 To $74,999" percent of "Households" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B19001012',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B11001001`
+
+
+
+
+
+
+
+
+.. _us.census.acs.B19001013:
+
+Households with income of $75,000 To $99,999
+---------------------------------------------------------------------------
+
+
+
+The number of households in a geographic area whose annual income was between $75,000 and $99,999.
+
+
+
+
+
+Measure "Households with income of $75,000 To $99,999"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B19001013'
+      );
+
+
+
+
+
+Measure "Households with income of $75,000 To $99,999" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B19001013'
+        );
+
+
+
+
+
+Measure "Households with income of $75,000 To $99,999" percent of "Households" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B19001013',
+        'denominator'
+      );
+
+
+Measure "Households with income of $75,000 To $99,999" percent of "Households" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B19001013',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B11001001`
+
+
+
+
+
+
+
+
+.. _us.census.acs.B19013001:
+
+Median Household Income in the past 12 Months
+---------------------------------------------------------------------------
+
+
+
+Within a geographic area, the median income received by every household on a regular basis before payments for personal income taxes, social security, union dues, medicare deductions, etc.  It includes income received from wages, salary, commissions, bonuses, and tips; self-employment income from own nonfarm or farm businesses, including proprietorships and partnerships; interest, dividends, net rental income, royalty income, or income from estates and trusts; Social Security or Railroad Retirement income; Supplemental Security Income (SSI); any cash public assistance or welfare payments from the state or local welfare office; retirement, survivor, or disability benefits; and any other sources of income received regularly such as Veterans' (VA) payments, unemployment and/or worker's compensation, child support, and alimony.
+
+
+
+
+
+Measure "Median Household Income in the past 12 Months"  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B19013001'
+      );
+
+
+
+
+
+
+Median Household Income in the past 12 Months is only available for point lookups.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.. _us.census.acs.B19301001:
+
+Per Capita Income in the past 12 Months
+---------------------------------------------------------------------------
+
+
+
+Per capita income is the mean income computed for every man, woman, and child in a particular group. It is derived by dividing the total income of a particular group by the total population.
+
+
+
+
+
+Measure "Per Capita Income in the past 12 Months"  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B19301001'
+      );
+
+
+
+
+
+
+Per Capita Income in the past 12 Months is only available for point lookups.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.. _us.census.acs.B25071001:
+
+Percent of Household Income Spent on Rent
+---------------------------------------------------------------------------
+
+
+
+Within a geographic area, the median percentage of household income which was spent on gross rent.  Gross rent is the amount of the contract rent plus the estimated average monthly cost of utilities (electricity, gas, water, sewer etc.) and fuels (oil, coal, wood, etc.) if these are paid by the renter.  Household income is the sum of the income of all people 15 years and older living in the household.
+
+
+
+
+
+Measure "Percent of Household Income Spent on Rent"  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B25071001'
+      );
+
+
+
+
+
+
+Percent of Household Income Spent on Rent is only available for point lookups.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.. _us.census.acs.B17001001:
+
+Population for Whom Poverty Status Determined
+---------------------------------------------------------------------------
+
+
+
+The number of people in each geography who could be identified as either living in poverty or not.  This should be used as the denominator when calculating poverty rates, as it excludes people for whom it was not possible to determine poverty.
+
+
+
+
+
+Measure "Population for Whom Poverty Status Determined"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B17001001'
+      );
+
+
+
+
+
+Measure "Population for Whom Poverty Status Determined" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B17001001'
+        );
+
+
+
+
+
+
+
+
+
+
+
+
+
+.. contents:: Subcolumns of Population for Whom Poverty Status Determined
+   :local:
+   :depth: 1
+
+  
+  
+  
+
+.. _us.census.acs.B17001002:
+
+Income In The Past 12 Months Below Poverty Level
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+The number of people in a geographic area who are part of a family (which could be just them as an individual) determined to be "in poverty" following the Office of Management and Budget's Directive 14. (https://www.census.gov/hhes/povmeas/methodology/ombdir14.html)
+
+
+
+
+
+Measure "Income In The Past 12 Months Below Poverty Level"  density per sq. kilometer  for one point:
+
+
+.. code:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B17001002'
+      );
+
+
+
+
+
+Measure "Income In The Past 12 Months Below Poverty Level" within an area:
+
+.. code:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B17001002'
+        );
+
+
+
+
+
+Measure "Income In The Past 12 Months Below Poverty Level" percent of "Population for Whom Poverty Status Determined" at one point:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B17001002',
+        'denominator'
+      );
+
+
+Measure "Income In The Past 12 Months Below Poverty Level" percent of "Population for Whom Poverty Status Determined" within an area:
+
+.. code:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B17001002',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B17001001`
+
+
+
+  
+  
+
+
