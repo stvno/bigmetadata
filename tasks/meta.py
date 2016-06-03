@@ -6,23 +6,26 @@ functions for persisting metadata about tables loaded via ETL
 
 import os
 import re
+import weakref
 
 import luigi
 from luigi import Task, BooleanParameter, Target, Event
 
-from sqlalchemy import (Column, Integer, String, Boolean, MetaData, Numeric,
+from sqlalchemy import (Column, Integer, Text, Boolean, MetaData, Numeric,
                         create_engine, event, ForeignKey, PrimaryKeyConstraint,
                         ForeignKeyConstraint, Table, exc, func, UniqueConstraint)
 from sqlalchemy.dialects.postgresql import JSON
-from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, sessionmaker, composite, backref
 from sqlalchemy.orm.exc import NoResultFound
-from sqlalchemy.orm.collections import (attribute_mapped_collection,
-                                        InstrumentedList, MappedCollection,
-                                        _SerializableAttrGetter, collection)
+from sqlalchemy.orm.collections import attribute_mapped_collection
 from sqlalchemy.types import UserDefinedType
+
+
+def natural_sort_key(s, _nsre=re.compile('([0-9]+)')):
+    return [int(text) if text.isdigit() else text.lower()
+            for text in re.split(_nsre, s)]
 
 
 _engine = create_engine('postgres://{user}:{password}@{host}:{port}/{db}'.format(
@@ -32,6 +35,8 @@ _engine = create_engine('postgres://{user}:{password}@{host}:{port}/{db}'.format
     port=os.environ.get('PGPORT', '5432'),
     db=os.environ.get('PGDATABASE', 'postgres')
 ))
+
+
 
 def get_engine():
 
@@ -52,7 +57,7 @@ def get_engine():
     return _engine
 
 
-metadata = MetaData(get_engine())
+metadata = MetaData(bind=get_engine(), schema='observatory')
 Base = declarative_base(metadata=metadata)
 
 
@@ -72,10 +77,10 @@ class OBSColumnTable(Base):
 
     __tablename__ = 'obs_column_table'
 
-    column_id = Column(String, ForeignKey('obs_column.id', ondelete='cascade'), primary_key=True)
-    table_id = Column(String, ForeignKey('obs_table.id', ondelete='cascade'), primary_key=True)
+    column_id = Column(Text, ForeignKey('obs_column.id', ondelete='cascade'), primary_key=True)
+    table_id = Column(Text, ForeignKey('obs_table.id', ondelete='cascade'), primary_key=True)
 
-    colname = Column(String, nullable=False)
+    colname = Column(Text, nullable=False)
 
     column = relationship("OBSColumn", back_populates="tables")
     table = relationship("OBSTable", back_populates="columns")
@@ -103,101 +108,120 @@ def targets_creator(coltarget_or_col, reltype):
     return OBSColumnToColumn(target=col, reltype=reltype)
 
 
-def sources_creator(coltarget_or_col, reltype):
-    # internal to task
-    if isinstance(coltarget_or_col, OBSColumn):
-        col = coltarget_or_col
-    # from required task
-    else:
-        col = coltarget_or_col.get(current_session())
-    return OBSColumnToColumn(source=col, reltype=reltype)
-
-
-class PatchedMappedCollection(MappedCollection):
-
-    @collection.remover
-    @collection.internally_instrumented
-    def remove(self, value, _sa_initiator=None):
-        key = self.keyfunc(value)
-        if key not in self and None in self:
-            key = None
-        if self[key] != value:
-            raise Exception(
-                "Can not remove '%s': collection holds '%s' for key '%s'. "
-                "Possible cause: is the MappedCollection key function "
-                "based on mutable properties or properties that only obtain "
-                "values after flush?" %
-                (value, self[key], key))
-        self.__delitem__(key, _sa_initiator)
-
-
-target_collection = lambda: PatchedMappedCollection(_SerializableAttrGetter("target"))
-source_collection = lambda: PatchedMappedCollection(_SerializableAttrGetter("source"))
-
-
 class OBSColumnToColumn(Base):
     __tablename__ = 'obs_column_to_column'
 
-    source_id = Column(String, ForeignKey('obs_column.id', ondelete='cascade'), primary_key=True)
-    target_id = Column(String, ForeignKey('obs_column.id', ondelete='cascade'), primary_key=True)
+    source_id = Column(Text, ForeignKey('obs_column.id', ondelete='cascade'), primary_key=True)
+    target_id = Column(Text, ForeignKey('obs_column.id', ondelete='cascade'), primary_key=True)
 
-    reltype = Column(String, primary_key=True)
+    reltype = Column(Text, primary_key=True)
 
     source = relationship('OBSColumn',
                           foreign_keys=[source_id],
                           backref=backref(
                               "tgts",
-                              collection_class=target_collection,
+                              collection_class=attribute_mapped_collection("target"),
                               cascade="all, delete-orphan",
                           ))
-    target = relationship('OBSColumn',
-                          foreign_keys=[target_id],
-                          backref=backref(
-                              "srcs",
-                              collection_class=source_collection,
-                              cascade="all, delete-orphan",
-                          ))
+    target = relationship('OBSColumn', foreign_keys=[target_id])
+
 
 
 # For example, a single census identifier like b01001001
 class OBSColumn(Base):
     __tablename__ = 'obs_column'
 
-    id = Column(String, primary_key=True) # fully-qualified id like '"us.census.acs".b01001001'
+    id = Column(Text, primary_key=True) # fully-qualified id like '"us.census.acs".b01001001'
 
-    type = Column(String, nullable=False) # postgres type, IE numeric, string, geometry, etc.
-    name = Column(String) # human-readable name to provide in bigmetadata
+    type = Column(Text, nullable=False) # postgres type, IE numeric, string, geometry, etc.
+    name = Column(Text) # human-readable name to provide in bigmetadata
 
-    description = Column(String) # human-readable description to provide in
+    description = Column(Text) # human-readable description to provide in
                                  # bigmetadata
 
     weight = Column(Integer, default=0)
-    aggregate = Column(String) # what aggregate operation to use when adding
+    aggregate = Column(Text) # what aggregate operation to use when adding
                                # these together across geoms: AVG, SUM etc.
 
     tables = relationship("OBSColumnTable", back_populates="column", cascade="all,delete")
     tags = association_proxy('column_column_tags', 'tag', creator=tag_creator)
 
     targets = association_proxy('tgts', 'reltype', creator=targets_creator)
-    sources = association_proxy('srcs', 'reltype', creator=sources_creator)
 
     version = Column(Numeric, default=0, nullable=False)
     extra = Column(JSON)
+
+    @property
+    def sources(self):
+        sources = {}
+        session = current_session()
+        for c2c in session.query(OBSColumnToColumn).filter_by(target_id=self.id):
+            sources[c2c.source] = c2c.reltype
+        return sources
+
+    def should_index(self):
+        return 'geom_ref' in self.targets.values()
+
+    def children(self):
+        children = [col for col, reltype in self.sources.iteritems() if reltype == 'denominator']
+        children.sort(key=lambda x: natural_sort_key(x.name))
+        return children
+
+    def has_children(self):
+        '''
+        Returns True if this column has children, false otherwise.
+        '''
+        return len(self.children()) > 0
+
+    def has_denominators(self):
+        '''
+        Returns True if this column has no denominator, False otherwise.
+        '''
+        return 'denominator' in self.targets.values()
+
+    def has_catalog_image(self):
+        '''
+        Returns True if this column has a pre-generated image for the catalog.
+        '''
+        return os.path.exists(os.path.join('catalog', 'img', self.id + '.png'))
+
+    def denominators(self):
+        '''
+        Return the denominator of this column.
+        '''
+        if not self.has_denominators():
+            return []
+        return [k for k, v in self.targets.iteritems() if v == 'denominator']
+
+    def unit(self):
+        '''
+        Return the unit of this column
+        '''
+        units = [tag for tag in self.tags if tag.type == 'unit']
+        if units:
+            return units[0]
+
+    def summable(self):
+        '''
+        Returns True if we can sum this column and calculate for arbitrary
+        areas.
+        '''
+        return self.aggregate == 'sum'
 
 
 # We should have one of these for every table we load in through the ETL
 class OBSTable(Base):
     __tablename__ = 'obs_table'
 
-    id = Column(String, primary_key=True) # fully-qualified id like '"us.census.acs".extract_year_2013_sample_5yr'
+    id = Column(Text, primary_key=True) # fully-qualified id like '"us.census.acs".extract_year_2013_sample_5yr'
 
     columns = relationship("OBSColumnTable", back_populates="table",
                            cascade="all,delete")
 
-    tablename = Column(String, nullable=False)
-    timespan = Column(String)
-    bounds = Column(String)
-    description = Column(String)
+    tablename = Column(Text, nullable=False)
+    timespan = Column(Text)
+    bounds = Column(Text)
+    description = Column(Text)
 
     version = Column(Numeric, default=0, nullable=False)
 
@@ -205,11 +229,11 @@ class OBSTable(Base):
 class OBSTag(Base):
     __tablename__ = 'obs_tag'
 
-    id = Column(String, primary_key=True)
+    id = Column(Text, primary_key=True)
 
-    name = Column(String, nullable=False)
-    type = Column(String, nullable=False)
-    description = Column(String)
+    name = Column(Text, nullable=False)
+    type = Column(Text, nullable=False)
+    description = Column(Text)
 
     columns = association_proxy('tag_column_tags', 'column')
 
@@ -219,8 +243,8 @@ class OBSTag(Base):
 class OBSColumnTag(Base):
     __tablename__ = 'obs_column_tag'
 
-    column_id = Column(String, ForeignKey('obs_column.id', ondelete='cascade'), primary_key=True)
-    tag_id = Column(String, ForeignKey('obs_tag.id', ondelete='cascade'), primary_key=True)
+    column_id = Column(Text, ForeignKey('obs_column.id', ondelete='cascade'), primary_key=True)
+    tag_id = Column(Text, ForeignKey('obs_tag.id', ondelete='cascade'), primary_key=True)
 
     column = relationship("OBSColumn",
                           foreign_keys=[column_id],
@@ -322,5 +346,7 @@ def fromkeys(d, l):
     d = d.fromkeys(l)
     return dict((k, v) for k, v in d.iteritems() if v is not None)
 
+DENOMINATOR = 'denominator'
+GEOM_REF = 'geom_ref'
 
 Base.metadata.create_all()

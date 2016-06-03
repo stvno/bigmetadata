@@ -1,0 +1,18 @@
+{% import 'macros.html' as macros %}
+
+.. {{ subsection.name }}:
+
+{{ subsection.name }}
+===========================================================================
+
+{{ subsection.description }}
+
+.. contents::
+   :local:
+   :depth: 10
+
+{% for col in columns %}
+
+{{ macros.build_column(col, subsection) }}
+
+{% endfor %}

@@ -71,7 +71,7 @@ html_context = {
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = []
+extensions = ['rst2pdf.pdfbuilder']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -88,9 +88,9 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'bigmetadata'
-copyright = u'2016, John Krauss'
-author = u'John Krauss'
+project = u'observatory'
+copyright = u'2016, CartoDB'
+author = u'CartoDB'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -264,8 +264,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  (master_doc, 'bigmetadata.tex', u'bigmetadata Documentation',
-   u'John Krauss', 'manual'),
+  (master_doc, 'bigmetadata.tex', u'Observatory Catalog',
+   u'CartoDB', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -294,7 +294,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'bigmetadata', u'bigmetadata Documentation',
+    (master_doc, 'observatory', u'Observatory Catalog',
      [author], 1)
 ]
 
@@ -308,8 +308,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  (master_doc, 'bigmetadata', u'bigmetadata Documentation',
-   author, 'bigmetadata', 'One line description of project.',
+  (master_doc, 'observatory', u'Observatory Catalog',
+   author, 'observatory', 'One line description of project.',
    'Miscellaneous'),
 ]
 
@@ -324,3 +324,27 @@ texinfo_documents = [
 
 # If true, do not generate a @detailmenu in the "Top" node's menu.
 #texinfo_no_detailmenu = False
+
+pdf_documents = [
+    ('index', u'observatory', u'The Data Observatory', u'CartoDB', {
+    }),
+]
+
+# A list of folders to search for stylesheets. Example:
+pdf_style_path = ['.', 'stylesheets']
+pdf_stylesheets = ['style.yml']
+#pdf_stylesheets = ['sphinx', 'kerning', 'a4']
+
+pdf_use_toc = True
+pdf_use_numbered_links = True
+pdf_toc_depth = 3
+pdf_verbosity = 2
+pdf_break_level = 3
+pdf_breakside = "any"
+pdf_section_header_depth = 3
+
+pdf_smartquotes = 1
+pdf_font_path = ["/usr/share/texlive/texmf-dist/fonts/"]
+
+pdf_cover_template = 'cover.tmpl'
+pdf_use_index = True

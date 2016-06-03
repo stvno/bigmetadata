@@ -9,9 +9,9 @@ import subprocess
 from collections import OrderedDict
 from tasks.meta import (OBSColumn, OBSColumnToColumn, OBSColumnTag,
                         current_session)
-from tasks.util import (shell, DefaultPostgresTarget, pg_cursor, classpath,
+from tasks.util import (shell, TempTableTask, classpath,
                         ColumnsTask, TableTask)
-from tasks.tags import CategoryTags
+from tasks.tags import SectionTags, SubsectionTags
 from tasks.us.census.tiger import GeoidColumns
 
 from luigi import (Task, Parameter, LocalTarget, BooleanParameter, WrapperTask,
@@ -82,6 +82,9 @@ class WorkplaceAreaCharacteristicsColumns(ColumnsTask):
         return {
             'tags': CategoryTags()
         }
+
+    def version(self):
+        return 1
 
     def columns(self):
         tags = self.input()['tags']
@@ -486,8 +489,8 @@ class WorkplaceAreaCharacteristicsColumns(ColumnsTask):
             )),
             ('jobs_firm_age_11_more_years', OBSColumn(
                 type='Integer',
-                name='Jobs at firms aged 11+ Years',
-                description='Number of jobs for workers at firms with Firm Age: 11+ Years',
+                name='Jobs at firms aged 11 or more Years',
+                description='Number of jobs for workers at firms with Firm Age: 11 or more Years',
                 weight=1,
                 aggregate='sum',
                 targets={total_jobs: 'denominator'},
@@ -531,8 +534,8 @@ class WorkplaceAreaCharacteristicsColumns(ColumnsTask):
             )),
             ('jobs_firm_age_500_more_employees', OBSColumn(
                 type='Integer',
-                name='Jobs at firms with 500+ Employees',
-                description='Number of jobs for workers at firms with Firm Size: 500+ Employees',
+                name='Jobs at firms with 500 or more Employees',
+                description='Number of jobs for workers at firms with Firm Size: 500 or more Employees',
                 weight=1,
                 aggregate='sum',
                 targets={total_jobs: 'denominator'},
@@ -613,17 +616,14 @@ class WorkplaceAreaCharacteristics(TableTask):
             # gunzip each CSV into the table
             cmd = r"gunzip -c '{input}' | psql -c '\copy {tablename} FROM STDIN " \
                   r"WITH CSV HEADER'".format(input=infile.path,
-                                             tablename=self.output().get(current_session()).id)
+                                             tablename=self.output().table)
             print cmd
             shell(cmd)
 
 
-class OriginDestination(Task):
+class OriginDestination(TempTableTask):
 
     year = IntParameter(default=2013)
-
-    def tablename(self):
-        return '"{}".od_{}'.format(classpath(self), self.year)
 
     def columns(self):
         return '''
@@ -643,36 +643,28 @@ createdate DATE -- Date on which da ta was created, formatted as YYYYMMDD
 '''
 
     def requires(self):
-        for state in self.STATES - self.MISSING_STATES.get(self.year, set()):
+        for state in STATES - MISSING_STATES.get(self.year, set()):
             for part in ('main', 'aux',):
                 yield DownloadLODESFile(filetype='od', year=self.year,
-                                        state=state, part=part)
+                                        state=state, part_or_segment=part)
 
     def run(self):
         # make the table
-        cursor = pg_cursor()
-        cursor.execute('CREATE SCHEMA IF NOT EXISTS "{schema}"'.format(
-            schema=classpath(self)))
-        cursor.execute('''
+        session = current_session()
+        session.execute('''
 DROP TABLE IF EXISTS {tablename};
 CREATE TABLE {tablename} (
     {columns}
-)
-                       '''.format(tablename=self.tablename(),
+);
+                       '''.format(tablename=self.output().table,
                                   columns=self.columns()))
+        session.commit()
 
-        cursor.connection.commit()
+        #cursor.connection.commit()
 
         for infile in self.input():
+            print infile.path
             # gunzip each CSV into the table
             cmd = r"gunzip -c '{input}' | psql -c '\copy {tablename} FROM STDIN " \
-                  r"WITH CSV HEADER'".format(input=infile.path, tablename=self.tablename())
+                  r"WITH CSV HEADER'".format(input=infile.path, tablename=self.output().table)
             shell(cmd)
-
-        self.output().touch()
-
-    def output(self):
-        output = DefaultPostgresTarget(table=self.tablename())
-        if self.force:
-            output.untouch()
-        return output

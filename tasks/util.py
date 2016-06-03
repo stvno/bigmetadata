@@ -17,7 +17,6 @@ from slugify import slugify
 import requests
 
 from luigi import Task, Parameter, LocalTarget, Target, BooleanParameter
-from luigi.postgres import PostgresTarget
 
 from sqlalchemy import Table, types, Column
 from sqlalchemy.dialects.postgresql import JSON
@@ -40,14 +39,6 @@ def get_logger(name):
     return logger
 
 LOGGER = get_logger(__name__)
-
-
-def pg_cursor():
-    '''
-    Obtain a cursor on a fresh connection to postgres.
-    '''
-    target = DefaultPostgresTarget(table='foo', update_id='bar')
-    return target.connect().cursor()
 
 
 def shell(cmd):
@@ -73,15 +64,6 @@ def classpath(obj):
     return '.'.join(obj.__module__.split('.')[1:])
 
 
-def tablize(task):
-    '''
-    Generate a qualified tablename, properly quoted, for the passed object.
-    '''
-    return '"{schema}".{tablename}'.format(
-        schema=classpath(task),
-        tablename=underscore_slugify(task.task_id))
-
-
 def query_cartodb(query):
     #carto_url = 'https://{}/api/v2/sql'.format(os.environ['CARTODB_DOMAIN'])
     carto_url = os.environ['CARTODB_URL'] + '/api/v2/sql'
@@ -96,7 +78,8 @@ def query_cartodb(query):
     return resp
 
 
-def sql_to_cartodb_table(outname, localname, json_column_names=None):
+def sql_to_cartodb_table(outname, localname, json_column_names=None,
+                         schema='observatory'):
     '''
     Move the specified table to cartodb
 
@@ -107,8 +90,6 @@ def sql_to_cartodb_table(outname, localname, json_column_names=None):
     json_column_names = json_column_names or []
     api_key = os.environ['CARTODB_API_KEY']
     private_outname = outname + '_private'
-    schema = '.'.join(localname.split('.')[0:-1]).replace('"', '')
-    tablename = localname.split('.')[-1]
     cmd = u'''
 ogr2ogr --config CARTODB_API_KEY $CARTODB_API_KEY \
         -f CartoDB "CartoDB:observatory" \
@@ -116,7 +97,7 @@ ogr2ogr --config CARTODB_API_KEY $CARTODB_API_KEY \
         -nlt GEOMETRY \
         -nln "{private_outname}" \
         PG:dbname=$PGDATABASE' active_schema={schema}' '{tablename}'
-    '''.format(private_outname=private_outname, tablename=tablename,
+    '''.format(private_outname=private_outname, tablename=localname,
                schema=schema)
     print cmd
     shell(cmd)
@@ -159,101 +140,36 @@ ogr2ogr --config CARTODB_API_KEY $CARTODB_API_KEY \
         assert resp.status_code == 200
 
 
-class DefaultPostgresTarget(PostgresTarget):
+class PostgresTarget(Target):
     '''
     PostgresTarget which by default uses command-line specified login.
     '''
 
-    def __init__(self, *args, **kwargs):
-        kwargs['host'] = kwargs.get('host', os.environ.get('PGHOST', 'localhost'))
-        kwargs['port'] = kwargs.get('port', os.environ.get('PGPORT', '5432'))
-        kwargs['user'] = kwargs.get('user', os.environ.get('PGUSER', 'postgres'))
-        kwargs['password'] = kwargs.get('password', os.environ.get('PGPASSWORD'))
-        kwargs['database'] = kwargs.get('database', os.environ.get('PGDATABASE', 'postgres'))
-        if 'update_id' not in kwargs:
-            kwargs['update_id'] = kwargs['table']
-        super(DefaultPostgresTarget, self).__init__(*args, **kwargs)
+    def __init__(self, schema, tablename):
+        self._schema = schema
+        self._tablename = tablename
 
-    def untouch(self, connection=None):
-        self.create_marker_table()
+    @property
+    def table(self):
+        return '"{schema}".{tablename}'.format(schema=self._schema,
+                                               tablename=self._tablename)
 
-        if connection is None:
-            connection = self.connect()
-            connection.autocommit = True  # if connection created here, we commit it here
-
-        connection.cursor().execute(
-            """DELETE FROM {marker_table}
-               WHERE update_id = %s AND target_table = %s
-            """.format(marker_table=self.marker_table),
-            (self.update_id, self.table))
-
-        # make sure update is properly marked
-        assert not self.exists(connection)
-
-
-class LoadCSVFromURL(Task):
-    '''
-    Load CSV from a URL into the database.  Requires a schema, URL, and
-    tablename.
-    '''
-
-    force = BooleanParameter(default=False)
-
-    def url(self):
-        raise NotImplementedError()
-
-    def tableschema(self):
-        raise NotImplementedError()
-
+    @property
     def tablename(self):
-        raise NotImplementedError()
+        return self._tablename
 
-    def schemaname(self):
-        return classpath(self)
+    @property
+    def schema(self):
+        return self._schema
 
-    def run(self):
-        cursor = pg_cursor()
-        cursor.execute('CREATE SCHEMA IF NOT EXISTS "{schemaname}"'.format(
-            schemaname=self.schemaname()
-        ))
-        cursor.execute('DROP TABLE IF EXISTS {tablename}'.format(
-            tablename=self.output().table
-        ))
-        cursor.execute('CREATE TABLE {tablename} ({schema})'.format(
-            tablename=self.output().table, schema=self.tableschema()))
-        cursor.connection.commit()
-        shell("curl '{url}' | psql -c 'COPY {table} FROM STDIN WITH CSV HEADER'".format(
-            table=self.output().table, url=self.url()
-        ))
-        self.output().touch()
-
-    def output(self):
-        qualified_table = '"{}"."{}"'.format(self.schemaname(), self.tablename())
-        target = DefaultPostgresTarget(table=qualified_table)
-        if self.force:
-            target.untouch()
-            self.force = False
-        return target
-
-
-class LoadPostgresFromURL(Task):
-
-    def load_from_url(self, url):
-        '''
-        Load psql at a URL into the database.
-
-        Ignores tablespaces assigned in the SQL.
-        '''
-        subprocess.check_call('curl {url} | gunzip -c | '
-                              'grep -v default_tablespace | psql'.format(url=url), shell=True)
-        self.output().touch()
-
-    def output(self):
-        id_ = self.identifier()
-        return DefaultPostgresTarget(table=id_)
-
-    def identifier(self):
-        raise NotImplementedError()
+    def exists(self):
+        session = current_session()
+        resp = session.execute('SELECT COUNT(*) FROM information_schema.tables '
+                               "WHERE table_schema ILIKE '{schema}'  "
+                               "  AND table_name ILIKE '{tablename}' ".format(
+                                   schema=self._schema,
+                                   tablename=self._tablename))
+        return int(resp.fetchone()[0]) > 0
 
 
 class CartoDBTarget(Target):
@@ -310,7 +226,7 @@ class ColumnTarget(Target):
     def __init__(self, schema, name, column, task):
         self.schema = schema
         self.name = name
-        self._id = '"{schema}".{name}'.format(schema=schema, name=name)
+        self._id = '.'.join([schema, name])
         column.id = self._id
         #self._id = column.id
         self._task = task
@@ -324,24 +240,7 @@ class ColumnTarget(Target):
             return session.query(OBSColumn).get(self._id)
 
     def update_or_create(self):
-        session = current_session()
-        in_session = session.identity_map.get((OBSColumn, (self._column.id, )))
-        if in_session:
-            if None in in_session.srcs:
-                col2col = in_session.srcs.pop(None)
-                in_session.srcs[col2col.source] = col2col
-            if None in in_session.tgts:
-                col2col = in_session.tgts.pop(None)
-                in_session.tgts[col2col.target] = col2col
-
-        self._column = session.merge(self._column)
-        if self._column.targets:
-            # fix missing sources in association_proxy... very weird
-            # bug
-            for target in self._column.tgts.keys():
-                if None in target.srcs:
-                    col2col = target.srcs.pop(None)
-                    target.srcs[col2col.source] = col2col
+        self._column = current_session().merge(self._column)
 
     def exists(self):
         existing = self.get(current_session())
@@ -354,8 +253,11 @@ class ColumnTarget(Target):
         if existing and existing_version == new_version:
             return True
         elif existing and existing_version > new_version:
-            raise Exception('Metadata version mismatch: running tasks with '
-                            'older version than what is in DB')
+            raise Exception('Metadata version mismatch: cannot run task {task} '
+                            'with ETL version ({etl}) older than what is in '
+                            'DB ({db})'.format(task=self._task.task_id,
+                                               etl=new_version,
+                                               db=existing_version))
         return False
 
 
@@ -381,7 +283,7 @@ class TagTarget(Target):
     def exists(self):
         session = current_session()
         existing = self.get(session)
-        new_version = float(existing.version) or 0.0
+        new_version = float(self._tag.version) or 0.0
         if existing:
             existing_version = float(existing.version)
             current_session().expunge(existing)
@@ -402,8 +304,7 @@ class TableTarget(Target):
         columns: should be an ordereddict if you want to specify columns' order
         in the table
         '''
-        self._id = '"{schema}".{name}'.format(schema=schema, name=name)
-        self._id_noquote = '{schema}.{name}'.format(schema=schema, name=name)
+        self._id = '.'.join([schema, name])
         obs_table.id = self._id
         obs_table.tablename = 'obs_' + sha1(underscore_slugify(self._id)).hexdigest()
         self._schema = schema
@@ -412,14 +313,14 @@ class TableTarget(Target):
         self._obs_dict = obs_table.__dict__.copy()
         self._columns = columns
         self._task = task
-        if self._id_noquote in metadata.tables:
-            self._table = metadata.tables[self._id_noquote]
+        if obs_table.tablename in metadata.tables:
+            self._table = metadata.tables[obs_table.tablename]
         else:
             self._table = None
 
     @property
     def table(self):
-        return self.get(current_session()).id
+        return 'observatory.' + self._obs_table.tablename
 
     def sync(self):
         '''
@@ -432,14 +333,26 @@ class TableTarget(Target):
         We always want to run this at least once, because we can always
         regenerate tabular data from scratch.
         '''
-        existing = self.get(current_session())
+        session = current_session()
+        existing = self.get(session)
+        new_version = float(self._obs_table.version) or 0.0
         if existing:
-            current_session().expunge(existing)
-        if existing and existing.version == (self._obs_table.version or '0'):
-            return True
+            existing_version = float(existing.version)
+            session.expunge(existing)
+        else:
+            existing_version = 0.0
+        if existing and existing_version == new_version:
+            resp = session.execute(
+                'SELECT COUNT(*) FROM information_schema.tables '
+                "WHERE table_schema = '{schema}'  "
+                "  AND table_name = '{tablename}' ".format(
+                    schema='observatory',
+                    tablename=self._obs_table.tablename))
+            return int(resp.fetchone()[0]) > 0
+        elif existing and existing_version > new_version:
+            raise Exception('Metadata version mismatch: running tasks with '
+                            'older version than what is in DB')
         return False
-
-        #return self._id_noquote in metadata.tables
 
     def get(self, session):
         '''
@@ -448,18 +361,8 @@ class TableTarget(Target):
         with session.no_autoflush:
             return session.query(OBSTable).get(self._id)
 
-    def update_or_create(self):
-
+    def update_or_create_table(self):
         session = current_session()
-
-        # create schema out-of-band as we cannot create a table after a schema
-        # in a single session
-        shell("psql -c 'CREATE SCHEMA IF NOT EXISTS \"{schema}\"'".format(
-            schema=self._schema))
-
-        # replace metadata table
-        self._obs_table = session.merge(self._obs_table)
-        obs_table = self._obs_table
 
         # create new local data table
         columns = []
@@ -479,29 +382,90 @@ class TableTarget(Target):
                 coltype = getattr(types, col.type.capitalize())
             columns.append(Column(colname, coltype))
 
-            # Column info for bmd metadata
+        obs_table = self._obs_table
+        # replace local data table
+        if obs_table.id in metadata.tables:
+            metadata.tables[obs_table.id].drop()
+        self._table = Table(self._obs_table.tablename, metadata, *columns,
+                            extend_existing=True, schema='observatory')
+        self._table.drop(checkfirst=True)
+        self._table.create()
+
+    def update_or_create_metadata(self):
+        session = current_session()
+        select = []
+        for i, colname_coltarget in enumerate(self._columns.iteritems()):
+            colname, coltarget = colname_coltarget
+            if coltarget._column.type.lower() == 'numeric':
+                select.append('sum(case when {colname} is not null then 1 else 0 end) col{i}_notnull, '
+                              'max({colname}) col{i}_max, '
+                              'min({colname}) col{i}_min, '
+                              'avg({colname}) col{i}_avg, '
+                              'percentile_cont(0.5) within group (order by {colname}) col{i}_median, '
+                              'mode() within group (order by {colname}) col{i}_mode, '
+                              'stddev_pop({colname}) col{i}_stddev'.format(
+                                  i=i, colname=colname.lower()))
+        if select:
+            stmt = 'SELECT COUNT(*) cnt, {select} FROM {output}'.format(
+                select=', '.join(select), output=self.table)
+            resp = session.execute(stmt)
+            colinfo = dict(zip(resp.keys(), resp.fetchone()))
+        else:
+            colinfo = {}
+
+        # replace metadata table
+        self._obs_table = session.merge(self._obs_table)
+        obs_table = self._obs_table
+
+        obs_table = self._obs_table
+
+        for i, colname_coltarget in enumerate(self._columns.iteritems()):
+            colname, coltarget = colname_coltarget
+            colname = colname.lower()
+            col = coltarget.get(session)
+
+            # Column info for obs metadata
             coltable = session.query(OBSColumnTable).filter_by(
                 column_id=col.id, table_id=obs_table.id).first()
             if coltable:
+                coltable_existed = True
                 coltable.colname = colname
             else:
                 # catch the case where a column id has changed
                 coltable = session.query(OBSColumnTable).filter_by(
                     table_id=obs_table.id, colname=colname).first()
                 if coltable:
+                    coltable_existed = True
                     coltable.column = col
                 else:
+                    coltable_existed = False
                     coltable = OBSColumnTable(colname=colname, table=obs_table,
                                               column=col)
+            # include analysis
+            if col.type.lower() == 'numeric':
+                # do not include linkage for any column that is 100% null
+                stats = {
+                    'count': colinfo.get('cnt'),
+                    'notnull': colinfo.get('col%s_notnull' % i),
+                    'max': colinfo.get('col%s_max' % i),
+                    'min': colinfo.get('col%s_min' % i),
+                    'avg': colinfo.get('col%s_avg' % i),
+                    'median': colinfo.get('col%s_median' % i),
+                    'mode': colinfo.get('col%s_mode' % i),
+                    'stddev': colinfo.get('col%s_stddev' % i),
+                }
+                if stats['notnull'] == 0:
+                    if coltable_existed:
+                        session.delete(coltable)
+                    continue
+                for k in stats.keys():
+                    if stats[k] is not None:
+                        stats[k] = float(stats[k])
+                coltable.extra = {
+                    'stats': stats
+                }
             session.add(coltable)
 
-        # replace local data table
-        if obs_table.id in metadata.tables:
-            metadata.tables[obs_table.id].drop()
-        self._table = Table(self._name, metadata, *columns,
-                            schema=self._schema, extend_existing=True)
-        self._table.drop(checkfirst=True)
-        self._table.create()
 
 
 class ColumnsTask(Task):
@@ -541,7 +505,8 @@ class ColumnsTask(Task):
             if obj not in already_in_session:
                 if obj in session:
                     session.expunge(obj)
-        return output
+        self._output = output
+        return self._output
 
 
 class TagsTask(Task):
@@ -569,37 +534,46 @@ class TagsTask(Task):
         return 0
 
     def output(self):
+        #if not hasattr(self, '_output'):
         output = {}
         for tag in self.tags():
             orig_id = tag.id
-            tag.id = '"{}".{}'.format(classpath(self), orig_id)
+            tag.id = '.'.join([classpath(self), orig_id])
             if not tag.version:
                 tag.version = self.version()
             output[orig_id] = TagTarget(tag, self)
-        return output
+        self._output = output
+        return self._output
 
 
 class TableToCarto(Task):
 
     force = BooleanParameter(default=False)
+    schema = Parameter(default='observatory')
     table = Parameter()
     outname = Parameter(default=None)
 
     def run(self):
         json_colnames = []
-        if self.table in metadata.tables:
-            cols = metadata.tables[self.table].columns
+        table = '.'.join([self.schema, self.table])
+        if table in metadata.tables:
+            cols = metadata.tables[table].columns
             for colname, coldef in cols.items():
                 coltype = coldef.type
                 if isinstance(coltype, JSON):
                     json_colnames.append(colname)
 
-        sql_to_cartodb_table(self.output().tablename, self.table, json_colnames)
+        sql_to_cartodb_table(self.output().tablename, self.table, json_colnames,
+                             schema=self.schema)
         self.force = False
 
     def output(self):
+        if self.schema != 'observatory':
+            table = '.'.join([self.schema, self.table])
+        else:
+            table = self.table
         if self.outname is None:
-            self.outname = underscore_slugify(self.table)
+            self.outname = underscore_slugify(table)
         target = CartoDBTarget(self.outname)
         if self.force and target.exists():
             target.remove()
@@ -611,6 +585,42 @@ class TableToCarto(Task):
 def camel_to_underscore(name):
     s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', name)
     return re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).lower()
+
+
+class TempTableTask(Task):
+    '''
+    A Task that generates a table that will not be referred to in metadata.
+    '''
+
+    def on_failure(self, ex):
+        session_rollback(self, ex)
+        super(TempTableTask, self).on_failure(ex)
+
+    def on_success(self):
+        session_commit(self)
+
+    def output(self):
+        shell("psql -c 'CREATE SCHEMA IF NOT EXISTS \"{schema}\"'".format(
+            schema=classpath(self)))
+        return PostgresTarget(classpath(self), self.task_id)
+
+
+class LoadPostgresFromURL(TempTableTask):
+
+    def load_from_url(self, url):
+        '''
+        Load psql at a URL into the database.
+
+        Ignores tablespaces assigned in the SQL.
+        '''
+        shell('curl {url} | gunzip -c | grep -v default_tablespace | psql'.format(
+            url=url))
+        self.mark_done()
+
+    def mark_done(self):
+        session = current_session()
+        session.execute('CREATE TABLE {table} ()'.format(
+            table=self.output().table))
 
 
 class TableTask(Task):
@@ -648,14 +658,90 @@ class TableTask(Task):
         raise NotImplementedError('Must define bounds for table')
 
     def run(self):
-        self.output().update_or_create()
+        output = self.output()
+        output.update_or_create_table()
         self.populate()
+        output.update_or_create_metadata()
+        self.create_indexes()
+
+    def create_indexes(self):
+        session = current_session()
+        for colname, coltarget in self.columns().iteritems():
+            col = coltarget.get(session)
+            if col.should_index():
+                session.execute('CREATE INDEX ON {table} ({colname})'.format(
+                    table=self.output().table, colname=colname))
+
+    #def complete(self):
+    #    for dep in self.deps():
+    #        if not dep.complete():
+    #            return False
+
+    #    return super(TableTask, self).complete()
 
     def output(self):
-        return TableTarget(classpath(self),
-                           underscore_slugify(self.task_id),
-                           OBSTable(description=self.description(),
-                                    bounds=self.bounds(),
-                                    version=self.version(),
-                                    timespan=self.timespan()),
-                           self.columns(), self)
+        if not hasattr(self, '_columns'):
+            self._columns = self.columns()
+
+        self._output = TableTarget(classpath(self),
+                                   underscore_slugify(self.task_id),
+                                   OBSTable(description=self.description(),
+                                            bounds=self.bounds(),
+                                            version=self.version(),
+                                            timespan=self.timespan()),
+                                   self._columns, self)
+        return self._output
+
+
+class RenameTables(Task):
+    '''
+    A one-time use task that renames all ID-instantiated data tables to their
+    tablename.
+    '''
+
+    def run(self):
+        session = current_session()
+        for table in session.query(OBSTable):
+            table_id = table.id
+            tablename = table.tablename
+            schema = '.'.join(table.id.split('.')[0:-1]).strip('"')
+            table = table.id.split('.')[-1]
+            resp = session.execute('SELECT COUNT(*) FROM information_schema.tables '
+                                   "WHERE table_schema ILIKE '{schema}'  "
+                                   "  AND table_name ILIKE '{table}' ".format(
+                                       schema=schema,
+                                       table=table))
+            if int(resp.fetchone()[0]) > 0:
+                resp = session.execute('SELECT COUNT(*) FROM information_schema.tables '
+                                       "WHERE table_schema ILIKE 'observatory'  "
+                                       "  AND table_name ILIKE '{table}' ".format(
+                                           table=tablename))
+                # new table already exists -- just drop it
+                if int(resp.fetchone()[0]) > 0:
+                    cmd = 'DROP TABLE {table_id}'.format(table_id=table_id)
+                    session.execute(cmd)
+                else:
+                    cmd = 'ALTER TABLE {old} RENAME TO {new}'.format(
+                        old=table_id, new=tablename)
+                    print cmd
+                    session.execute(cmd)
+                    cmd = 'ALTER TABLE "{schema}".{new} SET SCHEMA observatory'.format(
+                        new=tablename, schema=schema)
+                    print cmd
+                    session.execute(cmd)
+            else:
+                resp = session.execute('SELECT COUNT(*) FROM information_schema.tables '
+                                       "WHERE table_schema ILIKE 'public'  "
+                                       "  AND table_name ILIKE '{table}' ".format(
+                                           table=tablename))
+                if int(resp.fetchone()[0]) > 0:
+                    cmd = 'ALTER TABLE public.{new} SET SCHEMA observatory'.format(
+                        new=tablename)
+                    print cmd
+                    session.execute(cmd)
+
+        session.commit()
+        self._complete = True
+
+    def complete(self):
+        return hasattr(self, '_complete')
