@@ -254,8 +254,10 @@ class CartoDBTarget(Target):
                     ), timeout=1)
                 except requests.Timeout:
                     pass
-        except ValueError:
-            pass
+        except ValueError as err:
+            print err
+
+        query_cartodb('DROP TABLE "{}"'.format(self.tablename))
 
 
 def grouper(iterable, n, fillvalue=None):
@@ -503,6 +505,8 @@ class TableTarget(Target):
                 if stats['notnull'] == 0:
                     if coltable_existed:
                         session.delete(coltable)
+                    elif coltable in session:
+                        session.expunge(coltable)
                     continue
                 for k in stats.keys():
                     if stats[k] is not None:
