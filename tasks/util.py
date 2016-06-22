@@ -41,6 +41,23 @@ def get_logger(name):
 LOGGER = get_logger(__name__)
 
 
+def remove_accents(instr):
+    '''
+    Remove accents from unicode characters, returns ASCII str.
+
+    Useful in case joining against input in which unicode characters have been
+    roughly replaced with ASCII equivalents
+    '''
+    return instr.replace(u'\xe1', 'a') \
+            .replace(u'\xe9', 'e') \
+            .replace(u'\xed', 'i') \
+            .replace(u'\xf1', 'n') \
+            .replace(u'\xf3', 'o') \
+            .replace(u'\xfa', 'u')
+
+    return instr
+
+
 def shell(cmd):
     '''
     Run a shell command. Returns the STDOUT output.
