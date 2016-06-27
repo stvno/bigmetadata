@@ -41,7 +41,7 @@ The Census Bureau’s representation of school districts in various data product
 Obtain "Elementary School District" geometry at one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -61,7 +61,7 @@ Obtain "Elementary School District" geometry at one point:
 
 Obtain all "Elementary School District" geometries within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   INSERT INTO {new_table_name} (the_geom, {geo_id_column})
     SELECT *
@@ -112,7 +112,7 @@ The Census Bureau’s representation of school districts in various data product
 Obtain "Secondary School District" geometry at one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -132,7 +132,7 @@ Obtain "Secondary School District" geometry at one point:
 
 Obtain all "Secondary School District" geometries within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   INSERT INTO {new_table_name} (the_geom, {geo_id_column})
     SELECT *
@@ -177,7 +177,7 @@ A cartography-ready version of Elementary School District
 Obtain "Shoreline clipped Elementary School District" geometry at one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -197,7 +197,7 @@ Obtain "Shoreline clipped Elementary School District" geometry at one point:
 
 Obtain all "Shoreline clipped Elementary School District" geometries within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   INSERT INTO {new_table_name} (the_geom, {geo_id_column})
     SELECT *
@@ -246,7 +246,7 @@ A cartography-ready version of Secondary School District
 Obtain "Shoreline clipped Secondary School District" geometry at one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -266,7 +266,7 @@ Obtain "Shoreline clipped Secondary School District" geometry at one point:
 
 Obtain all "Shoreline clipped Secondary School District" geometries within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   INSERT INTO {new_table_name} (the_geom, {geo_id_column})
     SELECT *
@@ -315,7 +315,7 @@ A cartography-ready version of US Census Block Groups
 Obtain "Shoreline clipped US Census Block Groups" geometry at one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -335,7 +335,7 @@ Obtain "Shoreline clipped US Census Block Groups" geometry at one point:
 
 Obtain all "Shoreline clipped US Census Block Groups" geometries within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   INSERT INTO {new_table_name} (the_geom, {geo_id_column})
     SELECT *
@@ -384,7 +384,7 @@ A cartography-ready version of US Census Public Use Microdata Areas
 Obtain "Shoreline clipped US Census Public Use Microdata Areas" geometry at one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -404,7 +404,7 @@ Obtain "Shoreline clipped US Census Public Use Microdata Areas" geometry at one 
 
 Obtain all "Shoreline clipped US Census Public Use Microdata Areas" geometries within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   INSERT INTO {new_table_name} (the_geom, {geo_id_column})
     SELECT *
@@ -453,7 +453,7 @@ A cartography-ready version of US Census Tracts
 Obtain "Shoreline clipped US Census Tracts" geometry at one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -473,7 +473,7 @@ Obtain "Shoreline clipped US Census Tracts" geometry at one point:
 
 Obtain all "Shoreline clipped US Census Tracts" geometries within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   INSERT INTO {new_table_name} (the_geom, {geo_id_column})
     SELECT *
@@ -522,7 +522,7 @@ A cartography-ready version of US Census Zip Code Tabulation Areas
 Obtain "Shoreline clipped US Census Zip Code Tabulation Areas" geometry at one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -542,7 +542,7 @@ Obtain "Shoreline clipped US Census Zip Code Tabulation Areas" geometry at one p
 
 Obtain all "Shoreline clipped US Census Zip Code Tabulation Areas" geometries within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   INSERT INTO {new_table_name} (the_geom, {geo_id_column})
     SELECT *
@@ -587,7 +587,7 @@ A cartography-ready version of US Congressional Districts
 Obtain "Shoreline clipped US Congressional Districts" geometry at one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -607,7 +607,7 @@ Obtain "Shoreline clipped US Congressional Districts" geometry at one point:
 
 Obtain all "Shoreline clipped US Congressional Districts" geometries within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   INSERT INTO {new_table_name} (the_geom, {geo_id_column})
     SELECT *
@@ -656,7 +656,7 @@ A cartography-ready version of US County
 Obtain "Shoreline clipped US County" geometry at one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -676,7 +676,7 @@ Obtain "Shoreline clipped US County" geometry at one point:
 
 Obtain all "Shoreline clipped US County" geometries within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   INSERT INTO {new_table_name} (the_geom, {geo_id_column})
     SELECT *
@@ -725,7 +725,7 @@ A cartography-ready version of US States
 Obtain "Shoreline clipped US States" geometry at one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -745,7 +745,7 @@ Obtain "Shoreline clipped US States" geometry at one point:
 
 Obtain all "Shoreline clipped US States" geometries within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   INSERT INTO {new_table_name} (the_geom, {geo_id_column})
     SELECT *
@@ -794,7 +794,7 @@ A cartography-ready version of Unified School District
 Obtain "Shoreline clipped Unified School District" geometry at one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -814,7 +814,7 @@ Obtain "Shoreline clipped Unified School District" geometry at one point:
 
 Obtain all "Shoreline clipped Unified School District" geometries within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   INSERT INTO {new_table_name} (the_geom, {geo_id_column})
     SELECT *
@@ -835,6 +835,67 @@ Obtain all "Shoreline clipped Unified School District" geometries within an area
 :cartography:
 
     :ref:`us.census.tiger.school_district_unified`
+
+
+
+
+
+
+
+
+.. _us.dma.the_geom:
+
+Television Market Area
+---------------------------------------------------------------------------
+
+
+
+A television market area, also called a DMA, is a group of counties in the United States covered by a specific group of television stations.  There are 210 DMAs in the United States.
+
+
+
+
+
+Obtain "Television Market Area" geometry at one point:
+
+
+.. code-block:: postgresql
+
+
+  
+
+
+
+
+  INSERT INTO {tablename}(the_geom)
+    SELECT OBS_GetBoundary(
+      CDB_LatLng(40.7, -73.9),
+      'us.dma.the_geom'
+    )
+
+
+
+
+
+Obtain all "Television Market Area" geometries within an area:
+
+.. code-block:: postgresql
+
+  INSERT INTO {new_table_name} (the_geom, {geo_id_column})
+    SELECT *
+    FROM OBS_GetBoundariesByGeometry(
+      ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+      'us.dma.the_geom'
+    )
+
+
+
+
+
+
+
+
+
 
 
 
@@ -865,7 +926,7 @@ A BG usually covers a contiguous area. Each census tract contains at least one B
 Obtain "US Census Block Groups" geometry at one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -885,7 +946,7 @@ Obtain "US Census Block Groups" geometry at one point:
 
 Obtain all "US Census Block Groups" geometries within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   INSERT INTO {new_table_name} (the_geom, {geo_id_column})
     SELECT *
@@ -928,7 +989,7 @@ For the 2010 Census, each state, the District of Columbia, Puerto Rico, and some
 Obtain "US Census Public Use Microdata Areas" geometry at one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -948,7 +1009,7 @@ Obtain "US Census Public Use Microdata Areas" geometry at one point:
 
 Obtain all "US Census Public Use Microdata Areas" geometries within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   INSERT INTO {new_table_name} (the_geom, {geo_id_column})
     SELECT *
@@ -997,7 +1058,7 @@ Census tract boundaries generally follow visible and identifiable features. They
 Obtain "US Census Tracts" geometry at one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -1017,7 +1078,7 @@ Obtain "US Census Tracts" geometry at one point:
 
 Obtain all "US Census Tracts" geometries within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   INSERT INTO {new_table_name} (the_geom, {geo_id_column})
     SELECT *
@@ -1066,7 +1127,7 @@ Data users should not use ZCTAs to identify the official USPS ZIP Code for mail 
 Obtain "US Census Zip Code Tabulation Areas" geometry at one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -1086,7 +1147,7 @@ Obtain "US Census Zip Code Tabulation Areas" geometry at one point:
 
 Obtain all "US Census Zip Code Tabulation Areas" geometries within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   INSERT INTO {new_table_name} (the_geom, {geo_id_column})
     SELECT *
@@ -1127,7 +1188,7 @@ Congressional districts are the 435 areas from which people are elected to the U
 Obtain "US Congressional Districts" geometry at one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -1147,7 +1208,7 @@ Obtain "US Congressional Districts" geometry at one point:
 
 Obtain all "US Congressional Districts" geometries within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   INSERT INTO {new_table_name} (the_geom, {geo_id_column})
     SELECT *
@@ -1192,7 +1253,7 @@ The primary legal divisions of most states are termed counties. In Louisiana, th
 Obtain "US County" geometry at one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -1212,7 +1273,7 @@ Obtain "US County" geometry at one point:
 
 Obtain all "US County" geometries within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   INSERT INTO {new_table_name} (the_geom, {geo_id_column})
     SELECT *
@@ -1257,7 +1318,7 @@ States and Equivalent Entities are the primary governmental divisions of the Uni
 Obtain "US States" geometry at one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -1277,7 +1338,7 @@ Obtain "US States" geometry at one point:
 
 Obtain all "US States" geometries within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   INSERT INTO {new_table_name} (the_geom, {geo_id_column})
     SELECT *
@@ -1328,7 +1389,7 @@ The Census Bureau’s representation of school districts in various data product
 Obtain "Unified School District" geometry at one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -1348,7 +1409,7 @@ Obtain "Unified School District" geometry at one point:
 
 Obtain all "Unified School District" geometries within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   INSERT INTO {new_table_name} (the_geom, {geo_id_column})
     SELECT *

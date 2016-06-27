@@ -33,6 +33,10 @@ Gini Index
 ---------------------------------------------------------------------------
 
 
+.. figure:: ../img/us.census.acs.B19083001.png
+  :width: 100 %
+  :align: center
+
 
 The Gini index, or index of income concentration, is a statistical measure of income inequality ranging from 0 to 1. A measure of 1 indicates perfect inequality, i.e., one household having all the income and rest having none. A measure of 0 indicates perfect equality, i.e., all households having an equal share of income.
 
@@ -43,7 +47,7 @@ The Gini index, or index of income concentration, is a statistical measure of in
 Measure "Gini Index"  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -87,6 +91,10 @@ Households with income less than $10,000
 ---------------------------------------------------------------------------
 
 
+.. figure:: ../img/us.census.acs.B19001002.png
+  :width: 100 %
+  :align: center
+
 
 The number of households in a geographic area whose annual income was less than $10,000.
 
@@ -97,7 +105,7 @@ The number of households in a geographic area whose annual income was less than 
 Measure "Households with income less than $10,000"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -118,7 +126,7 @@ Measure "Households with income less than $10,000"  density per sq. kilometer  f
 
 Measure "Households with income less than $10,000" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -131,9 +139,10 @@ Measure "Households with income less than $10,000" within an area:
 
 
 
+
 Measure "Households with income less than $10,000" percent of "Households" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -146,7 +155,7 @@ Measure "Households with income less than $10,000" percent of "Households" at on
 
 Measure "Households with income less than $10,000" percent of "Households" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -155,7 +164,6 @@ Measure "Households with income less than $10,000" percent of "Households" withi
         'us.census.acs.B19001002',
         'denominator'
       );
-
 
 
 
@@ -182,6 +190,10 @@ Households with income of $10,000 to $14,999
 ---------------------------------------------------------------------------
 
 
+.. figure:: ../img/us.census.acs.B19001003.png
+  :width: 100 %
+  :align: center
+
 
 The number of households in a geographic area whose annual income was between $10,000 and $14,999.
 
@@ -192,7 +204,7 @@ The number of households in a geographic area whose annual income was between $1
 Measure "Households with income of $10,000 to $14,999"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -213,7 +225,7 @@ Measure "Households with income of $10,000 to $14,999"  density per sq. kilomete
 
 Measure "Households with income of $10,000 to $14,999" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -226,9 +238,10 @@ Measure "Households with income of $10,000 to $14,999" within an area:
 
 
 
+
 Measure "Households with income of $10,000 to $14,999" percent of "Households" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -241,7 +254,7 @@ Measure "Households with income of $10,000 to $14,999" percent of "Households" a
 
 Measure "Households with income of $10,000 to $14,999" percent of "Households" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -250,7 +263,6 @@ Measure "Households with income of $10,000 to $14,999" percent of "Households" w
         'us.census.acs.B19001003',
         'denominator'
       );
-
 
 
 
@@ -277,6 +289,10 @@ Households with income of $100,000 To $124,999
 ---------------------------------------------------------------------------
 
 
+.. figure:: ../img/us.census.acs.B19001014.png
+  :width: 100 %
+  :align: center
+
 
 The number of households in a geographic area whose annual income was between $100,000 and $124,999.
 
@@ -287,7 +303,7 @@ The number of households in a geographic area whose annual income was between $1
 Measure "Households with income of $100,000 To $124,999"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -308,7 +324,7 @@ Measure "Households with income of $100,000 To $124,999"  density per sq. kilome
 
 Measure "Households with income of $100,000 To $124,999" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -321,9 +337,10 @@ Measure "Households with income of $100,000 To $124,999" within an area:
 
 
 
+
 Measure "Households with income of $100,000 To $124,999" percent of "Households" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -336,7 +353,7 @@ Measure "Households with income of $100,000 To $124,999" percent of "Households"
 
 Measure "Households with income of $100,000 To $124,999" percent of "Households" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -345,7 +362,6 @@ Measure "Households with income of $100,000 To $124,999" percent of "Households"
         'us.census.acs.B19001014',
         'denominator'
       );
-
 
 
 
@@ -372,6 +388,10 @@ Households with income of $125,000 To $149,999
 ---------------------------------------------------------------------------
 
 
+.. figure:: ../img/us.census.acs.B19001015.png
+  :width: 100 %
+  :align: center
+
 
 The number of households in a geographic area whose annual income was between $125,000 and $149,999.
 
@@ -382,7 +402,7 @@ The number of households in a geographic area whose annual income was between $1
 Measure "Households with income of $125,000 To $149,999"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -403,7 +423,7 @@ Measure "Households with income of $125,000 To $149,999"  density per sq. kilome
 
 Measure "Households with income of $125,000 To $149,999" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -416,9 +436,10 @@ Measure "Households with income of $125,000 To $149,999" within an area:
 
 
 
+
 Measure "Households with income of $125,000 To $149,999" percent of "Households" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -431,7 +452,7 @@ Measure "Households with income of $125,000 To $149,999" percent of "Households"
 
 Measure "Households with income of $125,000 To $149,999" percent of "Households" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -440,7 +461,6 @@ Measure "Households with income of $125,000 To $149,999" percent of "Households"
         'us.census.acs.B19001015',
         'denominator'
       );
-
 
 
 
@@ -467,6 +487,10 @@ Households with income of $15,000 to $19,999
 ---------------------------------------------------------------------------
 
 
+.. figure:: ../img/us.census.acs.B19001004.png
+  :width: 100 %
+  :align: center
+
 
 The number of households in a geographic area whose annual income was between $15,000 and $19,999.
 
@@ -477,7 +501,7 @@ The number of households in a geographic area whose annual income was between $1
 Measure "Households with income of $15,000 to $19,999"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -498,7 +522,7 @@ Measure "Households with income of $15,000 to $19,999"  density per sq. kilomete
 
 Measure "Households with income of $15,000 to $19,999" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -511,9 +535,10 @@ Measure "Households with income of $15,000 to $19,999" within an area:
 
 
 
+
 Measure "Households with income of $15,000 to $19,999" percent of "Households" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -526,7 +551,7 @@ Measure "Households with income of $15,000 to $19,999" percent of "Households" a
 
 Measure "Households with income of $15,000 to $19,999" percent of "Households" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -535,7 +560,6 @@ Measure "Households with income of $15,000 to $19,999" percent of "Households" w
         'us.census.acs.B19001004',
         'denominator'
       );
-
 
 
 
@@ -562,6 +586,10 @@ Households with income of $150,000 To $199,999
 ---------------------------------------------------------------------------
 
 
+.. figure:: ../img/us.census.acs.B19001016.png
+  :width: 100 %
+  :align: center
+
 
 The number of households in a geographic area whose annual income was between $150,000 and $1999,999.
 
@@ -572,7 +600,7 @@ The number of households in a geographic area whose annual income was between $1
 Measure "Households with income of $150,000 To $199,999"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -593,7 +621,7 @@ Measure "Households with income of $150,000 To $199,999"  density per sq. kilome
 
 Measure "Households with income of $150,000 To $199,999" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -606,9 +634,10 @@ Measure "Households with income of $150,000 To $199,999" within an area:
 
 
 
+
 Measure "Households with income of $150,000 To $199,999" percent of "Households" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -621,7 +650,7 @@ Measure "Households with income of $150,000 To $199,999" percent of "Households"
 
 Measure "Households with income of $150,000 To $199,999" percent of "Households" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -630,7 +659,6 @@ Measure "Households with income of $150,000 To $199,999" percent of "Households"
         'us.census.acs.B19001016',
         'denominator'
       );
-
 
 
 
@@ -657,6 +685,10 @@ Households with income of $20,000 To $24,999
 ---------------------------------------------------------------------------
 
 
+.. figure:: ../img/us.census.acs.B19001005.png
+  :width: 100 %
+  :align: center
+
 
 The number of households in a geographic area whose annual income was between $20,000 and $24,999.
 
@@ -667,7 +699,7 @@ The number of households in a geographic area whose annual income was between $2
 Measure "Households with income of $20,000 To $24,999"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -688,7 +720,7 @@ Measure "Households with income of $20,000 To $24,999"  density per sq. kilomete
 
 Measure "Households with income of $20,000 To $24,999" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -701,9 +733,10 @@ Measure "Households with income of $20,000 To $24,999" within an area:
 
 
 
+
 Measure "Households with income of $20,000 To $24,999" percent of "Households" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -716,7 +749,7 @@ Measure "Households with income of $20,000 To $24,999" percent of "Households" a
 
 Measure "Households with income of $20,000 To $24,999" percent of "Households" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -725,7 +758,6 @@ Measure "Households with income of $20,000 To $24,999" percent of "Households" w
         'us.census.acs.B19001005',
         'denominator'
       );
-
 
 
 
@@ -752,6 +784,10 @@ Households with income of $200,000 Or More
 ---------------------------------------------------------------------------
 
 
+.. figure:: ../img/us.census.acs.B19001017.png
+  :width: 100 %
+  :align: center
+
 
 The number of households in a geographic area whose annual income was more than $200,000.
 
@@ -762,7 +798,7 @@ The number of households in a geographic area whose annual income was more than 
 Measure "Households with income of $200,000 Or More"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -783,7 +819,7 @@ Measure "Households with income of $200,000 Or More"  density per sq. kilometer 
 
 Measure "Households with income of $200,000 Or More" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -796,9 +832,10 @@ Measure "Households with income of $200,000 Or More" within an area:
 
 
 
+
 Measure "Households with income of $200,000 Or More" percent of "Households" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -811,7 +848,7 @@ Measure "Households with income of $200,000 Or More" percent of "Households" at 
 
 Measure "Households with income of $200,000 Or More" percent of "Households" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -820,7 +857,6 @@ Measure "Households with income of $200,000 Or More" percent of "Households" wit
         'us.census.acs.B19001017',
         'denominator'
       );
-
 
 
 
@@ -847,6 +883,10 @@ Households with income of $25,000 To $29,999
 ---------------------------------------------------------------------------
 
 
+.. figure:: ../img/us.census.acs.B19001006.png
+  :width: 100 %
+  :align: center
+
 
 The number of households in a geographic area whose annual income was between $20,000 and $24,999.
 
@@ -857,7 +897,7 @@ The number of households in a geographic area whose annual income was between $2
 Measure "Households with income of $25,000 To $29,999"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -878,7 +918,7 @@ Measure "Households with income of $25,000 To $29,999"  density per sq. kilomete
 
 Measure "Households with income of $25,000 To $29,999" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -891,9 +931,10 @@ Measure "Households with income of $25,000 To $29,999" within an area:
 
 
 
+
 Measure "Households with income of $25,000 To $29,999" percent of "Households" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -906,7 +947,7 @@ Measure "Households with income of $25,000 To $29,999" percent of "Households" a
 
 Measure "Households with income of $25,000 To $29,999" percent of "Households" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -915,7 +956,6 @@ Measure "Households with income of $25,000 To $29,999" percent of "Households" w
         'us.census.acs.B19001006',
         'denominator'
       );
-
 
 
 
@@ -942,6 +982,10 @@ Households with income of $30,000 To $34,999
 ---------------------------------------------------------------------------
 
 
+.. figure:: ../img/us.census.acs.B19001007.png
+  :width: 100 %
+  :align: center
+
 
 The number of households in a geographic area whose annual income was between $30,000 and $34,999.
 
@@ -952,7 +996,7 @@ The number of households in a geographic area whose annual income was between $3
 Measure "Households with income of $30,000 To $34,999"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -973,7 +1017,7 @@ Measure "Households with income of $30,000 To $34,999"  density per sq. kilomete
 
 Measure "Households with income of $30,000 To $34,999" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -986,9 +1030,10 @@ Measure "Households with income of $30,000 To $34,999" within an area:
 
 
 
+
 Measure "Households with income of $30,000 To $34,999" percent of "Households" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1001,7 +1046,7 @@ Measure "Households with income of $30,000 To $34,999" percent of "Households" a
 
 Measure "Households with income of $30,000 To $34,999" percent of "Households" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1010,7 +1055,6 @@ Measure "Households with income of $30,000 To $34,999" percent of "Households" w
         'us.census.acs.B19001007',
         'denominator'
       );
-
 
 
 
@@ -1037,6 +1081,10 @@ Households with income of $35,000 To $39,999
 ---------------------------------------------------------------------------
 
 
+.. figure:: ../img/us.census.acs.B19001008.png
+  :width: 100 %
+  :align: center
+
 
 The number of households in a geographic area whose annual income was between $35,000 and $39,999.
 
@@ -1047,7 +1095,7 @@ The number of households in a geographic area whose annual income was between $3
 Measure "Households with income of $35,000 To $39,999"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -1068,7 +1116,7 @@ Measure "Households with income of $35,000 To $39,999"  density per sq. kilomete
 
 Measure "Households with income of $35,000 To $39,999" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -1081,9 +1129,10 @@ Measure "Households with income of $35,000 To $39,999" within an area:
 
 
 
+
 Measure "Households with income of $35,000 To $39,999" percent of "Households" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1096,7 +1145,7 @@ Measure "Households with income of $35,000 To $39,999" percent of "Households" a
 
 Measure "Households with income of $35,000 To $39,999" percent of "Households" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1105,7 +1154,6 @@ Measure "Households with income of $35,000 To $39,999" percent of "Households" w
         'us.census.acs.B19001008',
         'denominator'
       );
-
 
 
 
@@ -1132,6 +1180,10 @@ Households with income of $40,000 To $44,999
 ---------------------------------------------------------------------------
 
 
+.. figure:: ../img/us.census.acs.B19001009.png
+  :width: 100 %
+  :align: center
+
 
 The number of households in a geographic area whose annual income was between $40,000 and $44,999.
 
@@ -1142,7 +1194,7 @@ The number of households in a geographic area whose annual income was between $4
 Measure "Households with income of $40,000 To $44,999"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -1163,7 +1215,7 @@ Measure "Households with income of $40,000 To $44,999"  density per sq. kilomete
 
 Measure "Households with income of $40,000 To $44,999" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -1176,9 +1228,10 @@ Measure "Households with income of $40,000 To $44,999" within an area:
 
 
 
+
 Measure "Households with income of $40,000 To $44,999" percent of "Households" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1191,7 +1244,7 @@ Measure "Households with income of $40,000 To $44,999" percent of "Households" a
 
 Measure "Households with income of $40,000 To $44,999" percent of "Households" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1200,7 +1253,6 @@ Measure "Households with income of $40,000 To $44,999" percent of "Households" w
         'us.census.acs.B19001009',
         'denominator'
       );
-
 
 
 
@@ -1227,6 +1279,10 @@ Households with income of $45,000 To $49,999
 ---------------------------------------------------------------------------
 
 
+.. figure:: ../img/us.census.acs.B19001010.png
+  :width: 100 %
+  :align: center
+
 
 The number of households in a geographic area whose annual income was between $45,000 and $49,999.
 
@@ -1237,7 +1293,7 @@ The number of households in a geographic area whose annual income was between $4
 Measure "Households with income of $45,000 To $49,999"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -1258,7 +1314,7 @@ Measure "Households with income of $45,000 To $49,999"  density per sq. kilomete
 
 Measure "Households with income of $45,000 To $49,999" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -1271,9 +1327,10 @@ Measure "Households with income of $45,000 To $49,999" within an area:
 
 
 
+
 Measure "Households with income of $45,000 To $49,999" percent of "Households" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1286,7 +1343,7 @@ Measure "Households with income of $45,000 To $49,999" percent of "Households" a
 
 Measure "Households with income of $45,000 To $49,999" percent of "Households" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1295,7 +1352,6 @@ Measure "Households with income of $45,000 To $49,999" percent of "Households" w
         'us.census.acs.B19001010',
         'denominator'
       );
-
 
 
 
@@ -1322,6 +1378,10 @@ Households with income of $50,000 To $59,999
 ---------------------------------------------------------------------------
 
 
+.. figure:: ../img/us.census.acs.B19001011.png
+  :width: 100 %
+  :align: center
+
 
 The number of households in a geographic area whose annual income was between $50,000 and $59,999.
 
@@ -1332,7 +1392,7 @@ The number of households in a geographic area whose annual income was between $5
 Measure "Households with income of $50,000 To $59,999"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -1353,7 +1413,7 @@ Measure "Households with income of $50,000 To $59,999"  density per sq. kilomete
 
 Measure "Households with income of $50,000 To $59,999" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -1366,9 +1426,10 @@ Measure "Households with income of $50,000 To $59,999" within an area:
 
 
 
+
 Measure "Households with income of $50,000 To $59,999" percent of "Households" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1381,7 +1442,7 @@ Measure "Households with income of $50,000 To $59,999" percent of "Households" a
 
 Measure "Households with income of $50,000 To $59,999" percent of "Households" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1390,7 +1451,6 @@ Measure "Households with income of $50,000 To $59,999" percent of "Households" w
         'us.census.acs.B19001011',
         'denominator'
       );
-
 
 
 
@@ -1417,6 +1477,10 @@ Households with income of $60,000 To $74,999
 ---------------------------------------------------------------------------
 
 
+.. figure:: ../img/us.census.acs.B19001012.png
+  :width: 100 %
+  :align: center
+
 
 The number of households in a geographic area whose annual income was between $60,000 and $74,999.
 
@@ -1427,7 +1491,7 @@ The number of households in a geographic area whose annual income was between $6
 Measure "Households with income of $60,000 To $74,999"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -1448,7 +1512,7 @@ Measure "Households with income of $60,000 To $74,999"  density per sq. kilomete
 
 Measure "Households with income of $60,000 To $74,999" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -1461,9 +1525,10 @@ Measure "Households with income of $60,000 To $74,999" within an area:
 
 
 
+
 Measure "Households with income of $60,000 To $74,999" percent of "Households" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1476,7 +1541,7 @@ Measure "Households with income of $60,000 To $74,999" percent of "Households" a
 
 Measure "Households with income of $60,000 To $74,999" percent of "Households" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1485,7 +1550,6 @@ Measure "Households with income of $60,000 To $74,999" percent of "Households" w
         'us.census.acs.B19001012',
         'denominator'
       );
-
 
 
 
@@ -1512,6 +1576,10 @@ Households with income of $75,000 To $99,999
 ---------------------------------------------------------------------------
 
 
+.. figure:: ../img/us.census.acs.B19001013.png
+  :width: 100 %
+  :align: center
+
 
 The number of households in a geographic area whose annual income was between $75,000 and $99,999.
 
@@ -1522,7 +1590,7 @@ The number of households in a geographic area whose annual income was between $7
 Measure "Households with income of $75,000 To $99,999"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -1543,7 +1611,7 @@ Measure "Households with income of $75,000 To $99,999"  density per sq. kilomete
 
 Measure "Households with income of $75,000 To $99,999" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -1556,9 +1624,10 @@ Measure "Households with income of $75,000 To $99,999" within an area:
 
 
 
+
 Measure "Households with income of $75,000 To $99,999" percent of "Households" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1571,7 +1640,7 @@ Measure "Households with income of $75,000 To $99,999" percent of "Households" a
 
 Measure "Households with income of $75,000 To $99,999" percent of "Households" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1580,7 +1649,6 @@ Measure "Households with income of $75,000 To $99,999" percent of "Households" w
         'us.census.acs.B19001013',
         'denominator'
       );
-
 
 
 
@@ -1607,6 +1675,10 @@ Median Household Income in the past 12 Months
 ---------------------------------------------------------------------------
 
 
+.. figure:: ../img/us.census.acs.B19013001.png
+  :width: 100 %
+  :align: center
+
 
 Within a geographic area, the median income received by every household on a regular basis before payments for personal income taxes, social security, union dues, medicare deductions, etc.  It includes income received from wages, salary, commissions, bonuses, and tips; self-employment income from own nonfarm or farm businesses, including proprietorships and partnerships; interest, dividends, net rental income, royalty income, or income from estates and trusts; Social Security or Railroad Retirement income; Supplemental Security Income (SSI); any cash public assistance or welfare payments from the state or local welfare office; retirement, survivor, or disability benefits; and any other sources of income received regularly such as Veterans' (VA) payments, unemployment and/or worker's compensation, child support, and alimony.
 
@@ -1617,7 +1689,7 @@ Within a geographic area, the median income received by every household on a reg
 Measure "Median Household Income in the past 12 Months"  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -1661,6 +1733,10 @@ Per Capita Income in the past 12 Months
 ---------------------------------------------------------------------------
 
 
+.. figure:: ../img/us.census.acs.B19301001.png
+  :width: 100 %
+  :align: center
+
 
 Per capita income is the mean income computed for every man, woman, and child in a particular group. It is derived by dividing the total income of a particular group by the total population.
 
@@ -1671,7 +1747,7 @@ Per capita income is the mean income computed for every man, woman, and child in
 Measure "Per Capita Income in the past 12 Months"  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -1715,6 +1791,10 @@ Percent of Household Income Spent on Rent
 ---------------------------------------------------------------------------
 
 
+.. figure:: ../img/us.census.acs.B25071001.png
+  :width: 100 %
+  :align: center
+
 
 Within a geographic area, the median percentage of household income which was spent on gross rent.  Gross rent is the amount of the contract rent plus the estimated average monthly cost of utilities (electricity, gas, water, sewer etc.) and fuels (oil, coal, wood, etc.) if these are paid by the renter.  Household income is the sum of the income of all people 15 years and older living in the household.
 
@@ -1725,7 +1805,7 @@ Within a geographic area, the median percentage of household income which was sp
 Measure "Percent of Household Income Spent on Rent"  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -1769,6 +1849,10 @@ Population for Whom Poverty Status Determined
 ---------------------------------------------------------------------------
 
 
+.. figure:: ../img/us.census.acs.B17001001.png
+  :width: 100 %
+  :align: center
+
 
 The number of people in each geography who could be identified as either living in poverty or not.  This should be used as the denominator when calculating poverty rates, as it excludes people for whom it was not possible to determine poverty.
 
@@ -1779,7 +1863,7 @@ The number of people in each geography who could be identified as either living 
 Measure "Population for Whom Poverty Status Determined"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -1800,7 +1884,7 @@ Measure "Population for Whom Poverty Status Determined"  density per sq. kilomet
 
 Measure "Population for Whom Poverty Status Determined" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -1835,6 +1919,10 @@ Income In The Past 12 Months Below Poverty Level
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B17001002.png
+  :width: 100 %
+  :align: center
+
 
 The number of people in a geographic area who are part of a family (which could be just them as an individual) determined to be "in poverty" following the Office of Management and Budget's Directive 14. (https://www.census.gov/hhes/povmeas/methodology/ombdir14.html)
 
@@ -1845,7 +1933,7 @@ The number of people in a geographic area who are part of a family (which could 
 Measure "Income In The Past 12 Months Below Poverty Level"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -1866,7 +1954,7 @@ Measure "Income In The Past 12 Months Below Poverty Level"  density per sq. kilo
 
 Measure "Income In The Past 12 Months Below Poverty Level" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -1879,9 +1967,10 @@ Measure "Income In The Past 12 Months Below Poverty Level" within an area:
 
 
 
+
 Measure "Income In The Past 12 Months Below Poverty Level" percent of "Population for Whom Poverty Status Determined" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1894,7 +1983,7 @@ Measure "Income In The Past 12 Months Below Poverty Level" percent of "Populatio
 
 Measure "Income In The Past 12 Months Below Poverty Level" percent of "Population for Whom Poverty Status Determined" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1903,7 +1992,6 @@ Measure "Income In The Past 12 Months Below Poverty Level" percent of "Populatio
         'us.census.acs.B17001002',
         'denominator'
       );
-
 
 
 

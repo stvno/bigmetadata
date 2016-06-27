@@ -1,0 +1,1648 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3.3. Employment &mdash; observatory 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bigmetadata.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/bigmetadata.js"></script>
+    <script type="text/javascript" src="//libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+    <link rel="top" title="observatory 0.0.1 documentation" href="../index.html" />
+    <link rel="up" title="3. United Kingdom" href="../tags.uk.html" />
+    <link rel="next" title="&lt;no title&gt;" href="tags.families.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="tags.education.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="employment">
+<h1>3.3. Employment<a class="headerlink" href="#employment" title="Permalink to this headline">¶</a></h1>
+<p>How people are employed.</p>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#population-age-16-and-over" id="id1">Population age 16 and over</a><ul>
+<li><a class="reference internal" href="#economically-active" id="id2">Economically active</a><ul>
+<li><a class="reference internal" href="#employed-population" id="id3">Employed population</a></li>
+<li><a class="reference internal" href="#unemployed" id="id4">Unemployed</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#economically-inactive" id="id5">Economically inactive</a><ul>
+<li><a class="reference internal" href="#economically-inactive-students" id="id6">Economically inactive students</a></li>
+<li><a class="reference internal" href="#long-term-sick-or-disabled" id="id7">Long-term sick or disabled</a></li>
+<li><a class="reference internal" href="#looking-after-home-or-family" id="id8">Looking after home or family</a></li>
+<li><a class="reference internal" href="#retired-population" id="id9">Retired population</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#higher-managerial-administrative-and-professional-occupations" id="id10">Higher managerial, administrative and professional occupations</a><ul>
+<li><a class="reference internal" href="#higher-professional-occupations" id="id11">Higher professional occupations</a></li>
+<li><a class="reference internal" href="#large-employers-and-higher-managerial-and-administrative-occupations" id="id12">Large employers and higher managerial and administrative occupations</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#intermediate-occupations" id="id13">Intermediate occupations</a></li>
+<li><a class="reference internal" href="#lower-managerial-administrative-and-professional-occupations" id="id14">Lower managerial, administrative and professional occupations</a></li>
+<li><a class="reference internal" href="#lower-supervisory-and-technical-occupations" id="id15">Lower supervisory and technical occupations</a></li>
+<li><a class="reference internal" href="#never-worked-and-long-term-unemployed" id="id16">Never worked and long-term unemployed</a><ul>
+<li><a class="reference internal" href="#long-term-unemployed" id="id17">Long-term unemployed</a></li>
+<li><a class="reference internal" href="#never-worked" id="id18">Never worked</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#routine-occupations" id="id19">Routine occupations</a></li>
+<li><a class="reference internal" href="#semi-routine-occupations" id="id20">Semi-routine occupations</a></li>
+<li><a class="reference internal" href="#small-employers-and-account-workers" id="id21">Small employers and account workers</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="population-age-16-and-over">
+<span id="uk-ons-lc6201ew0001"></span><h2><a class="toc-backref" href="#id1">3.3.1. Population age 16 and over</a><a class="headerlink" href="#population-age-16-and-over" title="Permalink to this headline">¶</a></h2>
+<p>Measure &#8220;Population age 16 and over&#8221;  density per sq. kilometer  for one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0001&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Population age 16 and over&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0001&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<div class="contents local topic" id="subcolumns-of-population-age-16-and-over">
+<p class="topic-title first">Subcolumns of Population age 16 and over</p>
+<ul class="simple">
+<li><a class="reference internal" href="#economically-active" id="id22">Economically active</a></li>
+<li><a class="reference internal" href="#economically-inactive" id="id23">Economically inactive</a></li>
+<li><a class="reference internal" href="#higher-managerial-administrative-and-professional-occupations" id="id24">Higher managerial, administrative and professional occupations</a></li>
+<li><a class="reference internal" href="#intermediate-occupations" id="id25">Intermediate occupations</a></li>
+<li><a class="reference internal" href="#lower-managerial-administrative-and-professional-occupations" id="id26">Lower managerial, administrative and professional occupations</a></li>
+<li><a class="reference internal" href="#lower-supervisory-and-technical-occupations" id="id27">Lower supervisory and technical occupations</a></li>
+<li><a class="reference internal" href="#never-worked-and-long-term-unemployed" id="id28">Never worked and long-term unemployed</a></li>
+<li><a class="reference internal" href="#routine-occupations" id="id29">Routine occupations</a></li>
+<li><a class="reference internal" href="#semi-routine-occupations" id="id30">Semi-routine occupations</a></li>
+<li><a class="reference internal" href="#small-employers-and-account-workers" id="id31">Small employers and account workers</a></li>
+</ul>
+</div>
+<div class="section" id="economically-active">
+<span id="uk-ons-lc6201ew0010"></span><h3><a class="toc-backref" href="#id22">3.3.1.1. Economically active</a><a class="headerlink" href="#economically-active" title="Permalink to this headline">¶</a></h3>
+<p>Measure &#8220;Economically active&#8221;  density per sq. kilometer  for one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0010&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Economically active&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0010&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Economically active&#8221; percent of &#8220;Population age 16 and over&#8221; at one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0010&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Economically active&#8221; percent of &#8220;Population age 16 and over&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0010&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#uk-ons-lc6201ew0001"><span class="std std-ref">Population age 16 and over</span></a></td>
+</tr>
+</tbody>
+</table>
+<div class="contents local topic" id="subcolumns-of-economically-active">
+<p class="topic-title first">Subcolumns of Economically active</p>
+<ul class="simple">
+<li><a class="reference internal" href="#employed-population" id="id32">Employed population</a></li>
+<li><a class="reference internal" href="#unemployed" id="id33">Unemployed</a></li>
+</ul>
+</div>
+<div class="section" id="employed-population">
+<span id="uk-ons-lc6201ew0019"></span><h4><a class="toc-backref" href="#id32">3.3.1.1.1. Employed population</a><a class="headerlink" href="#employed-population" title="Permalink to this headline">¶</a></h4>
+<p>Measure &#8220;Employed population&#8221;  density per sq. kilometer  for one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0019&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Employed population&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0019&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Employed population&#8221; percent of &#8220;Economically active&#8221; at one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0019&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Employed population&#8221; percent of &#8220;Economically active&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0019&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#uk-ons-lc6201ew0010"><span class="std std-ref">Economically active</span></a></td>
+</tr>
+</tbody>
+</table>
+<p id="uk-ons-lc6201ew0028">Employed as an employee</p>
+<p>Measure &#8220;Employed as an employee&#8221;  density per sq. kilometer  for one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0028&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Employed as an employee&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0028&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Employed as an employee&#8221; percent of &#8220;Employed population&#8221; at one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0028&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Employed as an employee&#8221; percent of &#8220;Employed population&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0028&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#uk-ons-lc6201ew0019"><span class="std std-ref">Employed population</span></a></td>
+</tr>
+</tbody>
+</table>
+<p id="uk-ons-lc6201ew0046">Full-time employees</p>
+<p>Measure &#8220;Full-time employees&#8221;  density per sq. kilometer  for one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0046&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Full-time employees&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0046&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Full-time employees&#8221; percent of &#8220;Employed as an employee&#8221; at one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0046&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Full-time employees&#8221; percent of &#8220;Employed as an employee&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0046&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><span class="xref std std-ref">uk.ons.LC6201EW0028</span></td>
+</tr>
+</tbody>
+</table>
+<p id="uk-ons-lc6201ew0037">Part-time employees</p>
+<p>Measure &#8220;Part-time employees&#8221;  density per sq. kilometer  for one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0037&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Part-time employees&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0037&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Part-time employees&#8221; percent of &#8220;Employed as an employee&#8221; at one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0037&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Part-time employees&#8221; percent of &#8220;Employed as an employee&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0037&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><span class="xref std std-ref">uk.ons.LC6201EW0028</span></td>
+</tr>
+</tbody>
+</table>
+<p id="uk-ons-lc6201ew0082">Full-time students</p>
+<p>Measure &#8220;Full-time students&#8221;  density per sq. kilometer  for one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0082&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Full-time students&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0082&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Full-time students&#8221; percent of &#8220;Employed population&#8221; at one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0082&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Full-time students&#8221; percent of &#8220;Employed population&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0082&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#uk-ons-lc6201ew0019"><span class="std std-ref">Employed population</span></a></td>
+</tr>
+</tbody>
+</table>
+<p id="uk-ons-lc6201ew0055">Self-employed</p>
+<p>Measure &#8220;Self-employed&#8221;  density per sq. kilometer  for one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0055&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Self-employed&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0055&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Self-employed&#8221; percent of &#8220;Employed population&#8221; at one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0055&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Self-employed&#8221; percent of &#8220;Employed population&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0055&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#uk-ons-lc6201ew0019"><span class="std std-ref">Employed population</span></a></td>
+</tr>
+</tbody>
+</table>
+<p id="uk-ons-lc6201ew0073">Self-employed full-time</p>
+<p>Measure &#8220;Self-employed full-time&#8221;  density per sq. kilometer  for one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0073&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Self-employed full-time&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0073&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Self-employed full-time&#8221; percent of &#8220;Self-employed&#8221; at one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0073&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Self-employed full-time&#8221; percent of &#8220;Self-employed&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0073&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><span class="xref std std-ref">uk.ons.LC6201EW0055</span></td>
+</tr>
+</tbody>
+</table>
+<p id="uk-ons-lc6201ew0064">Self-employed part-time</p>
+<p>Measure &#8220;Self-employed part-time&#8221;  density per sq. kilometer  for one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0064&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Self-employed part-time&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0064&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Self-employed part-time&#8221; percent of &#8220;Self-employed&#8221; at one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0064&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Self-employed part-time&#8221; percent of &#8220;Self-employed&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0064&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><span class="xref std std-ref">uk.ons.LC6201EW0055</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="unemployed">
+<span id="uk-ons-lc6201ew0091"></span><h4><a class="toc-backref" href="#id33">3.3.1.1.2. Unemployed</a><a class="headerlink" href="#unemployed" title="Permalink to this headline">¶</a></h4>
+<p>Measure &#8220;Unemployed&#8221;  density per sq. kilometer  for one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0091&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Unemployed&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0091&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Unemployed&#8221; percent of &#8220;Economically active&#8221; at one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0091&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Unemployed&#8221; percent of &#8220;Economically active&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0091&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#uk-ons-lc6201ew0010"><span class="std std-ref">Economically active</span></a></td>
+</tr>
+</tbody>
+</table>
+<p id="uk-ons-lc6201ew0109">Full-time students, unemployed</p>
+<p>Measure &#8220;Full-time students, unemployed&#8221;  density per sq. kilometer  for one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0109&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Full-time students, unemployed&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0109&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Full-time students, unemployed&#8221; percent of &#8220;Unemployed&#8221; at one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0109&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Full-time students, unemployed&#8221; percent of &#8220;Unemployed&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0109&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#uk-ons-lc6201ew0091"><span class="std std-ref">Unemployed</span></a></td>
+</tr>
+</tbody>
+</table>
+<p id="uk-ons-lc6201ew0100">Unemployed (excluding full-time students)</p>
+<p>Measure &#8220;Unemployed (excluding full-time students)&#8221;  density per sq. kilometer  for one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0100&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Unemployed (excluding full-time students)&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0100&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Unemployed (excluding full-time students)&#8221; percent of &#8220;Unemployed&#8221; at one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0100&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Unemployed (excluding full-time students)&#8221; percent of &#8220;Unemployed&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0100&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#uk-ons-lc6201ew0091"><span class="std std-ref">Unemployed</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="economically-inactive">
+<span id="uk-ons-lc6201ew0118"></span><h3><a class="toc-backref" href="#id23">3.3.1.2. Economically inactive</a><a class="headerlink" href="#economically-inactive" title="Permalink to this headline">¶</a></h3>
+<p>Measure &#8220;Economically inactive&#8221;  density per sq. kilometer  for one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0118&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Economically inactive&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0118&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Economically inactive&#8221; percent of &#8220;Population age 16 and over&#8221; at one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0118&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Economically inactive&#8221; percent of &#8220;Population age 16 and over&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0118&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#uk-ons-lc6201ew0001"><span class="std std-ref">Population age 16 and over</span></a></td>
+</tr>
+</tbody>
+</table>
+<div class="contents local topic" id="subcolumns-of-economically-inactive">
+<p class="topic-title first">Subcolumns of Economically inactive</p>
+<ul class="simple">
+<li><a class="reference internal" href="#economically-inactive-students" id="id34">Economically inactive students</a></li>
+<li><a class="reference internal" href="#long-term-sick-or-disabled" id="id35">Long-term sick or disabled</a></li>
+<li><a class="reference internal" href="#looking-after-home-or-family" id="id36">Looking after home or family</a></li>
+<li><a class="reference internal" href="#retired-population" id="id37">Retired population</a></li>
+</ul>
+</div>
+<div class="section" id="economically-inactive-students">
+<span id="uk-ons-lc6201ew0136"></span><h4><a class="toc-backref" href="#id34">3.3.1.2.1. Economically inactive students</a><a class="headerlink" href="#economically-inactive-students" title="Permalink to this headline">¶</a></h4>
+<p>Measure &#8220;Economically inactive students&#8221;  density per sq. kilometer  for one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0136&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Economically inactive students&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0136&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Economically inactive students&#8221; percent of &#8220;Economically inactive&#8221; at one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0136&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Economically inactive students&#8221; percent of &#8220;Economically inactive&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0136&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#uk-ons-lc6201ew0118"><span class="std std-ref">Economically inactive</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="long-term-sick-or-disabled">
+<span id="uk-ons-lc6201ew0154"></span><h4><a class="toc-backref" href="#id35">3.3.1.2.2. Long-term sick or disabled</a><a class="headerlink" href="#long-term-sick-or-disabled" title="Permalink to this headline">¶</a></h4>
+<p>Measure &#8220;Long-term sick or disabled&#8221;  density per sq. kilometer  for one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0154&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Long-term sick or disabled&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0154&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Long-term sick or disabled&#8221; percent of &#8220;Economically inactive&#8221; at one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0154&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Long-term sick or disabled&#8221; percent of &#8220;Economically inactive&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0154&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#uk-ons-lc6201ew0118"><span class="std std-ref">Economically inactive</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="looking-after-home-or-family">
+<span id="uk-ons-lc6201ew0145"></span><h4><a class="toc-backref" href="#id36">3.3.1.2.3. Looking after home or family</a><a class="headerlink" href="#looking-after-home-or-family" title="Permalink to this headline">¶</a></h4>
+<p>Measure &#8220;Looking after home or family&#8221;  density per sq. kilometer  for one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0145&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Looking after home or family&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0145&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Looking after home or family&#8221; percent of &#8220;Economically inactive&#8221; at one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0145&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Looking after home or family&#8221; percent of &#8220;Economically inactive&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0145&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#uk-ons-lc6201ew0118"><span class="std std-ref">Economically inactive</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="retired-population">
+<span id="uk-ons-lc6201ew0127"></span><h4><a class="toc-backref" href="#id37">3.3.1.2.4. Retired population</a><a class="headerlink" href="#retired-population" title="Permalink to this headline">¶</a></h4>
+<p>Measure &#8220;Retired population&#8221;  density per sq. kilometer  for one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0127&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Retired population&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0127&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Retired population&#8221; percent of &#8220;Economically inactive&#8221; at one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0127&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Retired population&#8221; percent of &#8220;Economically inactive&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6201EW0127&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#uk-ons-lc6201ew0118"><span class="std std-ref">Economically inactive</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="higher-managerial-administrative-and-professional-occupations">
+<span id="uk-ons-lc6206ew0010"></span><h3><a class="toc-backref" href="#id24">3.3.1.3. Higher managerial, administrative and professional occupations</a><a class="headerlink" href="#higher-managerial-administrative-and-professional-occupations" title="Permalink to this headline">¶</a></h3>
+<p>Measure &#8220;Higher managerial, administrative and professional occupations&#8221;  density per sq. kilometer  for one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0010&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Higher managerial, administrative and professional occupations&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0010&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Higher managerial, administrative and professional occupations&#8221; percent of &#8220;Population age 16 and over&#8221; at one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0010&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Higher managerial, administrative and professional occupations&#8221; percent of &#8220;Population age 16 and over&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0010&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#uk-ons-lc6201ew0001"><span class="std std-ref">Population age 16 and over</span></a></td>
+</tr>
+</tbody>
+</table>
+<div class="contents local topic" id="subcolumns-of-higher-managerial-administrative-and-professional-occupations">
+<p class="topic-title first">Subcolumns of Higher managerial, administrative and professional occupations</p>
+<ul class="simple">
+<li><a class="reference internal" href="#higher-professional-occupations" id="id38">Higher professional occupations</a></li>
+<li><a class="reference internal" href="#large-employers-and-higher-managerial-and-administrative-occupations" id="id39">Large employers and higher managerial and administrative occupations</a></li>
+</ul>
+</div>
+<div class="section" id="higher-professional-occupations">
+<span id="uk-ons-lc6206ew0028"></span><h4><a class="toc-backref" href="#id38">3.3.1.3.1. Higher professional occupations</a><a class="headerlink" href="#higher-professional-occupations" title="Permalink to this headline">¶</a></h4>
+<p>Measure &#8220;Higher professional occupations&#8221;  density per sq. kilometer  for one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0028&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Higher professional occupations&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0028&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Higher professional occupations&#8221; percent of &#8220;Higher managerial, administrative and professional occupations&#8221; at one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0028&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Higher professional occupations&#8221; percent of &#8220;Higher managerial, administrative and professional occupations&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0028&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#uk-ons-lc6206ew0010"><span class="std std-ref">Higher managerial, administrative and professional occupations</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="large-employers-and-higher-managerial-and-administrative-occupations">
+<span id="uk-ons-lc6206ew0019"></span><h4><a class="toc-backref" href="#id39">3.3.1.3.2. Large employers and higher managerial and administrative occupations</a><a class="headerlink" href="#large-employers-and-higher-managerial-and-administrative-occupations" title="Permalink to this headline">¶</a></h4>
+<p>Measure &#8220;Large employers and higher managerial and administrative occupations&#8221;  density per sq. kilometer  for one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0019&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Large employers and higher managerial and administrative occupations&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0019&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Large employers and higher managerial and administrative occupations&#8221; percent of &#8220;Higher managerial, administrative and professional occupations&#8221; at one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0019&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Large employers and higher managerial and administrative occupations&#8221; percent of &#8220;Higher managerial, administrative and professional occupations&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0019&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#uk-ons-lc6206ew0010"><span class="std std-ref">Higher managerial, administrative and professional occupations</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="intermediate-occupations">
+<span id="uk-ons-lc6206ew0046"></span><h3><a class="toc-backref" href="#id25">3.3.1.4. Intermediate occupations</a><a class="headerlink" href="#intermediate-occupations" title="Permalink to this headline">¶</a></h3>
+<p>Measure &#8220;Intermediate occupations&#8221;  density per sq. kilometer  for one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0046&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Intermediate occupations&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0046&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Intermediate occupations&#8221; percent of &#8220;Population age 16 and over&#8221; at one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0046&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Intermediate occupations&#8221; percent of &#8220;Population age 16 and over&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0046&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#uk-ons-lc6201ew0001"><span class="std std-ref">Population age 16 and over</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="lower-managerial-administrative-and-professional-occupations">
+<span id="uk-ons-lc6206ew0037"></span><h3><a class="toc-backref" href="#id26">3.3.1.5. Lower managerial, administrative and professional occupations</a><a class="headerlink" href="#lower-managerial-administrative-and-professional-occupations" title="Permalink to this headline">¶</a></h3>
+<p>Measure &#8220;Lower managerial, administrative and professional occupations&#8221;  density per sq. kilometer  for one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0037&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Lower managerial, administrative and professional occupations&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0037&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Lower managerial, administrative and professional occupations&#8221; percent of &#8220;Population age 16 and over&#8221; at one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0037&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Lower managerial, administrative and professional occupations&#8221; percent of &#8220;Population age 16 and over&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0037&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#uk-ons-lc6201ew0001"><span class="std std-ref">Population age 16 and over</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="lower-supervisory-and-technical-occupations">
+<span id="uk-ons-lc6206ew0064"></span><h3><a class="toc-backref" href="#id27">3.3.1.6. Lower supervisory and technical occupations</a><a class="headerlink" href="#lower-supervisory-and-technical-occupations" title="Permalink to this headline">¶</a></h3>
+<p>Measure &#8220;Lower supervisory and technical occupations&#8221;  density per sq. kilometer  for one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0064&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Lower supervisory and technical occupations&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0064&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Lower supervisory and technical occupations&#8221; percent of &#8220;Population age 16 and over&#8221; at one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0064&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Lower supervisory and technical occupations&#8221; percent of &#8220;Population age 16 and over&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0064&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#uk-ons-lc6201ew0001"><span class="std std-ref">Population age 16 and over</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="never-worked-and-long-term-unemployed">
+<span id="uk-ons-lc6206ew0091"></span><h3><a class="toc-backref" href="#id28">3.3.1.7. Never worked and long-term unemployed</a><a class="headerlink" href="#never-worked-and-long-term-unemployed" title="Permalink to this headline">¶</a></h3>
+<p>Measure &#8220;Never worked and long-term unemployed&#8221;  density per sq. kilometer  for one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0091&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Never worked and long-term unemployed&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0091&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Never worked and long-term unemployed&#8221; percent of &#8220;Population age 16 and over&#8221; at one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0091&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Never worked and long-term unemployed&#8221; percent of &#8220;Population age 16 and over&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0091&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#uk-ons-lc6201ew0001"><span class="std std-ref">Population age 16 and over</span></a></td>
+</tr>
+</tbody>
+</table>
+<div class="contents local topic" id="subcolumns-of-never-worked-and-long-term-unemployed">
+<p class="topic-title first">Subcolumns of Never worked and long-term unemployed</p>
+<ul class="simple">
+<li><a class="reference internal" href="#long-term-unemployed" id="id40">Long-term unemployed</a></li>
+<li><a class="reference internal" href="#never-worked" id="id41">Never worked</a></li>
+</ul>
+</div>
+<div class="section" id="long-term-unemployed">
+<span id="uk-ons-lc6206ew0109"></span><h4><a class="toc-backref" href="#id40">3.3.1.7.1. Long-term unemployed</a><a class="headerlink" href="#long-term-unemployed" title="Permalink to this headline">¶</a></h4>
+<p>Measure &#8220;Long-term unemployed&#8221;  density per sq. kilometer  for one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0109&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Long-term unemployed&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0109&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Long-term unemployed&#8221; percent of &#8220;Never worked and long-term unemployed&#8221; at one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0109&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Long-term unemployed&#8221; percent of &#8220;Never worked and long-term unemployed&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0109&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#uk-ons-lc6206ew0091"><span class="std std-ref">Never worked and long-term unemployed</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="never-worked">
+<span id="uk-ons-lc6206ew0100"></span><h4><a class="toc-backref" href="#id41">3.3.1.7.2. Never worked</a><a class="headerlink" href="#never-worked" title="Permalink to this headline">¶</a></h4>
+<p>Measure &#8220;Never worked&#8221;  density per sq. kilometer  for one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0100&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Never worked&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0100&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Never worked&#8221; percent of &#8220;Never worked and long-term unemployed&#8221; at one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0100&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Never worked&#8221; percent of &#8220;Never worked and long-term unemployed&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0100&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#uk-ons-lc6206ew0091"><span class="std std-ref">Never worked and long-term unemployed</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="routine-occupations">
+<span id="uk-ons-lc6206ew0082"></span><h3><a class="toc-backref" href="#id29">3.3.1.8. Routine occupations</a><a class="headerlink" href="#routine-occupations" title="Permalink to this headline">¶</a></h3>
+<p>Measure &#8220;Routine occupations&#8221;  density per sq. kilometer  for one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0082&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Routine occupations&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0082&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Routine occupations&#8221; percent of &#8220;Population age 16 and over&#8221; at one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0082&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Routine occupations&#8221; percent of &#8220;Population age 16 and over&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0082&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#uk-ons-lc6201ew0001"><span class="std std-ref">Population age 16 and over</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="semi-routine-occupations">
+<span id="uk-ons-lc6206ew0073"></span><h3><a class="toc-backref" href="#id30">3.3.1.9. Semi-routine occupations</a><a class="headerlink" href="#semi-routine-occupations" title="Permalink to this headline">¶</a></h3>
+<p>Measure &#8220;Semi-routine occupations&#8221;  density per sq. kilometer  for one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0073&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Semi-routine occupations&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0073&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Semi-routine occupations&#8221; percent of &#8220;Population age 16 and over&#8221; at one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0073&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Semi-routine occupations&#8221; percent of &#8220;Population age 16 and over&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0073&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#uk-ons-lc6201ew0001"><span class="std std-ref">Population age 16 and over</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="small-employers-and-account-workers">
+<span id="uk-ons-lc6206ew0055"></span><h3><a class="toc-backref" href="#id31">3.3.1.10. Small employers and account workers</a><a class="headerlink" href="#small-employers-and-account-workers" title="Permalink to this headline">¶</a></h3>
+<p>Measure &#8220;Small employers and account workers&#8221;  density per sq. kilometer  for one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0055&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Small employers and account workers&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0055&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Small employers and account workers&#8221; percent of &#8220;Population age 16 and over&#8221; at one point:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0055&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>Measure &#8220;Small employers and account workers&#8221; percent of &#8220;Population age 16 and over&#8221; within an area:</p>
+<div class="highlight-postgresql"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="p">{</span><span class="n">table_name</span><span class="p">}</span>
+  <span class="k">SET</span> <span class="p">{</span><span class="n">new_numeric_column</span><span class="p">}</span> <span class="o">=</span>
+    <span class="n">OBS_GetMeasure</span><span class="p">(</span>
+      <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">CDB_LatLng</span><span class="p">(</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">),</span>
+      <span class="s1">&#39;uk.ons.LC6206EW0055&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;denominator&#39;</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">denominator:</th><td class="field-body"><a class="reference internal" href="#uk-ons-lc6201ew0001"><span class="std std-ref">Population age 16 and over</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">3.3. Employment</a><ul>
+<li><a class="reference internal" href="#population-age-16-and-over">3.3.1. Population age 16 and over</a><ul>
+<li><a class="reference internal" href="#economically-active">3.3.1.1. Economically active</a><ul>
+<li><a class="reference internal" href="#employed-population">3.3.1.1.1. Employed population</a></li>
+<li><a class="reference internal" href="#unemployed">3.3.1.1.2. Unemployed</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#economically-inactive">3.3.1.2. Economically inactive</a><ul>
+<li><a class="reference internal" href="#economically-inactive-students">3.3.1.2.1. Economically inactive students</a></li>
+<li><a class="reference internal" href="#long-term-sick-or-disabled">3.3.1.2.2. Long-term sick or disabled</a></li>
+<li><a class="reference internal" href="#looking-after-home-or-family">3.3.1.2.3. Looking after home or family</a></li>
+<li><a class="reference internal" href="#retired-population">3.3.1.2.4. Retired population</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#higher-managerial-administrative-and-professional-occupations">3.3.1.3. Higher managerial, administrative and professional occupations</a><ul>
+<li><a class="reference internal" href="#higher-professional-occupations">3.3.1.3.1. Higher professional occupations</a></li>
+<li><a class="reference internal" href="#large-employers-and-higher-managerial-and-administrative-occupations">3.3.1.3.2. Large employers and higher managerial and administrative occupations</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#intermediate-occupations">3.3.1.4. Intermediate occupations</a></li>
+<li><a class="reference internal" href="#lower-managerial-administrative-and-professional-occupations">3.3.1.5. Lower managerial, administrative and professional occupations</a></li>
+<li><a class="reference internal" href="#lower-supervisory-and-technical-occupations">3.3.1.6. Lower supervisory and technical occupations</a></li>
+<li><a class="reference internal" href="#never-worked-and-long-term-unemployed">3.3.1.7. Never worked and long-term unemployed</a><ul>
+<li><a class="reference internal" href="#long-term-unemployed">3.3.1.7.1. Long-term unemployed</a></li>
+<li><a class="reference internal" href="#never-worked">3.3.1.7.2. Never worked</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#routine-occupations">3.3.1.8. Routine occupations</a></li>
+<li><a class="reference internal" href="#semi-routine-occupations">3.3.1.9. Semi-routine occupations</a></li>
+<li><a class="reference internal" href="#small-employers-and-account-workers">3.3.1.10. Small employers and account workers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../tags.uk.html">3. United Kingdom</a><ul>
+      <li>Previous: <a href="tags.education.html" title="previous chapter">&lt;no title&gt;</a></li>
+      <li>Next: <a href="tags.families.html" title="next chapter">&lt;no title&gt;</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/tags.uk/tags.employment.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, CartoDB.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="../_sources/tags.uk/tags.employment.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -21,6 +21,10 @@ Population age 16 and over
 ---------------------------------------------------------------------------
 
 
+.. figure:: ../img/us.census.acs.B23025001.png
+  :width: 100 %
+  :align: center
+
 
 The number of people in each geography who are age 16 or over.
 
@@ -31,7 +35,7 @@ The number of people in each geography who are age 16 or over.
 Measure "Population age 16 and over"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -52,7 +56,7 @@ Measure "Population age 16 and over"  density per sq. kilometer  for one point:
 
 Measure "Population age 16 and over" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -87,6 +91,10 @@ Population in Labor Force
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B23025002.png
+  :width: 100 %
+  :align: center
+
 
 The number of people in each geography who are either in the civilian labor force or are members of the U.S. Armed Forces (people on active duty with the United States Army, Air Force, Navy, Marine Corps, or Coast Guard).
 
@@ -97,7 +105,7 @@ The number of people in each geography who are either in the civilian labor forc
 Measure "Population in Labor Force"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -118,7 +126,7 @@ Measure "Population in Labor Force"  density per sq. kilometer  for one point:
 
 Measure "Population in Labor Force" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -131,9 +139,10 @@ Measure "Population in Labor Force" within an area:
 
 
 
+
 Measure "Population in Labor Force" percent of "Population age 16 and over" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -146,7 +155,7 @@ Measure "Population in Labor Force" percent of "Population age 16 and over" at o
 
 Measure "Population in Labor Force" percent of "Population age 16 and over" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -155,7 +164,6 @@ Measure "Population in Labor Force" percent of "Population age 16 and over" with
         'us.census.acs.B23025002',
         'denominator'
       );
-
 
 
 
@@ -185,6 +193,10 @@ Population in Armed Forces
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
+.. figure:: ../img/us.census.acs.B23025006.png
+  :width: 100 %
+  :align: center
+
 
 The number of people in each geography who are members of the U.S. Armed Forces (people on active duty with the United States Army, Air Force, Navy, Marine Corps, or Coast Guard).
 
@@ -195,7 +207,7 @@ The number of people in each geography who are members of the U.S. Armed Forces 
 Measure "Population in Armed Forces"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -216,7 +228,7 @@ Measure "Population in Armed Forces"  density per sq. kilometer  for one point:
 
 Measure "Population in Armed Forces" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -229,9 +241,10 @@ Measure "Population in Armed Forces" within an area:
 
 
 
+
 Measure "Population in Armed Forces" percent of "Population in Labor Force" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -244,7 +257,7 @@ Measure "Population in Armed Forces" percent of "Population in Labor Force" at o
 
 Measure "Population in Armed Forces" percent of "Population in Labor Force" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -253,7 +266,6 @@ Measure "Population in Armed Forces" percent of "Population in Labor Force" with
         'us.census.acs.B23025006',
         'denominator'
       );
-
 
 
 
@@ -280,6 +292,10 @@ Population in Civilian Labor Force
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
+.. figure:: ../img/us.census.acs.B23025003.png
+  :width: 100 %
+  :align: center
+
 
 The number of civilians 16 years and over in each geography who can be classified as either "employed" or "unemployed" below.
 
@@ -290,7 +306,7 @@ The number of civilians 16 years and over in each geography who can be classifie
 Measure "Population in Civilian Labor Force"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -311,7 +327,7 @@ Measure "Population in Civilian Labor Force"  density per sq. kilometer  for one
 
 Measure "Population in Civilian Labor Force" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -324,9 +340,10 @@ Measure "Population in Civilian Labor Force" within an area:
 
 
 
+
 Measure "Population in Civilian Labor Force" percent of "Population in Labor Force" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -339,7 +356,7 @@ Measure "Population in Civilian Labor Force" percent of "Population in Labor For
 
 Measure "Population in Civilian Labor Force" percent of "Population in Labor Force" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -348,7 +365,6 @@ Measure "Population in Civilian Labor Force" percent of "Population in Labor For
         'us.census.acs.B23025003',
         'denominator'
       );
-
 
 
 
@@ -378,6 +394,10 @@ Employed Population
 
 
 
+.. figure:: ../img/us.census.acs.B23025004.png
+  :width: 100 %
+  :align: center
+
 
 The number of civilians 16 years old and over in each geography who either (1) were "at work," that is, those who did any work at all during the reference week as paid employees, worked in their own business or profession, worked on their own farm, or worked 15 hours or more as unpaid workers on a family farm or in a family business; or (2) were "with a job but not at work," that is, those who did not work during the reference week but had jobs or businesses from which they were temporarily absent due to illness, bad weather, industrial dispute, vacation, or other personal reasons. Excluded from the employed are people whose only activity consisted of work around the house or unpaid volunteer work for religious, charitable, and similar organizations; also excluded are all institutionalized people and people on active duty in the United States Armed Forces.
 
@@ -388,7 +408,7 @@ The number of civilians 16 years old and over in each geography who either (1) w
 Measure "Employed Population"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -409,7 +429,7 @@ Measure "Employed Population"  density per sq. kilometer  for one point:
 
 Measure "Employed Population" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -422,9 +442,10 @@ Measure "Employed Population" within an area:
 
 
 
+
 Measure "Employed Population" percent of "Population in Civilian Labor Force" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -437,7 +458,7 @@ Measure "Employed Population" percent of "Population in Civilian Labor Force" at
 
 Measure "Employed Population" percent of "Population in Civilian Labor Force" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -446,7 +467,6 @@ Measure "Employed Population" percent of "Population in Civilian Labor Force" wi
         'us.census.acs.B23025004',
         'denominator'
       );
-
 
 
 
@@ -476,6 +496,10 @@ Workers employed in firms in agriculture, forestry, fishing, hunting, or mining
 
 
 
+.. figure:: ../img/us.census.acs.C24050002.png
+  :width: 100 %
+  :align: center
+
 
 The Agriculture, Forestry, Fishing and Hunting sector comprises establishments primarily engaged in growing crops, raising animals, harvesting timber, and harvesting fish and other animals from a farm, ranch, or their natural habitats.
 
@@ -486,7 +510,7 @@ The Agriculture, Forestry, Fishing and Hunting sector comprises establishments p
 Measure "Workers employed in firms in agriculture, forestry, fishing, hunting, or mining"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -507,7 +531,7 @@ Measure "Workers employed in firms in agriculture, forestry, fishing, hunting, o
 
 Measure "Workers employed in firms in agriculture, forestry, fishing, hunting, or mining" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -520,9 +544,10 @@ Measure "Workers employed in firms in agriculture, forestry, fishing, hunting, o
 
 
 
+
 Measure "Workers employed in firms in agriculture, forestry, fishing, hunting, or mining" percent of "Employed Population" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -535,7 +560,7 @@ Measure "Workers employed in firms in agriculture, forestry, fishing, hunting, o
 
 Measure "Workers employed in firms in agriculture, forestry, fishing, hunting, or mining" percent of "Employed Population" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -544,7 +569,6 @@ Measure "Workers employed in firms in agriculture, forestry, fishing, hunting, o
         'us.census.acs.C24050002',
         'denominator'
       );
-
 
 
 
@@ -571,6 +595,10 @@ Workers employed in firms in arts, entertainment, recreation, accommodation and 
 
 
 
+.. figure:: ../img/us.census.acs.C24050012.png
+  :width: 100 %
+  :align: center
+
 
 The Arts, Entertainment, and Recreation sector includes a wide range of establishments that operate facilities or provide services to meet varied cultural, entertainment, and recreational interests of their patrons. This sector comprises (1) establishments that are involved in producing, promoting, or participating in live performances, events, or exhibits intended for public viewing; (2) establishments that preserve and exhibit objects and sites of historical, cultural, or educational interest; and (3) establishments that operate facilities or provide services that enable patrons to participate in recreational activities or pursue amusement, hobby, and leisure-time interests.
 
@@ -581,7 +609,7 @@ The Arts, Entertainment, and Recreation sector includes a wide range of establis
 Measure "Workers employed in firms in arts, entertainment, recreation, accommodation and food services"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -602,7 +630,7 @@ Measure "Workers employed in firms in arts, entertainment, recreation, accommoda
 
 Measure "Workers employed in firms in arts, entertainment, recreation, accommodation and food services" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -615,9 +643,10 @@ Measure "Workers employed in firms in arts, entertainment, recreation, accommoda
 
 
 
+
 Measure "Workers employed in firms in arts, entertainment, recreation, accommodation and food services" percent of "Employed Population" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -630,7 +659,7 @@ Measure "Workers employed in firms in arts, entertainment, recreation, accommoda
 
 Measure "Workers employed in firms in arts, entertainment, recreation, accommodation and food services" percent of "Employed Population" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -639,7 +668,6 @@ Measure "Workers employed in firms in arts, entertainment, recreation, accommoda
         'us.census.acs.C24050012',
         'denominator'
       );
-
 
 
 
@@ -666,6 +694,10 @@ Workers employed in firms in construction
 
 
 
+.. figure:: ../img/us.census.acs.C24050003.png
+  :width: 100 %
+  :align: center
+
 
 The Construction sector comprises establishments primarily engaged in the construction of buildings or engineering projects (e.g., highways and utility systems). Construction work done may include new work, additions, alterations, or maintenance and repairs.
 
@@ -676,7 +708,7 @@ The Construction sector comprises establishments primarily engaged in the constr
 Measure "Workers employed in firms in construction"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -697,7 +729,7 @@ Measure "Workers employed in firms in construction"  density per sq. kilometer  
 
 Measure "Workers employed in firms in construction" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -710,9 +742,10 @@ Measure "Workers employed in firms in construction" within an area:
 
 
 
+
 Measure "Workers employed in firms in construction" percent of "Employed Population" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -725,7 +758,7 @@ Measure "Workers employed in firms in construction" percent of "Employed Populat
 
 Measure "Workers employed in firms in construction" percent of "Employed Population" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -734,7 +767,6 @@ Measure "Workers employed in firms in construction" percent of "Employed Populat
         'us.census.acs.C24050003',
         'denominator'
       );
-
 
 
 
@@ -761,6 +793,10 @@ Workers employed in firms in educational services, health care, and social assis
 
 
 
+.. figure:: ../img/us.census.acs.C24050011.png
+  :width: 100 %
+  :align: center
+
 
 Outpatient health services, other than hospital care, including: public health administration; research and education; categorical health programs; treatment and immunization clinics; nursing; environmental health activities such as air and water pollution control; ambulance service if provided separately from fire protection services, and other general public health activities such as mosquito abatement. School health services provided by health agencies (rather than school agencies) are included here. Sewage treatment operations are classified under Sewerage.
 
@@ -771,7 +807,7 @@ Outpatient health services, other than hospital care, including: public health a
 Measure "Workers employed in firms in educational services, health care, and social assistance"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -792,7 +828,7 @@ Measure "Workers employed in firms in educational services, health care, and soc
 
 Measure "Workers employed in firms in educational services, health care, and social assistance" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -805,9 +841,10 @@ Measure "Workers employed in firms in educational services, health care, and soc
 
 
 
+
 Measure "Workers employed in firms in educational services, health care, and social assistance" percent of "Employed Population" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -820,7 +857,7 @@ Measure "Workers employed in firms in educational services, health care, and soc
 
 Measure "Workers employed in firms in educational services, health care, and social assistance" percent of "Employed Population" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -829,7 +866,6 @@ Measure "Workers employed in firms in educational services, health care, and soc
         'us.census.acs.C24050011',
         'denominator'
       );
-
 
 
 
@@ -856,6 +892,10 @@ Workers employed in firms in finance, insurance, real estate and rental and leas
 
 
 
+.. figure:: ../img/us.census.acs.C24050009.png
+  :width: 100 %
+  :align: center
+
 
 The Real Estate and Rental and Leasing sector comprises establishments primarily engaged in renting, leasing, or otherwise allowing the use of tangible or intangible assets, and establishments providing related services. The major portion of this sector comprises establishments that rent, lease, or otherwise allow the use of their own assets by others. The assets may be tangible, as is the case of real estate and equipment, or intangible, as is the case with patents and trademarks.
 
@@ -866,7 +906,7 @@ The Real Estate and Rental and Leasing sector comprises establishments primarily
 Measure "Workers employed in firms in finance, insurance, real estate and rental and leasing"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -887,7 +927,7 @@ Measure "Workers employed in firms in finance, insurance, real estate and rental
 
 Measure "Workers employed in firms in finance, insurance, real estate and rental and leasing" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -900,9 +940,10 @@ Measure "Workers employed in firms in finance, insurance, real estate and rental
 
 
 
+
 Measure "Workers employed in firms in finance, insurance, real estate and rental and leasing" percent of "Employed Population" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -915,7 +956,7 @@ Measure "Workers employed in firms in finance, insurance, real estate and rental
 
 Measure "Workers employed in firms in finance, insurance, real estate and rental and leasing" percent of "Employed Population" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -924,7 +965,6 @@ Measure "Workers employed in firms in finance, insurance, real estate and rental
         'us.census.acs.C24050009',
         'denominator'
       );
-
 
 
 
@@ -951,6 +991,10 @@ Workers employed in firms in information
 
 
 
+.. figure:: ../img/us.census.acs.C24050008.png
+  :width: 100 %
+  :align: center
+
 
 The Information sector comprises establishments engaged in the following processes: (a) producing and distributing information and cultural products, (b) providing the means to transmit or distribute these products as well as data or communications, and (c) processing data. Included are the publishing industries, the motion picture and sound recording industries; the broadcasting industries, the telecommunications industries; Web search portals, data processing industries, and the information services industries.
 
@@ -961,7 +1005,7 @@ The Information sector comprises establishments engaged in the following process
 Measure "Workers employed in firms in information"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -982,7 +1026,7 @@ Measure "Workers employed in firms in information"  density per sq. kilometer  f
 
 Measure "Workers employed in firms in information" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -995,9 +1039,10 @@ Measure "Workers employed in firms in information" within an area:
 
 
 
+
 Measure "Workers employed in firms in information" percent of "Employed Population" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1010,7 +1055,7 @@ Measure "Workers employed in firms in information" percent of "Employed Populati
 
 Measure "Workers employed in firms in information" percent of "Employed Population" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1019,7 +1064,6 @@ Measure "Workers employed in firms in information" percent of "Employed Populati
         'us.census.acs.C24050008',
         'denominator'
       );
-
 
 
 
@@ -1046,6 +1090,10 @@ Workers employed in firms in manufacturing
 
 
 
+.. figure:: ../img/us.census.acs.C24050004.png
+  :width: 100 %
+  :align: center
+
 
 The Manufacturing sector comprises establishments engaged in the mechanical, physical, or chemical transformation of materials, substances, or components into new products.
 
@@ -1056,7 +1104,7 @@ The Manufacturing sector comprises establishments engaged in the mechanical, phy
 Measure "Workers employed in firms in manufacturing"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -1077,7 +1125,7 @@ Measure "Workers employed in firms in manufacturing"  density per sq. kilometer 
 
 Measure "Workers employed in firms in manufacturing" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -1090,9 +1138,10 @@ Measure "Workers employed in firms in manufacturing" within an area:
 
 
 
+
 Measure "Workers employed in firms in manufacturing" percent of "Employed Population" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1105,7 +1154,7 @@ Measure "Workers employed in firms in manufacturing" percent of "Employed Popula
 
 Measure "Workers employed in firms in manufacturing" percent of "Employed Population" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1114,7 +1163,6 @@ Measure "Workers employed in firms in manufacturing" percent of "Employed Popula
         'us.census.acs.C24050004',
         'denominator'
       );
-
 
 
 
@@ -1141,6 +1189,10 @@ Workers employed in firms in other services except public administration
 
 
 
+.. figure:: ../img/us.census.acs.C24050013.png
+  :width: 100 %
+  :align: center
+
 
 The Other Services (Except Public Administration) sector comprises establishments engaged in providing services not specifically provided for elsewhere in the classification system. Establishments in this sector are primarily engaged in activities such as equipment and machinery repairing, promoting or administering religious activities, grantmaking, advocacy, and providing drycleaning and laundry services, personal care services, death care services, pet care services, photofinishing services, temporary parking services, and dating services. Private households that engage in employing workers on or about the premises in activities primarily concerned with the operation of the household are included in this sector.
 
@@ -1151,7 +1203,7 @@ The Other Services (Except Public Administration) sector comprises establishment
 Measure "Workers employed in firms in other services except public administration"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -1172,7 +1224,7 @@ Measure "Workers employed in firms in other services except public administratio
 
 Measure "Workers employed in firms in other services except public administration" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -1185,9 +1237,10 @@ Measure "Workers employed in firms in other services except public administratio
 
 
 
+
 Measure "Workers employed in firms in other services except public administration" percent of "Employed Population" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1200,7 +1253,7 @@ Measure "Workers employed in firms in other services except public administratio
 
 Measure "Workers employed in firms in other services except public administration" percent of "Employed Population" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1209,7 +1262,6 @@ Measure "Workers employed in firms in other services except public administratio
         'us.census.acs.C24050013',
         'denominator'
       );
-
 
 
 
@@ -1236,6 +1288,10 @@ Workers employed in firms in professional scientific, management, administrative
 
 
 
+.. figure:: ../img/us.census.acs.C24050010.png
+  :width: 100 %
+  :align: center
+
 
 The Administrative and Support and Waste Management and Remediation Services sector comprises establishments performing routine support activities for the day-to-day operations of other organizations. The establishments in this sector specialize in one or more of these support activities and provide these services to clients in a variety of industries and, in some cases, to households. Activities performed include office administration, hiring and placing of personnel, document preparation and similar clerical services, solicitation, collection, security and surveillance services, cleaning, and waste disposal services.
 
@@ -1246,7 +1302,7 @@ The Administrative and Support and Waste Management and Remediation Services sec
 Measure "Workers employed in firms in professional scientific, management, administrative and waste management services"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -1267,7 +1323,7 @@ Measure "Workers employed in firms in professional scientific, management, admin
 
 Measure "Workers employed in firms in professional scientific, management, administrative and waste management services" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -1280,9 +1336,10 @@ Measure "Workers employed in firms in professional scientific, management, admin
 
 
 
+
 Measure "Workers employed in firms in professional scientific, management, administrative and waste management services" percent of "Employed Population" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1295,7 +1352,7 @@ Measure "Workers employed in firms in professional scientific, management, admin
 
 Measure "Workers employed in firms in professional scientific, management, administrative and waste management services" percent of "Employed Population" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1304,7 +1361,6 @@ Measure "Workers employed in firms in professional scientific, management, admin
         'us.census.acs.C24050010',
         'denominator'
       );
-
 
 
 
@@ -1331,6 +1387,10 @@ Workers employed in firms in public administration
 
 
 
+.. figure:: ../img/us.census.acs.C24050014.png
+  :width: 100 %
+  :align: center
+
 
 The Public Administration sector consists of establishments of federal, state, and local government agencies that administer, oversee, and manage public programs and have executive, legislative, or judicial authority over other institutions within a given area. These agencies also set policy, create laws, adjudicate civil and criminal legal cases, provide for public safety and for national defense. In general, government establishments in the public administration sector oversee governmental programs and activities that are not performed by private establishments.
 
@@ -1341,7 +1401,7 @@ The Public Administration sector consists of establishments of federal, state, a
 Measure "Workers employed in firms in public administration"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -1362,7 +1422,7 @@ Measure "Workers employed in firms in public administration"  density per sq. ki
 
 Measure "Workers employed in firms in public administration" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -1375,9 +1435,10 @@ Measure "Workers employed in firms in public administration" within an area:
 
 
 
+
 Measure "Workers employed in firms in public administration" percent of "Employed Population" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1390,7 +1451,7 @@ Measure "Workers employed in firms in public administration" percent of "Employe
 
 Measure "Workers employed in firms in public administration" percent of "Employed Population" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1399,7 +1460,6 @@ Measure "Workers employed in firms in public administration" percent of "Employe
         'us.census.acs.C24050014',
         'denominator'
       );
-
 
 
 
@@ -1426,6 +1486,10 @@ Workers employed in firms in retail trade
 
 
 
+.. figure:: ../img/us.census.acs.C24050006.png
+  :width: 100 %
+  :align: center
+
 
 The Retail Trade sector comprises establishments engaged in retailing merchandise, generally without transformation, and rendering services incidental to the sale of merchandise. The retailing process is the final step in the distribution of merchandise; retailers are, therefore, organized to sell merchandise in small quantities to the general public.
 
@@ -1436,7 +1500,7 @@ The Retail Trade sector comprises establishments engaged in retailing merchandis
 Measure "Workers employed in firms in retail trade"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -1457,7 +1521,7 @@ Measure "Workers employed in firms in retail trade"  density per sq. kilometer  
 
 Measure "Workers employed in firms in retail trade" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -1470,9 +1534,10 @@ Measure "Workers employed in firms in retail trade" within an area:
 
 
 
+
 Measure "Workers employed in firms in retail trade" percent of "Employed Population" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1485,7 +1550,7 @@ Measure "Workers employed in firms in retail trade" percent of "Employed Populat
 
 Measure "Workers employed in firms in retail trade" percent of "Employed Population" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1494,7 +1559,6 @@ Measure "Workers employed in firms in retail trade" percent of "Employed Populat
         'us.census.acs.C24050006',
         'denominator'
       );
-
 
 
 
@@ -1521,6 +1585,10 @@ Workers employed in firms in transportation, warehousing, and utilities
 
 
 
+.. figure:: ../img/us.census.acs.C24050007.png
+  :width: 100 %
+  :align: center
+
 
 The Transportation and Warehousing sector includes industries providing transportation of passengers and cargo, warehousing and storage for goods, scenic and sightseeing transportation, and support activities related to modes of transportation. The modes of transportation are air, rail, water, road, and pipeline.
 
@@ -1531,7 +1599,7 @@ The Transportation and Warehousing sector includes industries providing transpor
 Measure "Workers employed in firms in transportation, warehousing, and utilities"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -1552,7 +1620,7 @@ Measure "Workers employed in firms in transportation, warehousing, and utilities
 
 Measure "Workers employed in firms in transportation, warehousing, and utilities" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -1565,9 +1633,10 @@ Measure "Workers employed in firms in transportation, warehousing, and utilities
 
 
 
+
 Measure "Workers employed in firms in transportation, warehousing, and utilities" percent of "Employed Population" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1580,7 +1649,7 @@ Measure "Workers employed in firms in transportation, warehousing, and utilities
 
 Measure "Workers employed in firms in transportation, warehousing, and utilities" percent of "Employed Population" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1589,7 +1658,6 @@ Measure "Workers employed in firms in transportation, warehousing, and utilities
         'us.census.acs.C24050007',
         'denominator'
       );
-
 
 
 
@@ -1616,6 +1684,10 @@ Workers employed in firms in wholesale trade
 
 
 
+.. figure:: ../img/us.census.acs.C24050005.png
+  :width: 100 %
+  :align: center
+
 
 The Wholesale Trade sector comprises establishments engaged in wholesaling merchandise, generally without transformation, and rendering services incidental to the sale of merchandise. The wholesaling process is an intermediate step in the distribution of merchandise. Wholesalers are organized to sell or arrange the purchase or sale of (a) goods for resale (i.e., goods sold to other wholesalers or retailers), (b) capital or durable nonconsumer goods, and (c) raw and intermediate materials and supplies used in production.
 
@@ -1626,7 +1698,7 @@ The Wholesale Trade sector comprises establishments engaged in wholesaling merch
 Measure "Workers employed in firms in wholesale trade"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -1647,7 +1719,7 @@ Measure "Workers employed in firms in wholesale trade"  density per sq. kilomete
 
 Measure "Workers employed in firms in wholesale trade" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -1660,9 +1732,10 @@ Measure "Workers employed in firms in wholesale trade" within an area:
 
 
 
+
 Measure "Workers employed in firms in wholesale trade" percent of "Employed Population" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1675,7 +1748,7 @@ Measure "Workers employed in firms in wholesale trade" percent of "Employed Popu
 
 Measure "Workers employed in firms in wholesale trade" percent of "Employed Population" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1684,7 +1757,6 @@ Measure "Workers employed in firms in wholesale trade" percent of "Employed Popu
         'us.census.acs.C24050005',
         'denominator'
       );
-
 
 
 
@@ -1724,6 +1796,10 @@ Unemployed Population
 
 
 
+.. figure:: ../img/us.census.acs.B23025005.png
+  :width: 100 %
+  :align: center
+
 
 The number of civilians in each geography who are 16 years old and over are classified as unemployed if they (1) were neither "at work" nor "with a job but not at work" during the reference week, and (2) were actively looking for work during the last 4 weeks, and (3) were available to start a job. Also included as unemployed are civilians who did not work at all during the reference week, were waiting to be called back to a job from which they had been laid off, and were available for work except for temporary illness. Examples of job seeking activities are:
               * Registering at a public or private employment office
@@ -1741,7 +1817,7 @@ The number of civilians in each geography who are 16 years old and over are clas
 Measure "Unemployed Population"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -1762,7 +1838,7 @@ Measure "Unemployed Population"  density per sq. kilometer  for one point:
 
 Measure "Unemployed Population" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -1775,9 +1851,10 @@ Measure "Unemployed Population" within an area:
 
 
 
+
 Measure "Unemployed Population" percent of "Population in Civilian Labor Force" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1790,7 +1867,7 @@ Measure "Unemployed Population" percent of "Population in Civilian Labor Force" 
 
 Measure "Unemployed Population" percent of "Population in Civilian Labor Force" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1799,7 +1876,6 @@ Measure "Unemployed Population" percent of "Population in Civilian Labor Force" 
         'us.census.acs.B23025005',
         'denominator'
       );
-
 
 
 
@@ -1832,6 +1908,10 @@ Population Not in Labor Force
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B23025007.png
+  :width: 100 %
+  :align: center
+
 
 The number of people in each geography who are 16 years old and over who are not classified as members of the labor force. This category consists mainly of students, homemakers, retired workers, seasonal workers interviewed in an off season who were not looking for work, institutionalized people, and people doing only incidental unpaid family work (less than 15 hours during the reference week).
 
@@ -1842,7 +1922,7 @@ The number of people in each geography who are 16 years old and over who are not
 Measure "Population Not in Labor Force"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -1863,7 +1943,7 @@ Measure "Population Not in Labor Force"  density per sq. kilometer  for one poin
 
 Measure "Population Not in Labor Force" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -1876,9 +1956,10 @@ Measure "Population Not in Labor Force" within an area:
 
 
 
+
 Measure "Population Not in Labor Force" percent of "Population age 16 and over" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1891,7 +1972,7 @@ Measure "Population Not in Labor Force" percent of "Population age 16 and over" 
 
 Measure "Population Not in Labor Force" percent of "Population age 16 and over" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1900,7 +1981,6 @@ Measure "Population Not in Labor Force" percent of "Population age 16 and over" 
         'us.census.acs.B23025007',
         'denominator'
       );
-
 
 
 
@@ -1930,6 +2010,10 @@ Workers age 16 and over who do not work from home
 ---------------------------------------------------------------------------
 
 
+.. figure:: ../img/us.census.acs.B08134001.png
+  :width: 100 %
+  :align: center
+
 
 The number of workers in a geographic area over the age of 16 who do not work from home
 
@@ -1940,7 +2024,7 @@ The number of workers in a geographic area over the age of 16 who do not work fr
 Measure "Workers age 16 and over who do not work from home"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -1961,7 +2045,7 @@ Measure "Workers age 16 and over who do not work from home"  density per sq. kil
 
 Measure "Workers age 16 and over who do not work from home" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -1996,6 +2080,10 @@ Number of workers with a commute between 5 and 9 minutes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B08303003.png
+  :width: 100 %
+  :align: center
+
 
 The number of workers in a geographic area over the age of 16 who do not work from home and commute in between 5 and 9 minutes.
 
@@ -2006,7 +2094,7 @@ The number of workers in a geographic area over the age of 16 who do not work fr
 Measure "Number of workers with a commute between 5 and 9 minutes"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -2027,7 +2115,7 @@ Measure "Number of workers with a commute between 5 and 9 minutes"  density per 
 
 Measure "Number of workers with a commute between 5 and 9 minutes" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -2040,9 +2128,10 @@ Measure "Number of workers with a commute between 5 and 9 minutes" within an are
 
 
 
+
 Measure "Number of workers with a commute between 5 and 9 minutes" percent of "Workers age 16 and over who do not work from home" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -2055,7 +2144,7 @@ Measure "Number of workers with a commute between 5 and 9 minutes" percent of "W
 
 Measure "Number of workers with a commute between 5 and 9 minutes" percent of "Workers age 16 and over who do not work from home" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -2064,7 +2153,6 @@ Measure "Number of workers with a commute between 5 and 9 minutes" percent of "W
         'us.census.acs.B08303003',
         'denominator'
       );
-
 
 
 
@@ -2091,6 +2179,10 @@ Number of workers with a commute between 10 and 14 minutes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B08303004.png
+  :width: 100 %
+  :align: center
+
 
 The number of workers in a geographic area over the age of 16 who do not work from home and commute in between 10 and 14 minutes. 
 
@@ -2101,7 +2193,7 @@ The number of workers in a geographic area over the age of 16 who do not work fr
 Measure "Number of workers with a commute between 10 and 14 minutes"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -2122,7 +2214,7 @@ Measure "Number of workers with a commute between 10 and 14 minutes"  density pe
 
 Measure "Number of workers with a commute between 10 and 14 minutes" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -2135,9 +2227,10 @@ Measure "Number of workers with a commute between 10 and 14 minutes" within an a
 
 
 
+
 Measure "Number of workers with a commute between 10 and 14 minutes" percent of "Workers age 16 and over who do not work from home" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -2150,7 +2243,7 @@ Measure "Number of workers with a commute between 10 and 14 minutes" percent of 
 
 Measure "Number of workers with a commute between 10 and 14 minutes" percent of "Workers age 16 and over who do not work from home" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -2159,7 +2252,6 @@ Measure "Number of workers with a commute between 10 and 14 minutes" percent of 
         'us.census.acs.B08303004',
         'denominator'
       );
-
 
 
 
@@ -2186,6 +2278,10 @@ Number of workers with a commute between 15 and 19 minutes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B08303005.png
+  :width: 100 %
+  :align: center
+
 
 The number of workers in a geographic area over the age of 16 who do not work from home and commute in between 15 and 19 minutes. 
 
@@ -2196,7 +2292,7 @@ The number of workers in a geographic area over the age of 16 who do not work fr
 Measure "Number of workers with a commute between 15 and 19 minutes"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -2217,7 +2313,7 @@ Measure "Number of workers with a commute between 15 and 19 minutes"  density pe
 
 Measure "Number of workers with a commute between 15 and 19 minutes" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -2230,9 +2326,10 @@ Measure "Number of workers with a commute between 15 and 19 minutes" within an a
 
 
 
+
 Measure "Number of workers with a commute between 15 and 19 minutes" percent of "Workers age 16 and over who do not work from home" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -2245,7 +2342,7 @@ Measure "Number of workers with a commute between 15 and 19 minutes" percent of 
 
 Measure "Number of workers with a commute between 15 and 19 minutes" percent of "Workers age 16 and over who do not work from home" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -2254,7 +2351,6 @@ Measure "Number of workers with a commute between 15 and 19 minutes" percent of 
         'us.census.acs.B08303005',
         'denominator'
       );
-
 
 
 
@@ -2281,6 +2377,10 @@ Number of workers with a commute between 20 and 24 minutes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B08303006.png
+  :width: 100 %
+  :align: center
+
 
 The number of workers in a geographic area over the age of 16 who do not work from home and commute in between 20 and 24 minutes.
 
@@ -2291,7 +2391,7 @@ The number of workers in a geographic area over the age of 16 who do not work fr
 Measure "Number of workers with a commute between 20 and 24 minutes"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -2312,7 +2412,7 @@ Measure "Number of workers with a commute between 20 and 24 minutes"  density pe
 
 Measure "Number of workers with a commute between 20 and 24 minutes" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -2325,9 +2425,10 @@ Measure "Number of workers with a commute between 20 and 24 minutes" within an a
 
 
 
+
 Measure "Number of workers with a commute between 20 and 24 minutes" percent of "Workers age 16 and over who do not work from home" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -2340,7 +2441,7 @@ Measure "Number of workers with a commute between 20 and 24 minutes" percent of 
 
 Measure "Number of workers with a commute between 20 and 24 minutes" percent of "Workers age 16 and over who do not work from home" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -2349,7 +2450,6 @@ Measure "Number of workers with a commute between 20 and 24 minutes" percent of 
         'us.census.acs.B08303006',
         'denominator'
       );
-
 
 
 
@@ -2376,6 +2476,10 @@ Number of workers with a commute between 25 and 29 minutes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B08303007.png
+  :width: 100 %
+  :align: center
+
 
 The number of workers in a geographic area over the age of 16 who do not work from home and commute in between 25 and 29 minutes. 
 
@@ -2386,7 +2490,7 @@ The number of workers in a geographic area over the age of 16 who do not work fr
 Measure "Number of workers with a commute between 25 and 29 minutes"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -2407,7 +2511,7 @@ Measure "Number of workers with a commute between 25 and 29 minutes"  density pe
 
 Measure "Number of workers with a commute between 25 and 29 minutes" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -2420,9 +2524,10 @@ Measure "Number of workers with a commute between 25 and 29 minutes" within an a
 
 
 
+
 Measure "Number of workers with a commute between 25 and 29 minutes" percent of "Workers age 16 and over who do not work from home" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -2435,7 +2540,7 @@ Measure "Number of workers with a commute between 25 and 29 minutes" percent of 
 
 Measure "Number of workers with a commute between 25 and 29 minutes" percent of "Workers age 16 and over who do not work from home" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -2444,7 +2549,6 @@ Measure "Number of workers with a commute between 25 and 29 minutes" percent of 
         'us.census.acs.B08303007',
         'denominator'
       );
-
 
 
 
@@ -2471,6 +2575,10 @@ Number of workers with a commute between 30 and 34 minutes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B08303008.png
+  :width: 100 %
+  :align: center
+
 
 The number of workers in a geographic area over the age of 16 who do not work from home and commute in between 30 and 34 minutes. 
 
@@ -2481,7 +2589,7 @@ The number of workers in a geographic area over the age of 16 who do not work fr
 Measure "Number of workers with a commute between 30 and 34 minutes"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -2502,7 +2610,7 @@ Measure "Number of workers with a commute between 30 and 34 minutes"  density pe
 
 Measure "Number of workers with a commute between 30 and 34 minutes" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -2515,9 +2623,10 @@ Measure "Number of workers with a commute between 30 and 34 minutes" within an a
 
 
 
+
 Measure "Number of workers with a commute between 30 and 34 minutes" percent of "Workers age 16 and over who do not work from home" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -2530,7 +2639,7 @@ Measure "Number of workers with a commute between 30 and 34 minutes" percent of 
 
 Measure "Number of workers with a commute between 30 and 34 minutes" percent of "Workers age 16 and over who do not work from home" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -2539,7 +2648,6 @@ Measure "Number of workers with a commute between 30 and 34 minutes" percent of 
         'us.census.acs.B08303008',
         'denominator'
       );
-
 
 
 
@@ -2566,6 +2674,10 @@ Number of workers with a commute between 35 and 39 minutes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B08303009.png
+  :width: 100 %
+  :align: center
+
 
 The number of workers in a geographic area over the age of 16 who do not work from home and commute in between 35 and 39 minutes. 
 
@@ -2576,7 +2688,7 @@ The number of workers in a geographic area over the age of 16 who do not work fr
 Measure "Number of workers with a commute between 35 and 39 minutes"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -2597,7 +2709,7 @@ Measure "Number of workers with a commute between 35 and 39 minutes"  density pe
 
 Measure "Number of workers with a commute between 35 and 39 minutes" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -2610,9 +2722,10 @@ Measure "Number of workers with a commute between 35 and 39 minutes" within an a
 
 
 
+
 Measure "Number of workers with a commute between 35 and 39 minutes" percent of "Workers age 16 and over who do not work from home" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -2625,7 +2738,7 @@ Measure "Number of workers with a commute between 35 and 39 minutes" percent of 
 
 Measure "Number of workers with a commute between 35 and 39 minutes" percent of "Workers age 16 and over who do not work from home" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -2634,7 +2747,6 @@ Measure "Number of workers with a commute between 35 and 39 minutes" percent of 
         'us.census.acs.B08303009',
         'denominator'
       );
-
 
 
 
@@ -2661,6 +2773,10 @@ Number of workers with a commute between 35 and 44 minutes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B08134008.png
+  :width: 100 %
+  :align: center
+
 
 The number of workers in a geographic area over the age of 16 who do not work from home and commute in between 35 and 44 minutes. 
 
@@ -2671,7 +2787,7 @@ The number of workers in a geographic area over the age of 16 who do not work fr
 Measure "Number of workers with a commute between 35 and 44 minutes"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -2692,7 +2808,7 @@ Measure "Number of workers with a commute between 35 and 44 minutes"  density pe
 
 Measure "Number of workers with a commute between 35 and 44 minutes" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -2705,9 +2821,10 @@ Measure "Number of workers with a commute between 35 and 44 minutes" within an a
 
 
 
+
 Measure "Number of workers with a commute between 35 and 44 minutes" percent of "Workers age 16 and over who do not work from home" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -2720,7 +2837,7 @@ Measure "Number of workers with a commute between 35 and 44 minutes" percent of 
 
 Measure "Number of workers with a commute between 35 and 44 minutes" percent of "Workers age 16 and over who do not work from home" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -2729,7 +2846,6 @@ Measure "Number of workers with a commute between 35 and 44 minutes" percent of 
         'us.census.acs.B08134008',
         'denominator'
       );
-
 
 
 
@@ -2756,6 +2872,10 @@ Number of workers with a commute between 40 and 44 minutes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B08303010.png
+  :width: 100 %
+  :align: center
+
 
 The number of workers in a geographic area over the age of 16 who do not work from home and commute in between 40 and 44 minutes. 
 
@@ -2766,7 +2886,7 @@ The number of workers in a geographic area over the age of 16 who do not work fr
 Measure "Number of workers with a commute between 40 and 44 minutes"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -2787,7 +2907,7 @@ Measure "Number of workers with a commute between 40 and 44 minutes"  density pe
 
 Measure "Number of workers with a commute between 40 and 44 minutes" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -2800,9 +2920,10 @@ Measure "Number of workers with a commute between 40 and 44 minutes" within an a
 
 
 
+
 Measure "Number of workers with a commute between 40 and 44 minutes" percent of "Workers age 16 and over who do not work from home" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -2815,7 +2936,7 @@ Measure "Number of workers with a commute between 40 and 44 minutes" percent of 
 
 Measure "Number of workers with a commute between 40 and 44 minutes" percent of "Workers age 16 and over who do not work from home" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -2824,7 +2945,6 @@ Measure "Number of workers with a commute between 40 and 44 minutes" percent of 
         'us.census.acs.B08303010',
         'denominator'
       );
-
 
 
 
@@ -2851,6 +2971,10 @@ Number of workers with a commute between 45 and 59 minutes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B08303011.png
+  :width: 100 %
+  :align: center
+
 
 The number of workers in a geographic area over the age of 16 who do not work from home and commute in between 45 and 59 minutes. 
 
@@ -2861,7 +2985,7 @@ The number of workers in a geographic area over the age of 16 who do not work fr
 Measure "Number of workers with a commute between 45 and 59 minutes"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -2882,7 +3006,7 @@ Measure "Number of workers with a commute between 45 and 59 minutes"  density pe
 
 Measure "Number of workers with a commute between 45 and 59 minutes" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -2895,9 +3019,10 @@ Measure "Number of workers with a commute between 45 and 59 minutes" within an a
 
 
 
+
 Measure "Number of workers with a commute between 45 and 59 minutes" percent of "Workers age 16 and over who do not work from home" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -2910,7 +3035,7 @@ Measure "Number of workers with a commute between 45 and 59 minutes" percent of 
 
 Measure "Number of workers with a commute between 45 and 59 minutes" percent of "Workers age 16 and over who do not work from home" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -2919,7 +3044,6 @@ Measure "Number of workers with a commute between 45 and 59 minutes" percent of 
         'us.census.acs.B08303011',
         'denominator'
       );
-
 
 
 
@@ -2946,6 +3070,10 @@ Number of workers with a commute between 60 and 89 minutes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B08303012.png
+  :width: 100 %
+  :align: center
+
 
 The number of workers in a geographic area over the age of 16 who do not work from home and commute in between 60 and 89 minutes .
 
@@ -2956,7 +3084,7 @@ The number of workers in a geographic area over the age of 16 who do not work fr
 Measure "Number of workers with a commute between 60 and 89 minutes"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -2977,7 +3105,7 @@ Measure "Number of workers with a commute between 60 and 89 minutes"  density pe
 
 Measure "Number of workers with a commute between 60 and 89 minutes" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -2990,9 +3118,10 @@ Measure "Number of workers with a commute between 60 and 89 minutes" within an a
 
 
 
+
 Measure "Number of workers with a commute between 60 and 89 minutes" percent of "Workers age 16 and over who do not work from home" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -3005,7 +3134,7 @@ Measure "Number of workers with a commute between 60 and 89 minutes" percent of 
 
 Measure "Number of workers with a commute between 60 and 89 minutes" percent of "Workers age 16 and over who do not work from home" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -3014,7 +3143,6 @@ Measure "Number of workers with a commute between 60 and 89 minutes" percent of 
         'us.census.acs.B08303012',
         'denominator'
       );
-
 
 
 
@@ -3041,6 +3169,10 @@ Number of workers with a commute of more than 90 minutes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B08303013.png
+  :width: 100 %
+  :align: center
+
 
 The number of workers in a geographic area over the age of 16 who do not work from home and commute more than 90 minutes.
 
@@ -3051,7 +3183,7 @@ The number of workers in a geographic area over the age of 16 who do not work fr
 Measure "Number of workers with a commute of more than 90 minutes"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -3072,7 +3204,7 @@ Measure "Number of workers with a commute of more than 90 minutes"  density per 
 
 Measure "Number of workers with a commute of more than 90 minutes" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -3085,9 +3217,10 @@ Measure "Number of workers with a commute of more than 90 minutes" within an are
 
 
 
+
 Measure "Number of workers with a commute of more than 90 minutes" percent of "Workers age 16 and over who do not work from home" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -3100,7 +3233,7 @@ Measure "Number of workers with a commute of more than 90 minutes" percent of "W
 
 Measure "Number of workers with a commute of more than 90 minutes" percent of "Workers age 16 and over who do not work from home" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -3109,7 +3242,6 @@ Measure "Number of workers with a commute of more than 90 minutes" percent of "W
         'us.census.acs.B08303013',
         'denominator'
       );
-
 
 
 
@@ -3136,6 +3268,10 @@ Number of workers with a commute of over 60 minutes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B08134010.png
+  :width: 100 %
+  :align: center
+
 
 The number of workers in a geographic area over the age of 16 who do not work from home and commute in over 60 minutes.
 
@@ -3146,7 +3282,7 @@ The number of workers in a geographic area over the age of 16 who do not work fr
 Measure "Number of workers with a commute of over 60 minutes"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -3167,7 +3303,7 @@ Measure "Number of workers with a commute of over 60 minutes"  density per sq. k
 
 Measure "Number of workers with a commute of over 60 minutes" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -3180,9 +3316,10 @@ Measure "Number of workers with a commute of over 60 minutes" within an area:
 
 
 
+
 Measure "Number of workers with a commute of over 60 minutes" percent of "Workers age 16 and over who do not work from home" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -3195,7 +3332,7 @@ Measure "Number of workers with a commute of over 60 minutes" percent of "Worker
 
 Measure "Number of workers with a commute of over 60 minutes" percent of "Workers age 16 and over who do not work from home" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -3204,7 +3341,6 @@ Measure "Number of workers with a commute of over 60 minutes" percent of "Worker
         'us.census.acs.B08134010',
         'denominator'
       );
-
 
 
 
@@ -3231,6 +3367,10 @@ Number of workers with less than 10 minute commute
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B08134002.png
+  :width: 100 %
+  :align: center
+
 
 The number of workers in a geographic area over the age of 16 who do not work from home and commute in less than 10 minutes.
 
@@ -3241,7 +3381,7 @@ The number of workers in a geographic area over the age of 16 who do not work fr
 Measure "Number of workers with less than 10 minute commute"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -3262,7 +3402,7 @@ Measure "Number of workers with less than 10 minute commute"  density per sq. ki
 
 Measure "Number of workers with less than 10 minute commute" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -3275,9 +3415,10 @@ Measure "Number of workers with less than 10 minute commute" within an area:
 
 
 
+
 Measure "Number of workers with less than 10 minute commute" percent of "Workers age 16 and over who do not work from home" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -3290,7 +3431,7 @@ Measure "Number of workers with less than 10 minute commute" percent of "Workers
 
 Measure "Number of workers with less than 10 minute commute" percent of "Workers age 16 and over who do not work from home" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -3299,7 +3440,6 @@ Measure "Number of workers with less than 10 minute commute" percent of "Workers
         'us.census.acs.B08134002',
         'denominator'
       );
-
 
 
 
@@ -3329,6 +3469,10 @@ Workers over the Age of 16
 ---------------------------------------------------------------------------
 
 
+.. figure:: ../img/us.census.acs.B08006001.png
+  :width: 100 %
+  :align: center
+
 
 The number of people in each geography who work. Workers include those employed at private for-profit companies, the self-employed, government workers and non-profit employees.
 
@@ -3339,7 +3483,7 @@ The number of people in each geography who work. Workers include those employed 
 Measure "Workers over the Age of 16"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -3360,7 +3504,7 @@ Measure "Workers over the Age of 16"  density per sq. kilometer  for one point:
 
 Measure "Workers over the Age of 16" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -3390,12 +3534,20 @@ Measure "Workers over the Age of 16" within an area:
   
   
   
+  
+  
+  
+  
 
 .. _us.census.acs.B08006017:
 
 Worked at Home
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+
+.. figure:: ../img/us.census.acs.B08006017.png
+  :width: 100 %
+  :align: center
 
 
 The count within a geographical area of workers over the age of 16 who worked at home.
@@ -3407,7 +3559,7 @@ The count within a geographical area of workers over the age of 16 who worked at
 Measure "Worked at Home"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -3428,7 +3580,7 @@ Measure "Worked at Home"  density per sq. kilometer  for one point:
 
 Measure "Worked at Home" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -3441,9 +3593,10 @@ Measure "Worked at Home" within an area:
 
 
 
+
 Measure "Worked at Home" percent of "Workers over the Age of 16" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -3456,7 +3609,7 @@ Measure "Worked at Home" percent of "Workers over the Age of 16" at one point:
 
 Measure "Worked at Home" percent of "Workers over the Age of 16" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -3465,7 +3618,6 @@ Measure "Worked at Home" percent of "Workers over the Age of 16" within an area:
         'us.census.acs.B08006017',
         'denominator'
       );
-
 
 
 

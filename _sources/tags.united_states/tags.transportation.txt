@@ -21,6 +21,10 @@ Commuters by Car, Truck, or Van
 ---------------------------------------------------------------------------
 
 
+.. figure:: ../img/us.census.acs.B08006002.png
+  :width: 100 %
+  :align: center
+
 
 The number of workers age 16 years and over within  a geographic area who primarily traveled to work by car, truck or  van.  This is the principal mode of travel or type of conveyance,  by distance rather than time, that the worker usually used to get  from home to work.
 
@@ -31,7 +35,7 @@ The number of workers age 16 years and over within  a geographic area who primar
 Measure "Commuters by Car, Truck, or Van"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -52,7 +56,7 @@ Measure "Commuters by Car, Truck, or Van"  density per sq. kilometer  for one po
 
 Measure "Commuters by Car, Truck, or Van" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -66,10 +70,42 @@ Measure "Commuters by Car, Truck, or Van" within an area:
 
 
 
+Measure "Commuters by Car, Truck, or Van" percent of "Workers over the Age of 16" at one point:
+
+.. code-block:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B08006002',
+        'denominator'
+      );
+
+
+Measure "Commuters by Car, Truck, or Van" percent of "Workers over the Age of 16" within an area:
+
+.. code-block:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B08006002',
+        'denominator'
+      );
 
 
 
 
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B08006001`
 
 
 
@@ -87,6 +123,10 @@ Commuters by Carpool
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B08006004.png
+  :width: 100 %
+  :align: center
+
 
 The number of workers age 16 years and over within a geographic area who primarily traveled to work by carpool.  This is the principal mode of travel or type of conveyance, by distance rather than time, that the worker usually used to get from home to work.
 
@@ -97,7 +137,7 @@ The number of workers age 16 years and over within a geographic area who primari
 Measure "Commuters by Carpool"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -118,7 +158,7 @@ Measure "Commuters by Carpool"  density per sq. kilometer  for one point:
 
 Measure "Commuters by Carpool" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -131,9 +171,10 @@ Measure "Commuters by Carpool" within an area:
 
 
 
+
 Measure "Commuters by Carpool" percent of "Commuters by Car, Truck, or Van" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -146,7 +187,7 @@ Measure "Commuters by Carpool" percent of "Commuters by Car, Truck, or Van" at o
 
 Measure "Commuters by Carpool" percent of "Commuters by Car, Truck, or Van" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -155,7 +196,6 @@ Measure "Commuters by Carpool" percent of "Commuters by Car, Truck, or Van" with
         'us.census.acs.B08006004',
         'denominator'
       );
-
 
 
 
@@ -182,6 +222,10 @@ Commuters who drove alone
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B08006003.png
+  :width: 100 %
+  :align: center
+
 
 The number of workers age 16 years and over within a geographic area who primarily traveled by car driving alone. This is the principal mode of travel or type of conveyance, by distance rather than time, that the worker usually used to get from home to work.
 
@@ -192,7 +236,7 @@ The number of workers age 16 years and over within a geographic area who primari
 Measure "Commuters who drove alone"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -213,7 +257,7 @@ Measure "Commuters who drove alone"  density per sq. kilometer  for one point:
 
 Measure "Commuters who drove alone" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -226,9 +270,10 @@ Measure "Commuters who drove alone" within an area:
 
 
 
+
 Measure "Commuters who drove alone" percent of "Commuters by Car, Truck, or Van" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -241,7 +286,7 @@ Measure "Commuters who drove alone" percent of "Commuters by Car, Truck, or Van"
 
 Measure "Commuters who drove alone" percent of "Commuters by Car, Truck, or Van" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -250,7 +295,6 @@ Measure "Commuters who drove alone" percent of "Commuters by Car, Truck, or Van"
         'us.census.acs.B08006003',
         'denominator'
       );
-
 
 
 
@@ -280,6 +324,10 @@ Commuters by Public Transportation
 ---------------------------------------------------------------------------
 
 
+.. figure:: ../img/us.census.acs.B08301010.png
+  :width: 100 %
+  :align: center
+
 
 The number of workers age 16 years and over within a geographic area who primarily traveled to work by public transportation.  This is the principal mode of travel or type of conveyance, by distance rather than time, that the worker usually used to get from home to work.
 
@@ -290,7 +338,7 @@ The number of workers age 16 years and over within a geographic area who primari
 Measure "Commuters by Public Transportation"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -311,7 +359,7 @@ Measure "Commuters by Public Transportation"  density per sq. kilometer  for one
 
 Measure "Commuters by Public Transportation" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -325,10 +373,42 @@ Measure "Commuters by Public Transportation" within an area:
 
 
 
+Measure "Commuters by Public Transportation" percent of "Workers over the Age of 16" at one point:
+
+.. code-block:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B08301010',
+        'denominator'
+      );
+
+
+Measure "Commuters by Public Transportation" percent of "Workers over the Age of 16" within an area:
+
+.. code-block:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B08301010',
+        'denominator'
+      );
 
 
 
 
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B08006001`
 
 
 
@@ -346,6 +426,10 @@ Commuters by Bus
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B08006009.png
+  :width: 100 %
+  :align: center
+
 
 The number of workers age 16 years and over within a geographic area who primarily traveled to work by bus.  This is the principal mode of travel or type of conveyance, by distance rather than time, that the worker usually used to get from home to work.  This is a subset of workers who commuted by public transport.
 
@@ -356,7 +440,7 @@ The number of workers age 16 years and over within a geographic area who primari
 Measure "Commuters by Bus"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -377,7 +461,7 @@ Measure "Commuters by Bus"  density per sq. kilometer  for one point:
 
 Measure "Commuters by Bus" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -390,9 +474,10 @@ Measure "Commuters by Bus" within an area:
 
 
 
+
 Measure "Commuters by Bus" percent of "Commuters by Public Transportation" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -405,7 +490,7 @@ Measure "Commuters by Bus" percent of "Commuters by Public Transportation" at on
 
 Measure "Commuters by Bus" percent of "Commuters by Public Transportation" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -414,7 +499,6 @@ Measure "Commuters by Bus" percent of "Commuters by Public Transportation" withi
         'us.census.acs.B08006009',
         'denominator'
       );
-
 
 
 
@@ -441,6 +525,10 @@ Commuters by Subway or Elevated
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B08006011.png
+  :width: 100 %
+  :align: center
+
 
 The number of workers age 16 years and over within a geographic area who primarily traveled to work by subway or elevated train.  This is the principal mode of travel or type of conveyance, by distance rather than time, that the worker usually used to get from home to work.  This is a subset of workers who commuted by public transport.
 
@@ -451,7 +539,7 @@ The number of workers age 16 years and over within a geographic area who primari
 Measure "Commuters by Subway or Elevated"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -472,7 +560,7 @@ Measure "Commuters by Subway or Elevated"  density per sq. kilometer  for one po
 
 Measure "Commuters by Subway or Elevated" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -485,9 +573,10 @@ Measure "Commuters by Subway or Elevated" within an area:
 
 
 
+
 Measure "Commuters by Subway or Elevated" percent of "Commuters by Public Transportation" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -500,7 +589,7 @@ Measure "Commuters by Subway or Elevated" percent of "Commuters by Public Transp
 
 Measure "Commuters by Subway or Elevated" percent of "Commuters by Public Transportation" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -509,7 +598,6 @@ Measure "Commuters by Subway or Elevated" percent of "Commuters by Public Transp
         'us.census.acs.B08006011',
         'denominator'
       );
-
 
 
 
@@ -539,6 +627,10 @@ Walked to Work
 ---------------------------------------------------------------------------
 
 
+.. figure:: ../img/us.census.acs.B08006015.png
+  :width: 100 %
+  :align: center
+
 
 The number of workers age 16 years and over within a geographic area who primarily walked to work.  This would mean that of any way of getting to work, they travelled the most distance walking.
 
@@ -549,7 +641,7 @@ The number of workers age 16 years and over within a geographic area who primari
 Measure "Walked to Work"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -570,7 +662,7 @@ Measure "Walked to Work"  density per sq. kilometer  for one point:
 
 Measure "Walked to Work" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -583,9 +675,10 @@ Measure "Walked to Work" within an area:
 
 
 
+
 Measure "Walked to Work" percent of "Workers over the Age of 16" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -598,7 +691,7 @@ Measure "Walked to Work" percent of "Workers over the Age of 16" at one point:
 
 Measure "Walked to Work" percent of "Workers over the Age of 16" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -607,7 +700,6 @@ Measure "Walked to Work" percent of "Workers over the Age of 16" within an area:
         'us.census.acs.B08006015',
         'denominator'
       );
-
 
 
 
@@ -634,6 +726,10 @@ Worked at Home
 ---------------------------------------------------------------------------
 
 
+.. figure:: ../img/us.census.acs.B08006017.png
+  :width: 100 %
+  :align: center
+
 
 The count within a geographical area of workers over the age of 16 who worked at home.
 
@@ -644,7 +740,7 @@ The count within a geographical area of workers over the age of 16 who worked at
 Measure "Worked at Home"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -665,7 +761,7 @@ Measure "Worked at Home"  density per sq. kilometer  for one point:
 
 Measure "Worked at Home" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -678,9 +774,10 @@ Measure "Worked at Home" within an area:
 
 
 
+
 Measure "Worked at Home" percent of "Workers over the Age of 16" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -693,7 +790,7 @@ Measure "Worked at Home" percent of "Workers over the Age of 16" at one point:
 
 Measure "Worked at Home" percent of "Workers over the Age of 16" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -702,7 +799,6 @@ Measure "Worked at Home" percent of "Workers over the Age of 16" within an area:
         'us.census.acs.B08006017',
         'denominator'
       );
-
 
 
 
@@ -729,6 +825,10 @@ Workers age 16 and over who do not work from home
 ---------------------------------------------------------------------------
 
 
+.. figure:: ../img/us.census.acs.B08134001.png
+  :width: 100 %
+  :align: center
+
 
 The number of workers in a geographic area over the age of 16 who do not work from home
 
@@ -739,7 +839,7 @@ The number of workers in a geographic area over the age of 16 who do not work fr
 Measure "Workers age 16 and over who do not work from home"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -760,7 +860,7 @@ Measure "Workers age 16 and over who do not work from home"  density per sq. kil
 
 Measure "Workers age 16 and over who do not work from home" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -795,6 +895,10 @@ Number of workers with a commute between 5 and 9 minutes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B08303003.png
+  :width: 100 %
+  :align: center
+
 
 The number of workers in a geographic area over the age of 16 who do not work from home and commute in between 5 and 9 minutes.
 
@@ -805,7 +909,7 @@ The number of workers in a geographic area over the age of 16 who do not work fr
 Measure "Number of workers with a commute between 5 and 9 minutes"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -826,7 +930,7 @@ Measure "Number of workers with a commute between 5 and 9 minutes"  density per 
 
 Measure "Number of workers with a commute between 5 and 9 minutes" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -839,9 +943,10 @@ Measure "Number of workers with a commute between 5 and 9 minutes" within an are
 
 
 
+
 Measure "Number of workers with a commute between 5 and 9 minutes" percent of "Workers age 16 and over who do not work from home" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -854,7 +959,7 @@ Measure "Number of workers with a commute between 5 and 9 minutes" percent of "W
 
 Measure "Number of workers with a commute between 5 and 9 minutes" percent of "Workers age 16 and over who do not work from home" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -863,7 +968,6 @@ Measure "Number of workers with a commute between 5 and 9 minutes" percent of "W
         'us.census.acs.B08303003',
         'denominator'
       );
-
 
 
 
@@ -890,6 +994,10 @@ Number of workers with a commute between 10 and 14 minutes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B08303004.png
+  :width: 100 %
+  :align: center
+
 
 The number of workers in a geographic area over the age of 16 who do not work from home and commute in between 10 and 14 minutes. 
 
@@ -900,7 +1008,7 @@ The number of workers in a geographic area over the age of 16 who do not work fr
 Measure "Number of workers with a commute between 10 and 14 minutes"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -921,7 +1029,7 @@ Measure "Number of workers with a commute between 10 and 14 minutes"  density pe
 
 Measure "Number of workers with a commute between 10 and 14 minutes" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -934,9 +1042,10 @@ Measure "Number of workers with a commute between 10 and 14 minutes" within an a
 
 
 
+
 Measure "Number of workers with a commute between 10 and 14 minutes" percent of "Workers age 16 and over who do not work from home" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -949,7 +1058,7 @@ Measure "Number of workers with a commute between 10 and 14 minutes" percent of 
 
 Measure "Number of workers with a commute between 10 and 14 minutes" percent of "Workers age 16 and over who do not work from home" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -958,7 +1067,6 @@ Measure "Number of workers with a commute between 10 and 14 minutes" percent of 
         'us.census.acs.B08303004',
         'denominator'
       );
-
 
 
 
@@ -985,6 +1093,10 @@ Number of workers with a commute between 15 and 19 minutes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B08303005.png
+  :width: 100 %
+  :align: center
+
 
 The number of workers in a geographic area over the age of 16 who do not work from home and commute in between 15 and 19 minutes. 
 
@@ -995,7 +1107,7 @@ The number of workers in a geographic area over the age of 16 who do not work fr
 Measure "Number of workers with a commute between 15 and 19 minutes"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -1016,7 +1128,7 @@ Measure "Number of workers with a commute between 15 and 19 minutes"  density pe
 
 Measure "Number of workers with a commute between 15 and 19 minutes" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -1029,9 +1141,10 @@ Measure "Number of workers with a commute between 15 and 19 minutes" within an a
 
 
 
+
 Measure "Number of workers with a commute between 15 and 19 minutes" percent of "Workers age 16 and over who do not work from home" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1044,7 +1157,7 @@ Measure "Number of workers with a commute between 15 and 19 minutes" percent of 
 
 Measure "Number of workers with a commute between 15 and 19 minutes" percent of "Workers age 16 and over who do not work from home" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1053,7 +1166,6 @@ Measure "Number of workers with a commute between 15 and 19 minutes" percent of 
         'us.census.acs.B08303005',
         'denominator'
       );
-
 
 
 
@@ -1080,6 +1192,10 @@ Number of workers with a commute between 20 and 24 minutes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B08303006.png
+  :width: 100 %
+  :align: center
+
 
 The number of workers in a geographic area over the age of 16 who do not work from home and commute in between 20 and 24 minutes.
 
@@ -1090,7 +1206,7 @@ The number of workers in a geographic area over the age of 16 who do not work fr
 Measure "Number of workers with a commute between 20 and 24 minutes"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -1111,7 +1227,7 @@ Measure "Number of workers with a commute between 20 and 24 minutes"  density pe
 
 Measure "Number of workers with a commute between 20 and 24 minutes" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -1124,9 +1240,10 @@ Measure "Number of workers with a commute between 20 and 24 minutes" within an a
 
 
 
+
 Measure "Number of workers with a commute between 20 and 24 minutes" percent of "Workers age 16 and over who do not work from home" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1139,7 +1256,7 @@ Measure "Number of workers with a commute between 20 and 24 minutes" percent of 
 
 Measure "Number of workers with a commute between 20 and 24 minutes" percent of "Workers age 16 and over who do not work from home" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1148,7 +1265,6 @@ Measure "Number of workers with a commute between 20 and 24 minutes" percent of 
         'us.census.acs.B08303006',
         'denominator'
       );
-
 
 
 
@@ -1175,6 +1291,10 @@ Number of workers with a commute between 25 and 29 minutes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B08303007.png
+  :width: 100 %
+  :align: center
+
 
 The number of workers in a geographic area over the age of 16 who do not work from home and commute in between 25 and 29 minutes. 
 
@@ -1185,7 +1305,7 @@ The number of workers in a geographic area over the age of 16 who do not work fr
 Measure "Number of workers with a commute between 25 and 29 minutes"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -1206,7 +1326,7 @@ Measure "Number of workers with a commute between 25 and 29 minutes"  density pe
 
 Measure "Number of workers with a commute between 25 and 29 minutes" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -1219,9 +1339,10 @@ Measure "Number of workers with a commute between 25 and 29 minutes" within an a
 
 
 
+
 Measure "Number of workers with a commute between 25 and 29 minutes" percent of "Workers age 16 and over who do not work from home" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1234,7 +1355,7 @@ Measure "Number of workers with a commute between 25 and 29 minutes" percent of 
 
 Measure "Number of workers with a commute between 25 and 29 minutes" percent of "Workers age 16 and over who do not work from home" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1243,7 +1364,6 @@ Measure "Number of workers with a commute between 25 and 29 minutes" percent of 
         'us.census.acs.B08303007',
         'denominator'
       );
-
 
 
 
@@ -1270,6 +1390,10 @@ Number of workers with a commute between 30 and 34 minutes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B08303008.png
+  :width: 100 %
+  :align: center
+
 
 The number of workers in a geographic area over the age of 16 who do not work from home and commute in between 30 and 34 minutes. 
 
@@ -1280,7 +1404,7 @@ The number of workers in a geographic area over the age of 16 who do not work fr
 Measure "Number of workers with a commute between 30 and 34 minutes"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -1301,7 +1425,7 @@ Measure "Number of workers with a commute between 30 and 34 minutes"  density pe
 
 Measure "Number of workers with a commute between 30 and 34 minutes" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -1314,9 +1438,10 @@ Measure "Number of workers with a commute between 30 and 34 minutes" within an a
 
 
 
+
 Measure "Number of workers with a commute between 30 and 34 minutes" percent of "Workers age 16 and over who do not work from home" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1329,7 +1454,7 @@ Measure "Number of workers with a commute between 30 and 34 minutes" percent of 
 
 Measure "Number of workers with a commute between 30 and 34 minutes" percent of "Workers age 16 and over who do not work from home" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1338,7 +1463,6 @@ Measure "Number of workers with a commute between 30 and 34 minutes" percent of 
         'us.census.acs.B08303008',
         'denominator'
       );
-
 
 
 
@@ -1365,6 +1489,10 @@ Number of workers with a commute between 35 and 39 minutes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B08303009.png
+  :width: 100 %
+  :align: center
+
 
 The number of workers in a geographic area over the age of 16 who do not work from home and commute in between 35 and 39 minutes. 
 
@@ -1375,7 +1503,7 @@ The number of workers in a geographic area over the age of 16 who do not work fr
 Measure "Number of workers with a commute between 35 and 39 minutes"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -1396,7 +1524,7 @@ Measure "Number of workers with a commute between 35 and 39 minutes"  density pe
 
 Measure "Number of workers with a commute between 35 and 39 minutes" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -1409,9 +1537,10 @@ Measure "Number of workers with a commute between 35 and 39 minutes" within an a
 
 
 
+
 Measure "Number of workers with a commute between 35 and 39 minutes" percent of "Workers age 16 and over who do not work from home" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1424,7 +1553,7 @@ Measure "Number of workers with a commute between 35 and 39 minutes" percent of 
 
 Measure "Number of workers with a commute between 35 and 39 minutes" percent of "Workers age 16 and over who do not work from home" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1433,7 +1562,6 @@ Measure "Number of workers with a commute between 35 and 39 minutes" percent of 
         'us.census.acs.B08303009',
         'denominator'
       );
-
 
 
 
@@ -1460,6 +1588,10 @@ Number of workers with a commute between 35 and 44 minutes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B08134008.png
+  :width: 100 %
+  :align: center
+
 
 The number of workers in a geographic area over the age of 16 who do not work from home and commute in between 35 and 44 minutes. 
 
@@ -1470,7 +1602,7 @@ The number of workers in a geographic area over the age of 16 who do not work fr
 Measure "Number of workers with a commute between 35 and 44 minutes"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -1491,7 +1623,7 @@ Measure "Number of workers with a commute between 35 and 44 minutes"  density pe
 
 Measure "Number of workers with a commute between 35 and 44 minutes" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -1504,9 +1636,10 @@ Measure "Number of workers with a commute between 35 and 44 minutes" within an a
 
 
 
+
 Measure "Number of workers with a commute between 35 and 44 minutes" percent of "Workers age 16 and over who do not work from home" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1519,7 +1652,7 @@ Measure "Number of workers with a commute between 35 and 44 minutes" percent of 
 
 Measure "Number of workers with a commute between 35 and 44 minutes" percent of "Workers age 16 and over who do not work from home" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1528,7 +1661,6 @@ Measure "Number of workers with a commute between 35 and 44 minutes" percent of 
         'us.census.acs.B08134008',
         'denominator'
       );
-
 
 
 
@@ -1555,6 +1687,10 @@ Number of workers with a commute between 40 and 44 minutes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B08303010.png
+  :width: 100 %
+  :align: center
+
 
 The number of workers in a geographic area over the age of 16 who do not work from home and commute in between 40 and 44 minutes. 
 
@@ -1565,7 +1701,7 @@ The number of workers in a geographic area over the age of 16 who do not work fr
 Measure "Number of workers with a commute between 40 and 44 minutes"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -1586,7 +1722,7 @@ Measure "Number of workers with a commute between 40 and 44 minutes"  density pe
 
 Measure "Number of workers with a commute between 40 and 44 minutes" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -1599,9 +1735,10 @@ Measure "Number of workers with a commute between 40 and 44 minutes" within an a
 
 
 
+
 Measure "Number of workers with a commute between 40 and 44 minutes" percent of "Workers age 16 and over who do not work from home" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1614,7 +1751,7 @@ Measure "Number of workers with a commute between 40 and 44 minutes" percent of 
 
 Measure "Number of workers with a commute between 40 and 44 minutes" percent of "Workers age 16 and over who do not work from home" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1623,7 +1760,6 @@ Measure "Number of workers with a commute between 40 and 44 minutes" percent of 
         'us.census.acs.B08303010',
         'denominator'
       );
-
 
 
 
@@ -1650,6 +1786,10 @@ Number of workers with a commute between 45 and 59 minutes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B08303011.png
+  :width: 100 %
+  :align: center
+
 
 The number of workers in a geographic area over the age of 16 who do not work from home and commute in between 45 and 59 minutes. 
 
@@ -1660,7 +1800,7 @@ The number of workers in a geographic area over the age of 16 who do not work fr
 Measure "Number of workers with a commute between 45 and 59 minutes"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -1681,7 +1821,7 @@ Measure "Number of workers with a commute between 45 and 59 minutes"  density pe
 
 Measure "Number of workers with a commute between 45 and 59 minutes" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -1694,9 +1834,10 @@ Measure "Number of workers with a commute between 45 and 59 minutes" within an a
 
 
 
+
 Measure "Number of workers with a commute between 45 and 59 minutes" percent of "Workers age 16 and over who do not work from home" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1709,7 +1850,7 @@ Measure "Number of workers with a commute between 45 and 59 minutes" percent of 
 
 Measure "Number of workers with a commute between 45 and 59 minutes" percent of "Workers age 16 and over who do not work from home" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1718,7 +1859,6 @@ Measure "Number of workers with a commute between 45 and 59 minutes" percent of 
         'us.census.acs.B08303011',
         'denominator'
       );
-
 
 
 
@@ -1745,6 +1885,10 @@ Number of workers with a commute between 60 and 89 minutes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B08303012.png
+  :width: 100 %
+  :align: center
+
 
 The number of workers in a geographic area over the age of 16 who do not work from home and commute in between 60 and 89 minutes .
 
@@ -1755,7 +1899,7 @@ The number of workers in a geographic area over the age of 16 who do not work fr
 Measure "Number of workers with a commute between 60 and 89 minutes"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -1776,7 +1920,7 @@ Measure "Number of workers with a commute between 60 and 89 minutes"  density pe
 
 Measure "Number of workers with a commute between 60 and 89 minutes" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -1789,9 +1933,10 @@ Measure "Number of workers with a commute between 60 and 89 minutes" within an a
 
 
 
+
 Measure "Number of workers with a commute between 60 and 89 minutes" percent of "Workers age 16 and over who do not work from home" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1804,7 +1949,7 @@ Measure "Number of workers with a commute between 60 and 89 minutes" percent of 
 
 Measure "Number of workers with a commute between 60 and 89 minutes" percent of "Workers age 16 and over who do not work from home" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1813,7 +1958,6 @@ Measure "Number of workers with a commute between 60 and 89 minutes" percent of 
         'us.census.acs.B08303012',
         'denominator'
       );
-
 
 
 
@@ -1840,6 +1984,10 @@ Number of workers with a commute of more than 90 minutes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B08303013.png
+  :width: 100 %
+  :align: center
+
 
 The number of workers in a geographic area over the age of 16 who do not work from home and commute more than 90 minutes.
 
@@ -1850,7 +1998,7 @@ The number of workers in a geographic area over the age of 16 who do not work fr
 Measure "Number of workers with a commute of more than 90 minutes"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -1871,7 +2019,7 @@ Measure "Number of workers with a commute of more than 90 minutes"  density per 
 
 Measure "Number of workers with a commute of more than 90 minutes" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -1884,9 +2032,10 @@ Measure "Number of workers with a commute of more than 90 minutes" within an are
 
 
 
+
 Measure "Number of workers with a commute of more than 90 minutes" percent of "Workers age 16 and over who do not work from home" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1899,7 +2048,7 @@ Measure "Number of workers with a commute of more than 90 minutes" percent of "W
 
 Measure "Number of workers with a commute of more than 90 minutes" percent of "Workers age 16 and over who do not work from home" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1908,7 +2057,6 @@ Measure "Number of workers with a commute of more than 90 minutes" percent of "W
         'us.census.acs.B08303013',
         'denominator'
       );
-
 
 
 
@@ -1935,6 +2083,10 @@ Number of workers with a commute of over 60 minutes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B08134010.png
+  :width: 100 %
+  :align: center
+
 
 The number of workers in a geographic area over the age of 16 who do not work from home and commute in over 60 minutes.
 
@@ -1945,7 +2097,7 @@ The number of workers in a geographic area over the age of 16 who do not work fr
 Measure "Number of workers with a commute of over 60 minutes"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -1966,7 +2118,7 @@ Measure "Number of workers with a commute of over 60 minutes"  density per sq. k
 
 Measure "Number of workers with a commute of over 60 minutes" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -1979,9 +2131,10 @@ Measure "Number of workers with a commute of over 60 minutes" within an area:
 
 
 
+
 Measure "Number of workers with a commute of over 60 minutes" percent of "Workers age 16 and over who do not work from home" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -1994,7 +2147,7 @@ Measure "Number of workers with a commute of over 60 minutes" percent of "Worker
 
 Measure "Number of workers with a commute of over 60 minutes" percent of "Workers age 16 and over who do not work from home" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -2003,7 +2156,6 @@ Measure "Number of workers with a commute of over 60 minutes" percent of "Worker
         'us.census.acs.B08134010',
         'denominator'
       );
-
 
 
 
@@ -2030,6 +2182,10 @@ Number of workers with less than 10 minute commute
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B08134002.png
+  :width: 100 %
+  :align: center
+
 
 The number of workers in a geographic area over the age of 16 who do not work from home and commute in less than 10 minutes.
 
@@ -2040,7 +2196,7 @@ The number of workers in a geographic area over the age of 16 who do not work fr
 Measure "Number of workers with less than 10 minute commute"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -2061,7 +2217,7 @@ Measure "Number of workers with less than 10 minute commute"  density per sq. ki
 
 Measure "Number of workers with less than 10 minute commute" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -2074,9 +2230,10 @@ Measure "Number of workers with less than 10 minute commute" within an area:
 
 
 
+
 Measure "Number of workers with less than 10 minute commute" percent of "Workers age 16 and over who do not work from home" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -2089,7 +2246,7 @@ Measure "Number of workers with less than 10 minute commute" percent of "Workers
 
 Measure "Number of workers with less than 10 minute commute" percent of "Workers age 16 and over who do not work from home" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -2098,7 +2255,6 @@ Measure "Number of workers with less than 10 minute commute" percent of "Workers
         'us.census.acs.B08134002',
         'denominator'
       );
-
 
 
 
@@ -2128,6 +2284,10 @@ Workers age 16 and over with no vehicle
 ---------------------------------------------------------------------------
 
 
+.. figure:: ../img/us.census.acs.B08014002.png
+  :width: 100 %
+  :align: center
+
 
 All people in a geographic area over the age of 16 who do not own a car.
 
@@ -2135,10 +2295,10 @@ All people in a geographic area over the age of 16 who do not own a car.
 
 
 
-Measure "Workers age 16 and over with no vehicle"  for one point:
+Measure "Workers age 16 and over with no vehicle"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -2157,15 +2317,25 @@ Measure "Workers age 16 and over with no vehicle"  for one point:
 
 
 
+Measure "Workers age 16 and over with no vehicle" within an area:
 
-Workers age 16 and over with no vehicle is only available for point lookups.
+.. code-block:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B08014002'
+        );
+
+
 
 
 
 
 Measure "Workers age 16 and over with no vehicle" percent of "Workers over the Age of 16" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -2175,6 +2345,18 @@ Measure "Workers age 16 and over with no vehicle" percent of "Workers over the A
         'denominator'
       );
 
+
+Measure "Workers age 16 and over with no vehicle" percent of "Workers over the Age of 16" within an area:
+
+.. code-block:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B08014002',
+        'denominator'
+      );
 
 
 

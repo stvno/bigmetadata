@@ -31,6 +31,10 @@ Total Population
 ---------------------------------------------------------------------------
 
 
+.. figure:: ../img/us.census.acs.B01003001.png
+  :width: 100 %
+  :align: center
+
 
 The total number of all people living in a given geographic area.  This is a very useful catch-all denominator when calculating rates.
 
@@ -41,7 +45,7 @@ The total number of all people living in a given geographic area.  This is a ver
 Measure "Total Population"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -62,7 +66,7 @@ Measure "Total Population"  density per sq. kilometer  for one point:
 
 Measure "Total Population" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -97,6 +101,10 @@ American Indian and Alaska Native Population
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B03002005.png
+  :width: 100 %
+  :align: center
+
 
 The number of people identifying as American Indian or Alaska native in each geography.
 
@@ -107,7 +115,7 @@ The number of people identifying as American Indian or Alaska native in each geo
 Measure "American Indian and Alaska Native Population"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -128,7 +136,7 @@ Measure "American Indian and Alaska Native Population"  density per sq. kilomete
 
 Measure "American Indian and Alaska Native Population" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -141,9 +149,10 @@ Measure "American Indian and Alaska Native Population" within an area:
 
 
 
+
 Measure "American Indian and Alaska Native Population" percent of "Total Population" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -156,7 +165,7 @@ Measure "American Indian and Alaska Native Population" percent of "Total Populat
 
 Measure "American Indian and Alaska Native Population" percent of "Total Population" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -165,7 +174,6 @@ Measure "American Indian and Alaska Native Population" percent of "Total Populat
         'us.census.acs.B03002005',
         'denominator'
       );
-
 
 
 
@@ -200,6 +208,10 @@ Asian Population
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B03002006.png
+  :width: 100 %
+  :align: center
+
 
 The number of people identifying as Asian, non-Hispanic in each geography.
 
@@ -210,7 +222,7 @@ The number of people identifying as Asian, non-Hispanic in each geography.
 Measure "Asian Population"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -231,7 +243,7 @@ Measure "Asian Population"  density per sq. kilometer  for one point:
 
 Measure "Asian Population" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -244,9 +256,10 @@ Measure "Asian Population" within an area:
 
 
 
+
 Measure "Asian Population" percent of "Total Population" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -259,7 +272,7 @@ Measure "Asian Population" percent of "Total Population" at one point:
 
 Measure "Asian Population" percent of "Total Population" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -268,7 +281,6 @@ Measure "Asian Population" percent of "Total Population" within an area:
         'us.census.acs.B03002006',
         'denominator'
       );
-
 
 
 
@@ -301,6 +313,10 @@ Black or African American Population
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B03002004.png
+  :width: 100 %
+  :align: center
+
 
 The number of people identifying as black or African American, non-Hispanic in each geography.
 
@@ -311,7 +327,7 @@ The number of people identifying as black or African American, non-Hispanic in e
 Measure "Black or African American Population"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -332,7 +348,7 @@ Measure "Black or African American Population"  density per sq. kilometer  for o
 
 Measure "Black or African American Population" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -345,9 +361,10 @@ Measure "Black or African American Population" within an area:
 
 
 
+
 Measure "Black or African American Population" percent of "Total Population" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -360,7 +377,7 @@ Measure "Black or African American Population" percent of "Total Population" at 
 
 Measure "Black or African American Population" percent of "Total Population" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -369,7 +386,6 @@ Measure "Black or African American Population" percent of "Total Population" wit
         'us.census.acs.B03002004',
         'denominator'
       );
-
 
 
 
@@ -450,6 +466,10 @@ Hispanic Population
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B03002012.png
+  :width: 100 %
+  :align: center
+
 
 The number of people identifying as Hispanic or Latino in each geography.
 
@@ -460,7 +480,7 @@ The number of people identifying as Hispanic or Latino in each geography.
 Measure "Hispanic Population"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -481,7 +501,7 @@ Measure "Hispanic Population"  density per sq. kilometer  for one point:
 
 Measure "Hispanic Population" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -494,9 +514,10 @@ Measure "Hispanic Population" within an area:
 
 
 
+
 Measure "Hispanic Population" percent of "Total Population" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -509,7 +530,7 @@ Measure "Hispanic Population" percent of "Total Population" at one point:
 
 Measure "Hispanic Population" percent of "Total Population" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -518,7 +539,6 @@ Measure "Hispanic Population" percent of "Total Population" within an area:
         'us.census.acs.B03002012',
         'denominator'
       );
-
 
 
 
@@ -607,6 +627,10 @@ Other Race population
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B03002008.png
+  :width: 100 %
+  :align: center
+
 
 The number of people identifying as another race in each geography
 
@@ -617,7 +641,7 @@ The number of people identifying as another race in each geography
 Measure "Other Race population"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -638,7 +662,7 @@ Measure "Other Race population"  density per sq. kilometer  for one point:
 
 Measure "Other Race population" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -651,9 +675,10 @@ Measure "Other Race population" within an area:
 
 
 
+
 Measure "Other Race population" percent of "Total Population" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -666,7 +691,7 @@ Measure "Other Race population" percent of "Total Population" at one point:
 
 Measure "Other Race population" percent of "Total Population" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -675,7 +700,6 @@ Measure "Other Race population" percent of "Total Population" within an area:
         'us.census.acs.B03002008',
         'denominator'
       );
-
 
 
 
@@ -702,6 +726,10 @@ Population not Hispanic
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B03002002.png
+  :width: 100 %
+  :align: center
+
 
 The number of people not identifying as Hispanic or Latino in each geography.
 
@@ -712,7 +740,7 @@ The number of people not identifying as Hispanic or Latino in each geography.
 Measure "Population not Hispanic"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -733,7 +761,7 @@ Measure "Population not Hispanic"  density per sq. kilometer  for one point:
 
 Measure "Population not Hispanic" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -746,9 +774,10 @@ Measure "Population not Hispanic" within an area:
 
 
 
+
 Measure "Population not Hispanic" percent of "Total Population" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -761,7 +790,7 @@ Measure "Population not Hispanic" percent of "Total Population" at one point:
 
 Measure "Population not Hispanic" percent of "Total Population" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -770,7 +799,6 @@ Measure "Population not Hispanic" percent of "Total Population" within an area:
         'us.census.acs.B03002002',
         'denominator'
       );
-
 
 
 
@@ -797,6 +825,10 @@ Two or more races population
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B03002009.png
+  :width: 100 %
+  :align: center
+
 
 The number of people identifying as two or more races in each geography
 
@@ -807,7 +839,7 @@ The number of people identifying as two or more races in each geography
 Measure "Two or more races population"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -828,7 +860,7 @@ Measure "Two or more races population"  density per sq. kilometer  for one point
 
 Measure "Two or more races population" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -841,9 +873,10 @@ Measure "Two or more races population" within an area:
 
 
 
+
 Measure "Two or more races population" percent of "Total Population" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -856,7 +889,7 @@ Measure "Two or more races population" percent of "Total Population" at one poin
 
 Measure "Two or more races population" percent of "Total Population" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -865,7 +898,6 @@ Measure "Two or more races population" percent of "Total Population" within an a
         'us.census.acs.B03002009',
         'denominator'
       );
-
 
 
 
@@ -898,6 +930,10 @@ White Population
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+.. figure:: ../img/us.census.acs.B03002003.png
+  :width: 100 %
+  :align: center
+
 
 The number of people identifying as white, non-Hispanic in each geography.
 
@@ -908,7 +944,7 @@ The number of people identifying as white, non-Hispanic in each geography.
 Measure "White Population"  density per sq. kilometer  for one point:
 
 
-.. code:: postgresql
+.. code-block:: postgresql
 
 
   
@@ -929,7 +965,7 @@ Measure "White Population"  density per sq. kilometer  for one point:
 
 Measure "White Population" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
     UPDATE {table_name}
       SET {new_numeric_column} =
@@ -942,9 +978,10 @@ Measure "White Population" within an area:
 
 
 
+
 Measure "White Population" percent of "Total Population" at one point:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -957,7 +994,7 @@ Measure "White Population" percent of "Total Population" at one point:
 
 Measure "White Population" percent of "Total Population" within an area:
 
-.. code:: postgresql
+.. code-block:: postgresql
 
   UPDATE {table_name}
     SET {new_numeric_column} =
@@ -966,7 +1003,6 @@ Measure "White Population" percent of "Total Population" within an area:
         'us.census.acs.B03002003',
         'denominator'
       );
-
 
 
 
