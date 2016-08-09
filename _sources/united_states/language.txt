@@ -1,0 +1,286 @@
+
+
+.. Language:
+
+Language
+===========================================================================
+
+What languages people speak.
+
+.. contents::
+   :local:
+   :depth: 10
+
+
+
+
+
+.. _us.census.acs.B16001001:
+
+Population 5 Years and Over
+---------------------------------------------------------------------------
+
+
+.. figure:: ../img/us.census.acs.B16001001.png
+  :width: 100 %
+  :align: center
+
+
+The number of people in a geographic area who are over the age of 5.  This is primarily used as a denominator of measures of language spoken at home.
+
+
+
+
+
+Measure "Population 5 Years and Over"  density per sq. kilometer  for one point:
+
+
+.. code-block:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B16001001'
+      );
+
+
+
+
+
+Measure "Population 5 Years and Over" within an area:
+
+.. code-block:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B16001001'
+        );
+
+
+
+
+
+
+
+
+
+
+
+
+
+.. contents:: Subcolumns of Population 5 Years and Over
+   :local:
+   :depth: 1
+
+  
+  
+  
+
+.. _us.census.acs.B16001002:
+
+Speaks only English at Home
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+.. figure:: ../img/us.census.acs.B16001002.png
+  :width: 100 %
+  :align: center
+
+
+The number of people in a geographic area over age 5 who speak only English at home.
+
+
+
+
+
+Measure "Speaks only English at Home"  density per sq. kilometer  for one point:
+
+
+.. code-block:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B16001002'
+      );
+
+
+
+
+
+Measure "Speaks only English at Home" within an area:
+
+.. code-block:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B16001002'
+        );
+
+
+
+
+
+
+Measure "Speaks only English at Home" percent of "Population 5 Years and Over" at one point:
+
+.. code-block:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B16001002',
+        'denominator'
+      );
+
+
+Measure "Speaks only English at Home" percent of "Population 5 Years and Over" within an area:
+
+.. code-block:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B16001002',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B16001001`
+
+
+
+  
+  
+  
+  
+
+.. _us.census.acs.B16001003:
+
+Speaks Spanish at Home
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+.. figure:: ../img/us.census.acs.B16001003.png
+  :width: 100 %
+  :align: center
+
+
+The number of people in a geographic area over age 5 who speak Spanish at home, possibly in addition to other languages.
+
+
+
+
+
+Measure "Speaks Spanish at Home"  density per sq. kilometer  for one point:
+
+
+.. code-block:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B16001003'
+      );
+
+
+
+
+
+Measure "Speaks Spanish at Home" within an area:
+
+.. code-block:: postgresql
+
+    UPDATE {table_name}
+      SET {new_numeric_column} =
+        OBS_GetMeasure(
+          ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+          'us.census.acs.B16001003'
+        );
+
+
+
+
+
+
+Measure "Speaks Spanish at Home" percent of "Population 5 Years and Over" at one point:
+
+.. code-block:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(40.7, -73.9),
+        'us.census.acs.B16001003',
+        'denominator'
+      );
+
+
+Measure "Speaks Spanish at Home" percent of "Population 5 Years and Over" within an area:
+
+.. code-block:: postgresql
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        ST_Buffer(CDB_LatLng(40.7, -73.9), 0.01),
+        'us.census.acs.B16001003',
+        'denominator'
+      );
+
+
+
+
+
+
+
+
+
+:denominator:
+
+    :ref:`us.census.acs.B16001001`
+
+
+
+  
+  
+  
+  
+
+

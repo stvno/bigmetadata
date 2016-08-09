@@ -1,0 +1,419 @@
+
+
+.. Zillow Home Value and Rental Indexes:
+
+Zillow Home Value and Rental Indexes
+===========================================================================
+
+Zillow home value and rental indexes.
+
+.. contents::
+   :local:
+   :depth: 10
+
+
+
+
+
+.. _us.zillow.AllHomes_MedianRentalPricePerSqft:
+
+Median rental price per square foot for All homes
+---------------------------------------------------------------------------
+
+
+.. figure:: ../img/us.zillow.AllHomes_MedianRentalPricePerSqft.png
+  :width: 100 %
+  :align: center
+
+
+Median of the value (US Dollars) of all homes per square foot. This number is calculated by taking the estimated home value for each home in a given region and dividing it by the home's square footage. Zillow defines all homes as single-family, condominium and co-operative homes with a county record. Unless specified, all series cover this segment of the housing stock.
+
+
+
+
+
+Measure "Median rental price per square foot for All homes"  for one point:
+
+
+.. code-block:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(28.3305906291771, -81.3544048197256),
+        'us.zillow.AllHomes_MedianRentalPricePerSqft'
+      );
+
+
+
+
+
+
+Median rental price per square foot for All homes is only available for point lookups.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.. _us.zillow.Sfr_MedianRentalPricePerSqft:
+
+Median rental price per square foot for Single Family residence rental
+---------------------------------------------------------------------------
+
+
+.. figure:: ../img/us.zillow.Sfr_MedianRentalPricePerSqft.png
+  :width: 100 %
+  :align: center
+
+
+Median of the value (US Dollars) of all homes per square foot. This number is calculated by taking the estimated home value for each home in a given region and dividing it by the home's square footage. Single family residences are detached, free-standing residential buildings. 
+
+
+
+
+
+Measure "Median rental price per square foot for Single Family residence rental"  for one point:
+
+
+.. code-block:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(28.3305906291771, -81.3544048197256),
+        'us.zillow.Sfr_MedianRentalPricePerSqft'
+      );
+
+
+
+
+
+
+Median rental price per square foot for Single Family residence rental is only available for point lookups.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.. _us.zillow.AllHomes_MedianValuePerSqft:
+
+Median value per square foot for All homes
+---------------------------------------------------------------------------
+
+
+.. figure:: ../img/us.zillow.AllHomes_MedianValuePerSqft.png
+  :width: 100 %
+  :align: center
+
+
+Median of the estimated monthly rent price (US Dollars) of all homes, per square foot. This is calculated by taking the estimated rent price for a home and dividing it by the homes square footage. Zillow defines all homes as single-family, condominium and co-operative homes with a county record. Unless specified, all series cover this segment of the housing stock.
+
+
+
+
+
+Measure "Median value per square foot for All homes"  for one point:
+
+
+.. code-block:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(28.3305906291771, -81.3544048197256),
+        'us.zillow.AllHomes_MedianValuePerSqft'
+      );
+
+
+
+
+
+
+Median value per square foot for All homes is only available for point lookups.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.. _us.zillow.AllHomes_Zhvi:
+
+Zillow Home Value Index for All homes
+---------------------------------------------------------------------------
+
+
+.. figure:: ../img/us.zillow.AllHomes_Zhvi.png
+  :width: 100 %
+  :align: center
+
+
+The Zillow Home Value Index (ZHVI) is a time series tracking the monthly median home value (in US Dollars) in a particular geographical region. In general, each ZHVI time series begins in April 1996. See `Zillow's methodology <http://www.zillow.com/research/zhvi-methodology-6032/>`_ for more information. Zillow defines all homes as single-family, condominium and co-operative homes with a county record. Unless specified, all series cover this segment of the housing stock.
+
+
+
+
+
+Measure "Zillow Home Value Index for All homes"  for one point:
+
+
+.. code-block:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(28.3305906291771, -81.3544048197256),
+        'us.zillow.AllHomes_Zhvi'
+      );
+
+
+
+
+
+
+Zillow Home Value Index for All homes is only available for point lookups.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.. _us.zillow.SingleFamilyResidence_Zhvi:
+
+Zillow Home Value Index for Single Family Homes
+---------------------------------------------------------------------------
+
+
+.. figure:: ../img/us.zillow.SingleFamilyResidence_Zhvi.png
+  :width: 100 %
+  :align: center
+
+
+The Zillow Home Value Index (ZHVI) is a time series tracking the monthly median home value (in US Dollars) in a particular geographical region. In general, each ZHVI time series begins in April 1996. See `Zillow's methodology <http://www.zillow.com/research/zhvi-methodology-6032/>`_ for more information. Single family residences are detached, free-standing residential buildings. 
+
+
+
+
+
+Measure "Zillow Home Value Index for Single Family Homes"  for one point:
+
+
+.. code-block:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(28.3305906291771, -81.3544048197256),
+        'us.zillow.SingleFamilyResidence_Zhvi'
+      );
+
+
+
+
+
+
+Zillow Home Value Index for Single Family Homes is only available for point lookups.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.. _us.zillow.AllHomesPlusMultifamily_Zri:
+
+Zillow Rental Index for All homes plus multifamily
+---------------------------------------------------------------------------
+
+
+.. figure:: ../img/us.zillow.AllHomesPlusMultifamily_Zri.png
+  :width: 100 %
+  :align: center
+
+
+Similar to Zillow's ZHVI, the Zillow Rent Index (ZRI) tracks the monthly median rent (in US Dollars) in different geographical regions. In general, each ZRI time series beginds in November, 2010.  See `Zillow's methodology <http://www.zillow.com/research/zillow-rent-index-methodology-2393/>`_ for more information. In addition to "All homes", which Zillow defines as single-family, condominium and co-operative homes with a county record, this group includes units in buildings with 5 or more housing units that are not a condominiums or co-ops.
+
+
+
+
+
+Measure "Zillow Rental Index for All homes plus multifamily"  for one point:
+
+
+.. code-block:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(28.3305906291771, -81.3544048197256),
+        'us.zillow.AllHomesPlusMultifamily_Zri'
+      );
+
+
+
+
+
+
+Zillow Rental Index for All homes plus multifamily is only available for point lookups.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.. _us.zillow.SingleFamilyResidenceRental_Zri:
+
+Zillow Rental Index for Single Family residence rental
+---------------------------------------------------------------------------
+
+
+.. figure:: ../img/us.zillow.SingleFamilyResidenceRental_Zri.png
+  :width: 100 %
+  :align: center
+
+
+Similar to Zillow's ZHVI, the Zillow Rent Index (ZRI) tracks the monthly median rent (in US Dollars) in different geographical regions. In general, each ZRI time series beginds in November, 2010.  See `Zillow's methodology <http://www.zillow.com/research/zillow-rent-index-methodology-2393/>`_ for more information. Single Family residence rental is defined as detached, free-standing residential buildings which are rented out.
+
+
+
+
+
+Measure "Zillow Rental Index for Single Family residence rental"  for one point:
+
+
+.. code-block:: postgresql
+
+
+  
+
+
+
+
+  UPDATE {table_name}
+    SET {new_numeric_column} =
+      OBS_GetMeasure(
+        CDB_LatLng(28.3305906291771, -81.3544048197256),
+        'us.zillow.SingleFamilyResidenceRental_Zri'
+      );
+
+
+
+
+
+
+Zillow Rental Index for Single Family residence rental is only available for point lookups.
+
+
+
+
+
+
+
+
+
+
+
+
+
