@@ -14,6 +14,7 @@ import re
 from hashlib import sha1
 from itertools import izip_longest
 from datetime import date
+from urllib import quote_plus
 
 from slugify import slugify
 import requests
@@ -258,7 +259,12 @@ class PostgresTarget(Target):
                                "  AND table_name ILIKE '{tablename}' ".format(
                                    schema=self._schema,
                                    tablename=self._tablename))
-        return int(resp.fetchone()[0]) > 0
+        if int(resp.fetchone()[0]) == 0:
+            return False
+        resp = session.execute(
+            'SELECT row_number() over () FROM "{schema}".{tablename} LIMIT 1'.format(
+                schema=self._schema, tablename=self._tablename))
+        return resp.fetchone() is not None
 
 
 class CartoDBTarget(Target):
@@ -267,6 +273,12 @@ class CartoDBTarget(Target):
     '''
 
     def __init__(self, tablename):
+        resp = requests.get('{url}/dashboard/datasets'.format(
+             url=os.environ['CARTODB_URL']
+        ), cookies={
+            '_cartodb_session': os.environ['CARTODB_SESSION']
+        }).content
+
         self.tablename = tablename
 
     def __str__(self):
@@ -280,18 +292,6 @@ class CartoDBTarget(Target):
     def remove(self):
         api_key = os.environ['CARTODB_API_KEY']
         url = os.environ['CARTODB_URL']
-        session = os.environ['CARTODB_SESSION']
-
-        resp = requests.get('{url}/dashboard/datasets'.format(
-            url=url
-        ), cookies={
-            '_cartodb_session': session
-        })
-        if not self.exists():
-            time.sleep(2)
-            return
-
-        # get dataset id: GET https://observatory.cartodb.com/api/v1/tables/obs_column_table_3?api_key=bf40056ab6e223c07a7aa7731861a7bda1043241
 
         try:
             while True:
@@ -312,16 +312,7 @@ class CartoDBTarget(Target):
                     pass
         except ValueError:
             pass
-        try:
-            query_cartodb('DROP TABLE {tablename}'.format(tablename=self.tablename))
-        except Exception:
-            pass
-        resp = requests.get('{url}/dashboard/datasets'.format(
-            url=url
-        ), cookies={
-            '_cartodb_session': session
-        })
-        time.sleep(2)
+        query_cartodb('DROP TABLE IF EXISTS {tablename}'.format(tablename=self.tablename))
         assert not self.exists()
 
 
@@ -468,7 +459,14 @@ class TableTarget(Target):
                 "  AND table_name = '{tablename}' ".format(
                     schema='observatory',
                     tablename=self._obs_table.tablename))
-            return int(resp.fetchone()[0]) > 0
+            if int(resp.fetchone()[0]) == 0:
+                return False
+            resp = session.execute(
+                'SELECT row_number() over () '
+                'FROM "{schema}".{tablename} LIMIT 1 '.format(
+                    schema='observatory',
+                    tablename=self._obs_table.tablename))
+            return resp.fetchone() is not None
         elif existing and existing_version > new_version:
             raise Exception('Metadata version mismatch: cannot run task {task} '
                             '(id "{id}") '
@@ -590,7 +588,6 @@ class TableTarget(Target):
                     'stats': stats
                 }
             session.add(coltable)
-
 
 
 class ColumnsTask(Task):
@@ -881,7 +878,7 @@ class DownloadUnzipTask(Task):
             shell('wget -O {output}.zip {url}'.format(
               output=self.output().path,
               url=<URL>
-            )
+            ))
         '''
         raise NotImplementedError('DownloadUnzipTask must define download()')
 
@@ -938,10 +935,11 @@ class TempTableTask(Task):
         shell("psql -c 'CREATE SCHEMA IF NOT EXISTS \"{schema}\"'".format(
             schema=classpath(self)))
         target = PostgresTarget(classpath(self), self.task_id)
-        if self.force and not getattr(self, 'wiped', False) and target.exists():
+        if self.force and not getattr(self, 'wiped', False):
+            if target.exists():
+                shell("psql -c 'DROP TABLE \"{schema}\".{tablename}'".format(
+                    schema=classpath(self), tablename=self.task_id))
             self.wiped = True
-            shell("psql -c 'DROP TABLE \"{schema}\".{tablename}'".format(
-                schema=classpath(self), tablename=self.task_id))
         return target
 
 
@@ -996,6 +994,8 @@ class CSV2TempTableTask(TempTableTask):
                       ``,``.  Must be one character.
     :param has_header: Boolean as to whether first row has column names.
                        Defaults to ``True``.
+    :param force: Boolean as to whether the task should be run even if the
+                  temporary output already exists.
     '''
 
     delimiter = Parameter(default=',', significant=False)
@@ -1052,7 +1052,7 @@ class CSV2TempTableTask(TempTableTask):
                     options=' '.join(options)
                 ))
         except:
-            session.execute('DROP TABLE {output}'.format(
+            session.execute('DROP TABLE IF EXISTS {output}'.format(
                 output=self.output().table))
             raise
 
@@ -1071,7 +1071,9 @@ class LoadPostgresFromURL(TempTableTask):
 
     def mark_done(self):
         session = current_session()
-        session.execute('CREATE TABLE {table} ()'.format(
+        session.execute('DROP TABLE IF EXISTS {table}'.format(
+            table=self.output().table))
+        session.execute('CREATE TABLE {table} AS SELECT now() creation_time'.format(
             table=self.output().table))
 
 
@@ -1102,6 +1104,7 @@ class TableTask(Task):
 
     def on_success(self):
         session_commit(self)
+        super(TableTask, self).on_success()
 
     def columns(self):
         '''
@@ -1143,7 +1146,7 @@ class TableTask(Task):
         '''
         raise NotImplementedError('Must define timespan for table')
 
-    def the_geom(self):
+    def the_geom(self, output):
         geometry_columns = [(colname, coltarget) for colname, coltarget in
                             self.columns().iteritems() if coltarget._column.type.lower() == 'geometry']
         if len(geometry_columns) == 0:
@@ -1172,7 +1175,7 @@ class TableTask(Task):
                 ') the_geom '
                 'FROM {output}'.format(
                     geom_colname=geometry_columns[0][0],
-                    output=self.output().table
+                    output=output.table
                 )).fetchone()['the_geom']
         else:
             raise Exception('Having more than one geometry column in one table '
@@ -1184,7 +1187,7 @@ class TableTask(Task):
         self.populate()
         output.update_or_create_metadata()
         self.create_indexes(output)
-        output._obs_table.the_geom = self.the_geom()
+        output._obs_table.the_geom = self.the_geom(output)
 
     def create_indexes(self, output):
         session = current_session()
@@ -1218,11 +1221,6 @@ class TableTask(Task):
             return False
         else:
             return super(TableTask, self).complete()
-    #    for dep in self.deps():
-    #        if not dep.complete():
-    #            return False
-
-    #    return super(TableTask, self).complete()
 
 
 class RenameTables(Task):
@@ -1330,6 +1328,71 @@ WHERE table_name LIKE 'obs_%'
                     tablename, cnt))
             else:
                 session.execute('drop table observatory.{}'.format(tablename))
+
+
+class Carto2TempTableTask(TempTableTask):
+    '''
+    Import a table from a CARTO account into a temporary table.
+
+    :param subdomain: Optional. The subdomain the table resides in. Defaults
+                       to ``observatory``.
+    :param table: The name of the table to be imported.
+    '''
+
+    subdomain = Parameter(default='observatory')
+    table = Parameter()
+
+    TYPE_MAP = {
+        'string': 'TEXT',
+        'number': 'NUMERIC',
+        'geometry': 'GEOMETRY',
+    }
+
+    @property
+    def _url(self):
+        return 'https://{subdomain}.cartodb.com/api/v2/sql'.format(
+            subdomain=self.subdomain
+        )
+
+    def _query(self, **params):
+        return requests.get(self._url, params=params)
+
+    def _create_table(self):
+        resp = self._query(
+            q='SELECT * FROM {table} LIMIT 0'.format(table=self.table)
+        )
+        coltypes = dict([
+            (k, self.TYPE_MAP[v['type']]) for k, v in resp.json()['fields'].iteritems()
+        ])
+        resp = self._query(
+            q='SELECT * FROM {table} LIMIT 0'.format(table=self.table),
+            format='csv'
+        )
+        colnames = resp.text.strip().split(',')
+        columns = ', '.join(['{colname} {type}'.format(
+            colname=c,
+            type=coltypes[c]
+        ) for c in colnames])
+        stmt = 'CREATE TABLE {table} ({columns})'.format(table=self.output().table,
+                                                         columns=columns)
+        shell("psql -c '{stmt}'".format(stmt=stmt))
+
+    def _load_rows(self):
+        url = self._url + '?q={q}&format={format}'.format(
+            q=quote_plus('SELECT * FROM {table}'.format(table=self.table)),
+            format='csv'
+        )
+        shell(r"curl '{url}' | "
+              r"psql -c '\copy {table} FROM STDIN WITH CSV HEADER'".format(
+                  table=self.output().table,
+                  url=url))
+
+    def run(self):
+        self._create_table()
+        self._load_rows()
+        shell("psql -c 'CREATE INDEX ON {table} USING gist (the_geom)'".format(
+            table=self.output().table,
+        ))
 
 
 class CustomTable(TempTableTask):

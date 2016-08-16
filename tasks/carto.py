@@ -12,7 +12,6 @@ from luigi import (WrapperTask, BooleanParameter, Parameter, Task, LocalTarget,
 from luigi.task_register import Register
 from luigi.s3 import S3Target
 from nose.tools import assert_equal
-from urllib import quote_plus
 from datetime import date
 from decimal import Decimal
 from cStringIO import StringIO
@@ -29,82 +28,6 @@ import requests
 META_TABLES = ('obs_table', 'obs_column_table', 'obs_column', 'obs_column_to_column',
                'obs_column_tag', 'obs_tag', 'obs_dump_version', )
 
-
-class Import(TempTableTask):
-    '''
-    Import a table from a CARTO account into a temporary table.
-
-    :params subdomain: Optional. The subdomain the table resides in. Defaults
-                       to ``observatory``.
-    :params table: The name of the table to be imported.
-    '''
-
-    subdomain = Parameter(default='observatory')
-    table = Parameter()
-
-    TYPE_MAP = {
-        'string': 'TEXT',
-        'number': 'NUMERIC',
-        'geometry': 'GEOMETRY',
-    }
-
-    @property
-    def _url(self):
-        return 'https://{subdomain}.cartodb.com/api/v2/sql'.format(
-            subdomain=self.subdomain
-        )
-
-    def _query(self, **params):
-        return requests.get(self._url, params=params)
-
-    def _create_table(self):
-        resp = self._query(
-            q='SELECT * FROM {table} LIMIT 0'.format(table=self.table)
-        )
-        coltypes = dict([
-            (k, self.TYPE_MAP[v['type']]) for k, v in resp.json()['fields'].iteritems()
-        ])
-        resp = self._query(
-            q='SELECT * FROM {table} LIMIT 0'.format(table=self.table),
-            format='csv'
-        )
-        colnames = resp.text.strip().split(',')
-        columns = ', '.join(['{colname} {type}'.format(
-            colname=c,
-            type=coltypes[c]
-        ) for c in colnames])
-        stmt = 'CREATE TABLE {table} ({columns})'.format(table=self.output().table,
-                                                         columns=columns)
-        shell("psql -c '{stmt}'".format(stmt=stmt))
-
-    def _load_rows(self):
-        url = self._url + '?q={q}&format={format}'.format(
-            q=quote_plus('SELECT * FROM {table}'.format(table=self.table)),
-            format='csv'
-        )
-        shell(r"curl '{url}' | "
-              r"psql -c '\copy {table} FROM STDIN WITH CSV HEADER'".format(
-                  table=self.output().table,
-                  url=url))
-
-    def run(self):
-        self._create_table()
-        self._load_rows()
-        shell("psql -c 'CREATE INDEX ON {table} USING gist (the_geom)'".format(
-            table=self.output().table,
-        ))
-
-
-class SyncMetadata(WrapperTask):
-
-    force = BooleanParameter(default=True)
-
-    def requires(self):
-        for tablename in META_TABLES:
-            yield TableToCartoViaImportAPI(table=tablename, force=self.force)
-
-    def run(self):
-        yield OBSMetaToCarto()
 
 
 def should_upload(table):
@@ -706,24 +629,30 @@ class PurgeMetadataTables(Task):
             yield PostgresTarget(schema='observatory', tablename=table.tablename)
 
 
-class ConfirmTablesDescribedExist(Task):
+class ConfirmTableExists(Task):
+    '''
+    Confirm a table exists
+    '''
+
+    schema = Parameter(default='observatory')
+    tablename = Parameter()
+
+    def run(self):
+        raise Exception('Table {} does not exist'.format(self.tablename))
+
+    def output(self):
+        return PostgresTarget(self.schema, self.tablename)
+
+
+class ConfirmTablesDescribedExist(WrapperTask):
     '''
     Confirm that all tables described in obs_table actually exist.
     '''
 
-    def complete(self):
-        return getattr(self, '_complete', False)
-
-    def run(self):
+    def requires(self):
         session = current_session()
         for table in session.query(OBSTable):
-            print table.tablename
-            target = PostgresTarget('observatory', table.tablename)
-            assert target.exists()
-            assert session.execute(
-                'SELECT row_number() over () FROM observatory.{tablename} LIMIT 1'.format(
-                    tablename=table.tablename)).fetchone()[0] == 1
-        self._complete = True
+            yield ConfirmTableExists(tablename=table.tablename)
 
 
 class PurgeMetadata(WrapperTask):
@@ -732,7 +661,6 @@ class PurgeMetadata(WrapperTask):
     '''
 
     def requires(self):
-        yield PurgeMetadataTags()
         yield PurgeMetadataColumns()
         yield PurgeMetadataTables()
 
@@ -812,6 +740,7 @@ class DumpS3(Task):
     :param timestamp: Optional date parameter, defaults to today.
     '''
     timestamp = DateParameter(default=date.today())
+    force = BooleanParameter(default=False, significant=False)
 
     def requires(self):
         return Dump(timestamp=self.timestamp)
@@ -829,7 +758,13 @@ class DumpS3(Task):
             path=path
         )
         print path
-        return S3Target(path)
+        target = S3Target(path)
+        if self.force:
+            shell('aws s3 rm {output}'.format(
+                output=path
+            ))
+            self.force = False
+        return target
 
 
 class OBSMeta(Task):
@@ -939,7 +874,7 @@ class OBSMetaToLocal(OBSMeta):
         ))
         # confirm that there won't be ambiguity with selection of geom
         session.execute('CREATE UNIQUE INDEX ON observatory.obs_meta '
-                        '(numer_id, denom_id, geom_weight)')
+                        '(numer_id, denom_id, numer_timespan, geom_weight)')
         session.commit()
         self.force = False
 
@@ -953,7 +888,13 @@ class OBSMetaToLocal(OBSMeta):
         return PostgresTarget('observatory', 'obs_meta')
 
 
-class OBSMetaToCarto(OBSMeta):
+class SyncMetadata(OBSMeta):
+
+    force = BooleanParameter(default=True, significant=False)
+
+    def requires(self):
+        for tablename in META_TABLES:
+            yield TableToCartoViaImportAPI(table=tablename, force=True)
 
     def run(self):
         import_api({
